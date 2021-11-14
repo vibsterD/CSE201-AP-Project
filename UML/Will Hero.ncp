@@ -8,7 +8,7 @@
         <Name>Player</Name>
         <Access>Public</Access>
         <Location left="103" top="600" />
-        <Size width="346" height="315" />
+        <Size width="346" height="332" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private Weapon currentWeapon</Member>
         <Member type="Field">private int coins</Member>
@@ -24,6 +24,7 @@
         <Member type="Method">public void dash()</Member>
         <Member type="Method">public void rewardcoins(int delta)</Member>
         <Member type="Method">public void getcoins()</Member>
+        <Member type="Method">public void rewardWeapons(Weapon weapon)</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
@@ -87,7 +88,7 @@
         <Member type="Field">private int gravity</Member>
         <Member type="Field">private int restitution</Member>
         <Member type="Field">Position pos</Member>
-        <Member type="Method">public void collide(GameObject o1, GameObject o2)</Member>
+        <Member type="Method">public void collide(GameObject o1)</Member>
         <Modifier>Abstract</Modifier>
       </Entity>
       <Entity type="Class">
@@ -187,7 +188,7 @@
         <Location left="901" top="882" />
         <Size width="163" height="94" />
         <Collapsed>False</Collapsed>
-        <Member type="Method">public override void reward()</Member>
+        <Member type="Method">public override void reward(Player player)</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
@@ -196,13 +197,13 @@
         <Location left="1134" top="882" />
         <Size width="163" height="94" />
         <Collapsed>False</Collapsed>
-        <Member type="Method">public override void reward()</Member>
+        <Member type="Method">public override void reward(Player player)</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>Helmet</Name>
         <Access>Public</Access>
-        <Location left="107" top="946" />
+        <Location left="172" top="993" />
         <Size width="163" height="77" />
         <Collapsed>False</Collapsed>
         <Modifier>Abstract</Modifier>
@@ -210,7 +211,7 @@
       <Entity type="Class">
         <Name>Iron</Name>
         <Access>Public</Access>
-        <Location left="103" top="1089" />
+        <Location left="172" top="1128" />
         <Size width="162" height="163" />
         <Collapsed>False</Collapsed>
         <Member type="Field">Weapon[] weaponslots</Member>
@@ -338,15 +339,23 @@
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="False">
-          <X>199</X>
-          <Y>1048</Y>
+          <X>264</X>
+          <Y>1095</Y>
         </BendPoint>
       </Relationship>
       <Relationship type="Association" first="0" second="17">
         <Label>
         </Label>
         <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Horizontal</EndOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>255</X>
+          <Y>957</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>255</X>
+          <Y>964</Y>
+        </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
