@@ -1,0 +1,355 @@
+<Project>
+  <Name>Will Hero</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>UML</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>Player</Name>
+        <Access>Public</Access>
+        <Location left="103" top="600" />
+        <Size width="346" height="315" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Weapon currentWeapon</Member>
+        <Member type="Field">private int coins</Member>
+        <Member type="Field">Helmet helmet</Member>
+        <Member type="Field">Weapon[] weapons</Member>
+        <Member type="Field">Boolean respawned = false</Member>
+        <Member type="Field">int location</Member>
+        <Member type="Field">Boolean isEliminated = false</Member>
+        <Member type="Constructor">public Player()</Member>
+        <Member type="Constructor">public Player(Boolean respawned, Position position, Weapon weapon)</Member>
+        <Member type="Method">public void jump()</Member>
+        <Member type="Method">public void attack()</Member>
+        <Member type="Method">public void dash()</Member>
+        <Member type="Method">public void rewardcoins(int delta)</Member>
+        <Member type="Method">public void getcoins()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Orcs</Name>
+        <Access>Public</Access>
+        <Location left="991" top="52" />
+        <Size width="270" height="213" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">String color</Member>
+        <Member type="Field">private int size</Member>
+        <Member type="Field">private int hp</Member>
+        <Member type="Constructor">public Orcs(int size, Position pos, int hp, String color)</Member>
+        <Member type="Method">public void jump()</Member>
+        <Member type="Method">public void die(Player player)</Member>
+        <Member type="Method">public int getHP()</Member>
+        <Member type="Method">public void setHP(int hp)</Member>
+        <Modifier>Abstract</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Position</Name>
+        <Access>Public</Access>
+        <Location left="398" top="261" />
+        <Size width="164" height="213" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private int x</Member>
+        <Member type="Field">private int y</Member>
+        <Member type="Field">private int delta_x</Member>
+        <Member type="Field">private int delta_y</Member>
+        <Member type="Method">public Position getPosition()</Member>
+        <Member type="Method">public void setDelta(int x, int y)</Member>
+        <Member type="Constructor">public Position(int x, int y)</Member>
+        <Member type="Method">public void updatePosition()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Game</Name>
+        <Access>Public</Access>
+        <Location left="83" top="35" />
+        <Size width="184" height="281" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private GameObject[] renderedObjects</Member>
+        <Member type="Field">private Player player</Member>
+        <Member type="Method">private void resolveCollision()</Member>
+        <Member type="Method">public void menuHandler()</Member>
+        <Member type="Method">private void play()</Member>
+        <Member type="Method">private void populateScreen()</Member>
+        <Member type="Method">private void savegame()</Member>
+        <Member type="Method">private void loadgame()</Member>
+        <Member type="Method">private void pause()</Member>
+        <Member type="Method">private void resume()</Member>
+        <Member type="Method">public void exit()</Member>
+        <Member type="Method">private void respawn()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>GameObject</Name>
+        <Access>Public</Access>
+        <Location left="634" top="293" />
+        <Size width="263" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private int gravity</Member>
+        <Member type="Field">private int restitution</Member>
+        <Member type="Field">Position pos</Member>
+        <Member type="Method">public void collide(GameObject o1, GameObject o2)</Member>
+        <Modifier>Abstract</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Floor</Name>
+        <Access>Public</Access>
+        <Location left="653" top="35" />
+        <Size width="227" height="94" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public Floor(int restitution, int posx, int posy)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>RedOrc</Name>
+        <Access>Public</Access>
+        <Location left="1380" top="52" />
+        <Size width="218" height="128" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private int size</Member>
+        <Member type="Field">private int hp</Member>
+        <Member type="Constructor">public RedOrc(int size, Position pos, int hp)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>GreenOrc</Name>
+        <Access>Public</Access>
+        <Location left="1380" top="193" />
+        <Size width="228" height="128" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private int size</Member>
+        <Member type="Field">private int hp</Member>
+        <Member type="Constructor">public GreenOrc(int size, Position pos, int hp)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>BossOrc</Name>
+        <Access>Public</Access>
+        <Location left="1380" top="362" />
+        <Size width="221" height="128" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private int size</Member>
+        <Member type="Field">private int hp</Member>
+        <Member type="Constructor">public BossOrc(int size, Position pos, int hp)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Obstacle</Name>
+        <Access>Public</Access>
+        <Location left="684" top="600" />
+        <Size width="163" height="77" />
+        <Collapsed>False</Collapsed>
+        <Modifier>Abstract</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>TreasureChest</Name>
+        <Access>Public</Access>
+        <Location left="1004" top="702" />
+        <Size width="168" height="94" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public abstract void reward(Player player)</Member>
+        <Modifier>Abstract</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Weapon</Name>
+        <Access>Public</Access>
+        <Location left="1138" top="1009" />
+        <Size width="163" height="77" />
+        <Collapsed>False</Collapsed>
+        <Modifier>Abstract</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>TNT</Name>
+        <Access>Public</Access>
+        <Location left="684" top="764" />
+        <Size width="163" height="77" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Sword</Name>
+        <Access>Public</Access>
+        <Location left="1455" top="1009" />
+        <Size width="163" height="77" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Shuriken</Name>
+        <Access>Public</Access>
+        <Location left="1280" top="1134" />
+        <Size width="163" height="77" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>CoinChest</Name>
+        <Access>Public</Access>
+        <Location left="901" top="882" />
+        <Size width="163" height="94" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public override void reward()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>WeaponChest</Name>
+        <Access>Public</Access>
+        <Location left="1134" top="882" />
+        <Size width="163" height="94" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public override void reward()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Helmet</Name>
+        <Access>Public</Access>
+        <Location left="107" top="946" />
+        <Size width="163" height="77" />
+        <Collapsed>False</Collapsed>
+        <Modifier>Abstract</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Iron</Name>
+        <Access>Public</Access>
+        <Location left="103" top="1089" />
+        <Size width="162" height="163" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">Weapon[] weaponslots</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Association" first="3" second="0">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Generalization" first="0" second="4">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="1" second="4">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="7" second="1">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="6" second="1">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="8" second="1">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1126</X>
+          <Y>343</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="5" second="4">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="3" second="2">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="3" second="4">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>292</X>
+          <Y>80</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>619</X>
+          <Y>267</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Generalization" first="9" second="4">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="10" second="4">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1080</X>
+          <Y>646</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="12" second="9">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="13" second="11">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="14" second="11">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="15" second="10">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="16" second="10">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Dependency" first="16" second="14">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1272</X>
+          <Y>842</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Dependency" first="16" second="13">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1278</X>
+          <Y>857</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1525</X>
+          <Y>984</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="18" second="17">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>199</X>
+          <Y>1048</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="0" second="17">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+</Project>
