@@ -8,7 +8,7 @@
         <Name>Game</Name>
         <Access>Public</Access>
         <Location left="83" top="35" />
-        <Size width="184" height="298" />
+        <Size width="184" height="315" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private GameObject[] renderedObjects</Member>
         <Member type="Field">private Player player</Member>
@@ -23,6 +23,7 @@
         <Member type="Method">private void gameOver()</Member>
         <Member type="Method">private void respawn()</Member>
         <Member type="Method">public void addToRender()</Member>
+        <Member type="Method">public void eraseObject()</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
@@ -92,7 +93,7 @@
       <Entity type="Class">
         <Name>RedOrc</Name>
         <Access>Public</Access>
-        <Location left="1380" top="35" />
+        <Location left="1380" top="10" />
         <Size width="228" height="128" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private int size</Member>
@@ -103,7 +104,7 @@
       <Entity type="Class">
         <Name>GreenOrc</Name>
         <Access>Public</Access>
-        <Location left="1380" top="193" />
+        <Location left="1380" top="175" />
         <Size width="228" height="128" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private int size</Member>
@@ -126,7 +127,7 @@
         <Name>Orcs</Name>
         <Access>Public</Access>
         <Location left="991" top="52" />
-        <Size width="270" height="230" />
+        <Size width="270" height="247" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private String color</Member>
         <Member type="Field">private int size</Member>
@@ -137,6 +138,7 @@
         <Member type="Method">public int getHP()</Member>
         <Member type="Method">public void setHP(int hp)</Member>
         <Member type="Method">public void kill(Player player)</Member>
+        <Member type="Method">private Boolean playerIsKillable()</Member>
         <Modifier>Abstract</Modifier>
       </Entity>
       <Entity type="Class">
@@ -161,9 +163,11 @@
       <Entity type="Class">
         <Name>TNT</Name>
         <Access>Public</Access>
-        <Location left="680" top="747" />
-        <Size width="163" height="77" />
+        <Location left="680" top="765" />
+        <Size width="163" height="111" />
         <Collapsed>False</Collapsed>
+        <Member type="Method">public void activate()</Member>
+        <Member type="Method">public void explode()</Member>
         <Modifier>Sealed</Modifier>
       </Entity>
       <Entity type="Class">
@@ -226,8 +230,10 @@
         <Name>Obstacle</Name>
         <Access>Public</Access>
         <Location left="680" top="600" />
-        <Size width="163" height="77" />
+        <Size width="163" height="111" />
         <Collapsed>False</Collapsed>
+        <Member type="Method">public void kill(Player player)</Member>
+        <Member type="Method">private Boolean playerIsKillable()</Member>
         <Modifier>Abstract</Modifier>
       </Entity>
     </Entities>
@@ -381,7 +387,7 @@
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="False">
           <X>124</X>
-          <Y>364</Y>
+          <Y>381</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
