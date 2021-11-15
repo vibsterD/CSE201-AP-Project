@@ -8,7 +8,7 @@
         <Name>Game</Name>
         <Access>Public</Access>
         <Location left="83" top="35" />
-        <Size width="184" height="281" />
+        <Size width="184" height="298" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private GameObject[] renderedObjects</Member>
         <Member type="Field">private Player player</Member>
@@ -22,6 +22,7 @@
         <Member type="Method">private void resume()</Member>
         <Member type="Method">public void exit()</Member>
         <Member type="Method">private void respawn()</Member>
+        <Member type="Method">public void addToRender()</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
@@ -44,13 +45,14 @@
         <Name>Player</Name>
         <Access>Public</Access>
         <Location left="103" top="600" />
-        <Size width="346" height="332" />
+        <Size width="346" height="315" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private int coins</Member>
         <Member type="Field">private Helmet helmet</Member>
         <Member type="Field">private Boolean respawned = false</Member>
         <Member type="Field">private int location</Member>
         <Member type="Field">private Boolean isEliminated = false</Member>
+        <Member type="Field">private Game game</Member>
         <Member type="Constructor">public Player()</Member>
         <Member type="Constructor">public Player(Boolean respawned, Position position, Weapon weapon)</Member>
         <Member type="Method">public void jump()</Member>
@@ -65,7 +67,7 @@
         <Name>GameObject</Name>
         <Access>Public</Access>
         <Location left="634" top="293" />
-        <Size width="263" height="145" />
+        <Size width="177" height="145" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private int gravity</Member>
         <Member type="Field">private int restitution</Member>
@@ -91,7 +93,7 @@
         <Member type="Field">private int size</Member>
         <Member type="Field">private int hp</Member>
         <Member type="Constructor">public RedOrc(int size, Position pos, int hp)</Member>
-        <Modifier>None</Modifier>
+        <Modifier>Sealed</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>GreenOrc</Name>
@@ -102,7 +104,7 @@
         <Member type="Field">private int size</Member>
         <Member type="Field">private int hp</Member>
         <Member type="Constructor">public GreenOrc(int size, Position pos, int hp)</Member>
-        <Modifier>None</Modifier>
+        <Modifier>Sealed</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>BossOrc</Name>
@@ -113,7 +115,7 @@
         <Member type="Field">private int size</Member>
         <Member type="Field">private int hp</Member>
         <Member type="Constructor">public BossOrc(int size, Position pos, int hp)</Member>
-        <Modifier>None</Modifier>
+        <Modifier>Sealed</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>Orcs</Name>
@@ -132,14 +134,6 @@
         <Modifier>Abstract</Modifier>
       </Entity>
       <Entity type="Class">
-        <Name>Obstacle</Name>
-        <Access>Public</Access>
-        <Location left="684" top="600" />
-        <Size width="163" height="77" />
-        <Collapsed>False</Collapsed>
-        <Modifier>Abstract</Modifier>
-      </Entity>
-      <Entity type="Class">
         <Name>TreasureChest</Name>
         <Access>Public</Access>
         <Location left="1004" top="702" />
@@ -152,33 +146,39 @@
         <Name>Weapon</Name>
         <Access>Public</Access>
         <Location left="1309" top="1009" />
-        <Size width="163" height="77" />
+        <Size width="163" height="111" />
         <Collapsed>False</Collapsed>
+        <Member type="Field">private int level</Member>
+        <Member type="Method">public abstract void use()</Member>
         <Modifier>Abstract</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>TNT</Name>
         <Access>Public</Access>
-        <Location left="684" top="764" />
+        <Location left="680" top="747" />
         <Size width="163" height="77" />
         <Collapsed>False</Collapsed>
-        <Modifier>None</Modifier>
+        <Modifier>Sealed</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>Sword</Name>
         <Access>Public</Access>
         <Location left="1577" top="915" />
-        <Size width="163" height="77" />
+        <Size width="163" height="111" />
         <Collapsed>False</Collapsed>
-        <Modifier>None</Modifier>
+        <Member type="Method">private void meleeAttack()</Member>
+        <Member type="Method">public void use()</Member>
+        <Modifier>Sealed</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>Shuriken</Name>
         <Access>Public</Access>
         <Location left="1577" top="1107" />
-        <Size width="163" height="77" />
+        <Size width="163" height="111" />
         <Collapsed>False</Collapsed>
-        <Modifier>None</Modifier>
+        <Member type="Method">private void throwShuriken()</Member>
+        <Member type="Method">public void use()</Member>
+        <Modifier>Sealed</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>Helmet</Name>
@@ -193,16 +193,16 @@
         <Name>Iron</Name>
         <Access>Public</Access>
         <Location left="172" top="1147" />
-        <Size width="162" height="163" />
+        <Size width="163" height="94" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private Weapon[] weaponslots</Member>
-        <Modifier>None</Modifier>
+        <Modifier>Sealed</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>CoinChest</Name>
         <Access>Public</Access>
         <Location left="903" top="860" />
-        <Size width="162" height="94" />
+        <Size width="168" height="94" />
         <Collapsed>False</Collapsed>
         <Member type="Method">public void reward(Player player)</Member>
         <Modifier>None</Modifier>
@@ -211,20 +211,32 @@
         <Name>WeaponChest</Name>
         <Access>Public</Access>
         <Location left="1115" top="860" />
-        <Size width="162" height="94" />
+        <Size width="168" height="94" />
         <Collapsed>False</Collapsed>
         <Member type="Method">public void reward(Player player)</Member>
         <Modifier>None</Modifier>
       </Entity>
+      <Entity type="Class">
+        <Name>Obstacle</Name>
+        <Access>Public</Access>
+        <Location left="680" top="600" />
+        <Size width="163" height="77" />
+        <Collapsed>False</Collapsed>
+        <Modifier>Abstract</Modifier>
+      </Entity>
     </Entities>
     <Relationships>
       <Relationship type="Association" first="0" second="2">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Composition</AssociationType>
       </Relationship>
       <Relationship type="Association" first="0" second="3">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="False">
@@ -235,6 +247,8 @@
         <AssociationType>Composition</AssociationType>
       </Relationship>
       <Relationship type="Association" first="0" second="1">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
@@ -243,24 +257,20 @@
       <Relationship type="Generalization" first="2" second="3">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>271</X>
+          <Y>575</Y>
+        </BendPoint>
       </Relationship>
       <Relationship type="Generalization" first="9" second="3">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
-      </Relationship>
-      <Relationship type="Generalization" first="12" second="9">
-        <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
-      </Relationship>
-      <Relationship type="Generalization" first="10" second="3">
-        <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>1073</X>
-          <Y>578</Y>
+          <X>1068</X>
+          <Y>576</Y>
         </BendPoint>
       </Relationship>
-      <Relationship type="Generalization" first="17" second="10">
+      <Relationship type="Generalization" first="16" second="9">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -272,7 +282,7 @@
           <Y>821</Y>
         </BendPoint>
       </Relationship>
-      <Relationship type="Generalization" first="18" second="10">
+      <Relationship type="Generalization" first="17" second="9">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="False">
@@ -280,12 +290,12 @@
           <Y>821</Y>
         </BendPoint>
       </Relationship>
-      <Relationship type="Generalization" first="11" second="3">
+      <Relationship type="Generalization" first="10" second="3">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>1388</X>
-          <Y>578</Y>
+          <X>1386</X>
+          <Y>575</Y>
         </BendPoint>
       </Relationship>
       <Relationship type="Generalization" first="4" second="3">
@@ -312,27 +322,27 @@
           <Y>334</Y>
         </BendPoint>
       </Relationship>
-      <Relationship type="Generalization" first="13" second="11">
+      <Relationship type="Generalization" first="12" second="10">
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
       </Relationship>
-      <Relationship type="Generalization" first="14" second="11">
+      <Relationship type="Generalization" first="13" second="10">
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
       </Relationship>
-      <Relationship type="Generalization" first="16" second="15">
+      <Relationship type="Generalization" first="15" second="14">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
       </Relationship>
-      <Relationship type="Association" first="2" second="15">
+      <Relationship type="Association" first="2" second="14">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Composition</AssociationType>
       </Relationship>
-      <Relationship type="Association" first="18" second="11">
-        <Label>
-        </Label>
+      <Relationship type="Association" first="17" second="10">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="False">
@@ -341,6 +351,34 @@
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="13" second="13">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="2" second="0">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>124</X>
+          <Y>364</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Generalization" first="18" second="3">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="11" second="18">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
       </Relationship>
     </Relationships>
   </ProjectItem>
