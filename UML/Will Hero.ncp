@@ -20,7 +20,7 @@
         <Member type="Method">private void loadgame()</Member>
         <Member type="Method">private void pause()</Member>
         <Member type="Method">private void resume()</Member>
-        <Member type="Method">public void exit()</Member>
+        <Member type="Method">private void gameOver()</Member>
         <Member type="Method">private void respawn()</Member>
         <Member type="Method">public void addToRender()</Member>
         <Modifier>None</Modifier>
@@ -45,7 +45,7 @@
         <Name>Player</Name>
         <Access>Public</Access>
         <Location left="103" top="600" />
-        <Size width="346" height="315" />
+        <Size width="346" height="400" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private int coins</Member>
         <Member type="Field">private Helmet helmet</Member>
@@ -53,6 +53,7 @@
         <Member type="Field">private int location</Member>
         <Member type="Field">private Boolean isEliminated = false</Member>
         <Member type="Field">private Game game</Member>
+        <Member type="Field">private Boolean hasWon</Member>
         <Member type="Constructor">public Player()</Member>
         <Member type="Constructor">public Player(Boolean respawned, Position position, Weapon weapon)</Member>
         <Member type="Method">public void jump()</Member>
@@ -61,6 +62,10 @@
         <Member type="Method">public void rewardcoins(int delta)</Member>
         <Member type="Method">public void getcoins()</Member>
         <Member type="Method">public void rewardWeapons(Weapon weapon)</Member>
+        <Member type="Method">public Boolean wasEliminated()</Member>
+        <Member type="Method">public Boolean hasWon()</Member>
+        <Member type="Method">public void eliminate()</Member>
+        <Member type="Method">public void win()</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
@@ -87,12 +92,12 @@
       <Entity type="Class">
         <Name>RedOrc</Name>
         <Access>Public</Access>
-        <Location left="1380" top="52" />
-        <Size width="218" height="128" />
+        <Location left="1380" top="35" />
+        <Size width="228" height="128" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private int size</Member>
         <Member type="Field">private int hp</Member>
-        <Member type="Constructor">public RedOrc(int size, Position pos, int hp)</Member>
+        <Member type="Constructor">public RedOrc(Position pos)</Member>
         <Modifier>Sealed</Modifier>
       </Entity>
       <Entity type="Class">
@@ -103,25 +108,25 @@
         <Collapsed>False</Collapsed>
         <Member type="Field">private int size</Member>
         <Member type="Field">private int hp</Member>
-        <Member type="Constructor">public GreenOrc(int size, Position pos, int hp)</Member>
+        <Member type="Constructor">public GreenOrc(Position position)</Member>
         <Modifier>Sealed</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>BossOrc</Name>
         <Access>Public</Access>
-        <Location left="1380" top="362" />
-        <Size width="221" height="128" />
+        <Location left="1380" top="350" />
+        <Size width="228" height="128" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private int size</Member>
         <Member type="Field">private int hp</Member>
-        <Member type="Constructor">public BossOrc(int size, Position pos, int hp)</Member>
+        <Member type="Constructor">public BossOrc(Position position)</Member>
         <Modifier>Sealed</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>Orcs</Name>
         <Access>Public</Access>
         <Location left="991" top="52" />
-        <Size width="270" height="213" />
+        <Size width="270" height="230" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private String color</Member>
         <Member type="Field">private int size</Member>
@@ -131,6 +136,7 @@
         <Member type="Method">public void die(Player player)</Member>
         <Member type="Method">public int getHP()</Member>
         <Member type="Method">public void setHP(int hp)</Member>
+        <Member type="Method">public void kill(Player player)</Member>
         <Modifier>Abstract</Modifier>
       </Entity>
       <Entity type="Class">
@@ -183,7 +189,7 @@
       <Entity type="Class">
         <Name>Helmet</Name>
         <Access>Public</Access>
-        <Location left="172" top="993" />
+        <Location left="172" top="1062" />
         <Size width="163" height="94" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private Weapon currentWeapon</Member>
@@ -192,7 +198,7 @@
       <Entity type="Class">
         <Name>Iron</Name>
         <Access>Public</Access>
-        <Location left="172" top="1147" />
+        <Location left="172" top="1231" />
         <Size width="163" height="94" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private Weapon[] weaponslots</Member>
@@ -309,17 +315,25 @@
       <Relationship type="Generalization" first="5" second="8">
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>1308</X>
+          <Y>237</Y>
+        </BendPoint>
       </Relationship>
       <Relationship type="Generalization" first="6" second="8">
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
       </Relationship>
       <Relationship type="Generalization" first="7" second="8">
-        <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1331</X>
+          <Y>394</Y>
+        </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>1129</X>
-          <Y>334</Y>
+          <X>1331</X>
+          <Y>237</Y>
         </BendPoint>
       </Relationship>
       <Relationship type="Generalization" first="12" second="10">
