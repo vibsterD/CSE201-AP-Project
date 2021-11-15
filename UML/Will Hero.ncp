@@ -45,7 +45,7 @@
         <Name>Player</Name>
         <Access>Public</Access>
         <Location left="103" top="600" />
-        <Size width="346" height="332" />
+        <Size width="346" height="400" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private int coins</Member>
         <Member type="Field">private Helmet helmet</Member>
@@ -53,6 +53,7 @@
         <Member type="Field">private int location</Member>
         <Member type="Field">private Boolean isEliminated = false</Member>
         <Member type="Field">private Game game</Member>
+        <Member type="Field">private Boolean hasWon</Member>
         <Member type="Constructor">public Player()</Member>
         <Member type="Constructor">public Player(Boolean respawned, Position position, Weapon weapon)</Member>
         <Member type="Method">public void jump()</Member>
@@ -62,6 +63,9 @@
         <Member type="Method">public void getcoins()</Member>
         <Member type="Method">public void rewardWeapons(Weapon weapon)</Member>
         <Member type="Method">public Boolean wasEliminated()</Member>
+        <Member type="Method">public Boolean hasWon()</Member>
+        <Member type="Method">public void eliminate()</Member>
+        <Member type="Method">public void win()</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
@@ -93,7 +97,7 @@
         <Collapsed>False</Collapsed>
         <Member type="Field">private int size</Member>
         <Member type="Field">private int hp</Member>
-        <Member type="Constructor">public RedOrc(int size, Position pos, int hp)</Member>
+        <Member type="Constructor">public RedOrc(Position pos)</Member>
         <Modifier>Sealed</Modifier>
       </Entity>
       <Entity type="Class">
@@ -104,7 +108,7 @@
         <Collapsed>False</Collapsed>
         <Member type="Field">private int size</Member>
         <Member type="Field">private int hp</Member>
-        <Member type="Constructor">public GreenOrc(int size, Position pos, int hp)</Member>
+        <Member type="Constructor">public GreenOrc(Position position)</Member>
         <Modifier>Sealed</Modifier>
       </Entity>
       <Entity type="Class">
@@ -115,7 +119,7 @@
         <Collapsed>False</Collapsed>
         <Member type="Field">private int size</Member>
         <Member type="Field">private int hp</Member>
-        <Member type="Constructor">public BossOrc(int size, Position pos, int hp)</Member>
+        <Member type="Constructor">public BossOrc(Position position)</Member>
         <Modifier>Sealed</Modifier>
       </Entity>
       <Entity type="Class">
@@ -185,7 +189,7 @@
       <Entity type="Class">
         <Name>Helmet</Name>
         <Access>Public</Access>
-        <Location left="172" top="993" />
+        <Location left="172" top="1062" />
         <Size width="163" height="94" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private Weapon currentWeapon</Member>
@@ -194,7 +198,7 @@
       <Entity type="Class">
         <Name>Iron</Name>
         <Access>Public</Access>
-        <Location left="172" top="1147" />
+        <Location left="172" top="1231" />
         <Size width="163" height="94" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private Weapon[] weaponslots</Member>
