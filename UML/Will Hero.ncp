@@ -1,5 +1,5 @@
 <Project>
-  <Name>Will Hero</Name>
+  <Name>Will_Hero</Name>
   <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
     <Name>UML</Name>
     <Language>Java</Language>
@@ -46,10 +46,8 @@
         <Location left="103" top="600" />
         <Size width="346" height="332" />
         <Collapsed>False</Collapsed>
-        <Member type="Field">private Weapon currentWeapon</Member>
         <Member type="Field">private int coins</Member>
         <Member type="Field">private Helmet helmet</Member>
-        <Member type="Field">private Weapon[] weapons</Member>
         <Member type="Field">private Boolean respawned = false</Member>
         <Member type="Field">private int location</Member>
         <Member type="Field">private Boolean isEliminated = false</Member>
@@ -186,14 +184,15 @@
         <Name>Helmet</Name>
         <Access>Public</Access>
         <Location left="172" top="993" />
-        <Size width="163" height="77" />
+        <Size width="163" height="94" />
         <Collapsed>False</Collapsed>
+        <Member type="Field">private Weapon currentWeapon</Member>
         <Modifier>Abstract</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>Iron</Name>
         <Access>Public</Access>
-        <Location left="172" top="1128" />
+        <Location left="172" top="1147" />
         <Size width="162" height="163" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private Weapon[] weaponslots</Member>
@@ -328,6 +327,18 @@
       <Relationship type="Association" first="2" second="15">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="18" second="11">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>1200</X>
+          <Y>1049</Y>
+        </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Composition</AssociationType>
       </Relationship>
