@@ -4,6 +4,8 @@
 # macOS specific
 .DS_Store
 
+UML/43.zip
+
 # User-specific stuff
 /**/.idea/**/workspace.xml
 /**/.idea/**/tasks.xml
