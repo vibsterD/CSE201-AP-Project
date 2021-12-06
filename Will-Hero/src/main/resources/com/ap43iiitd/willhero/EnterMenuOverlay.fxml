@@ -39,19 +39,14 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label alignment="BOTTOM_CENTER" prefHeight="203.0" prefWidth="427.0" text="WILL" GridPane.columnIndex="1">
-                     <font>
-                        <Font name="Raanana" size="80.0" />
-                     </font>
-                  </Label>
                   <Label alignment="TOP_CENTER" prefHeight="225.0" prefWidth="427.0" text="HERO" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
-                        <Font name="Raanana" size="80.0" />
+                        <Font name="Impact" size="80.0" />
                      </font>
                   </Label>
                   <Label alignment="BOTTOM_CENTER" layoutX="437.0" layoutY="154.0" prefHeight="225.0" prefWidth="427.0" text="TAP" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
-                        <Font name="Raanana" size="80.0" />
+                        <Font name="Impact" size="81.0" />
                      </font>
                   </Label>
                   <ImageView blendMode="EXCLUSION" fitHeight="106.0" fitWidth="119.0" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
@@ -70,7 +65,7 @@
                            <children>
                               <Label prefHeight="75.0" prefWidth="425.0" text="BEST: ">
                                  <font>
-                                    <Font name="Raanana" size="49.0" />
+                                    <Font name="Impact" size="48.0" />
                                  </font>
                               </Label>
                            </children>
@@ -86,7 +81,7 @@
                                     <Icon content="LIBRARY_ADD" />
                                  </graphic>
                                  <font>
-                                    <Font size="21.0" />
+                                    <Font name="Impact" size="22.0" />
                                  </font>
                               </BottomNavigationButton>
                            </actionItems>
@@ -98,13 +93,18 @@
                                         <Icon content="CANCEL" />
                                     </graphic>
                                  <font>
-                                    <Font size="21.0" />
+                                    <Font name="Impact" size="21.0" />
                                  </font>
                                 </BottomNavigationButton>
                             </actionItems>
                         </BottomNavigation>
                      </children>
                   </HBox>
+                  <Label alignment="BOTTOM_CENTER" layoutX="449.0" layoutY="161.0" prefHeight="225.0" prefWidth="427.0" text="WILL" GridPane.columnIndex="1">
+                     <font>
+                        <Font name="Impact" size="80.0" />
+                     </font>
+                  </Label>
                </children>
             </GridPane>
          </children>
