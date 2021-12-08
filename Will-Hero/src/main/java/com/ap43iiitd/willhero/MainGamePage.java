@@ -26,9 +26,15 @@ public class MainGamePage {
     private ImageView Hero;
 
     public void initialize(){
-        TranslateTransition translation = new TranslateTransition(Duration.millis(500), Hero);
+        TranslateTransition heroTranslation = new TranslateTransition(Duration.millis(500), Hero);
+        heroTranslation.interpolatorProperty().set(Interpolator.SPLINE(.1, .1, .7, .7));
+        heroTranslation.setByY(-100);
+        heroTranslation.setAutoReverse(true);
+        heroTranslation.setCycleCount(1000);
+        heroTranslation.play();
+        TranslateTransition translation = new TranslateTransition(Duration.millis(400), Orc);
         translation.interpolatorProperty().set(Interpolator.SPLINE(.1, .1, .7, .7));
-        translation.setByY(-100);
+        translation.setByY(-60);
         translation.setAutoReverse(true);
         translation.setCycleCount(1000);
         translation.play();
