@@ -26,8 +26,15 @@ public class MainGamePage {
     private ImageView Hero;
 
     public void initialize(){
+        //have a static array of initialized objects
+        //read from that array and if orc or hero, animate jump
+        //create translateTransition without node and duration
+        //nodes can be iterated, duration specified
+        //getCurrent Y, jump delta of 10?
+        //getCurrent Y, jump with delta (720-current) and if collide with land, destroy animation
+        //specify interpolator curve with a quadratic equation.
         TranslateTransition heroTranslation = new TranslateTransition(Duration.millis(500), Hero);
-        heroTranslation.interpolatorProperty().set(Interpolator.SPLINE(.1, .1, .7, .7));
+        heroTranslation.interpolatorProperty().set(Interpolator.SPLINE(.1, .1, 1, 1));
         heroTranslation.setByY(-100);
         heroTranslation.setAutoReverse(true);
         heroTranslation.setCycleCount(1000);
@@ -42,6 +49,7 @@ public class MainGamePage {
 
     @FXML
     protected void onHelloButtonClick() {
+        //also spawn a new island with an orc maybe
         tapToPlay.setText("For the next deadline!");
         TranslateTransition translation = new TranslateTransition(Duration.millis(150), GameScreenMove);
         translation.interpolatorProperty().set(Interpolator.SPLINE(.1, .1, .7, .7));
