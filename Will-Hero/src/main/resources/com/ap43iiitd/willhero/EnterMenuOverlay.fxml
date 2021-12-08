@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.BottomNavigation?>
-<?import com.gluonhq.charm.glisten.control.BottomNavigationButton?>
-<?import com.gluonhq.charm.glisten.control.Icon?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.image.Image?>
@@ -10,13 +7,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ap43iiitd.willhero.EnterMenuOverlay">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ap43iiitd.willhero.EnterMenuOverlay">
    <children>
       <StackPane prefHeight="720.0" prefWidth="1280.0">
          <children>
@@ -58,7 +53,11 @@
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="71.0" prefWidth="355.0">
                            <children>
-                              <Icon content="SETTINGS" prefHeight="56.0" prefWidth="62.0" />
+                              <ImageView fitHeight="60.0" fitWidth="60.0" preserveRatio="true">
+                                 <image>
+                                    <Image url="@imageres/Sprites/Icons/noun-settings-4435170.png" />
+                                 </image>
+                              </ImageView>
                            </children>
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="71.0" prefWidth="162.0">
@@ -72,34 +71,25 @@
                         </AnchorPane>
                     </items>
                   </SplitPane>
-                  <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.rowIndex="4">
+                  <StackPane maxWidth="-Infinity" prefHeight="130.0" prefWidth="130.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
                      <children>
-                        <BottomNavigation prefHeight="150.0" prefWidth="683.0">
-                           <actionItems>
-                              <BottomNavigationButton alignment="CENTER" contentDisplay="CENTER" selected="true" text="Load Game">
-                                 <graphic>
-                                    <Icon content="LIBRARY_ADD" />
-                                 </graphic>
-                                 <font>
-                                    <Font name="Impact" size="22.0" />
-                                 </font>
-                              </BottomNavigationButton>
-                           </actionItems>
-                        </BottomNavigation>
-                        <BottomNavigation prefHeight="150.0" prefWidth="646.0">
-                            <actionItems>
-                                <BottomNavigationButton alignment="CENTER" contentDisplay="CENTER" prefHeight="152.0" prefWidth="600.0" text="Exit">
-                                    <graphic>
-                                        <Icon content="CANCEL" />
-                                    </graphic>
-                                 <font>
-                                    <Font name="Impact" size="21.0" />
-                                 </font>
-                                </BottomNavigationButton>
-                            </actionItems>
-                        </BottomNavigation>
+                        <ImageView fitHeight="130.0" fitWidth="130.0" preserveRatio="true">
+                           <image>
+                              <Image url="@imageres/Sprites/Icons/noun-cross-1364737.png" />
+                           </image>
+                        </ImageView>
                      </children>
-                  </HBox>
+                  </StackPane>
+                  <StackPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="130.0" prefWidth="130.0" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                     <children>
+                        <ImageView fitHeight="130.0" fitWidth="130.0" preserveRatio="true">
+                           <image>
+                              <Image url="@imageres/Sprites/Icons/noun-floppy-4435658.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </StackPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.rowIndex="4" />
                   <Label alignment="BOTTOM_CENTER" layoutX="449.0" layoutY="161.0" prefHeight="225.0" prefWidth="427.0" text="WILL" GridPane.columnIndex="1">
                      <font>
                         <Font name="Impact" size="80.0" />
