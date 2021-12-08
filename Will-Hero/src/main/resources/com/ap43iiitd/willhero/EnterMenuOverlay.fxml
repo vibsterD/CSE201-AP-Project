@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.BottomNavigation?>
+<?import com.gluonhq.charm.glisten.control.BottomNavigationButton?>
+<?import com.gluonhq.charm.glisten.control.Icon?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ap43iiitd.willhero.EnterMenuOverlay">
+   <children>
+      <StackPane prefHeight="720.0" prefWidth="1280.0">
+         <children>
+            <ImageView fitHeight="753.0" fitWidth="1315.0">
+               <image>
+                  <Image url="@imageres/Sprites/SeaBack.png" />
+               </image>
+            </ImageView>
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label alignment="TOP_CENTER" prefHeight="225.0" prefWidth="427.0" text="HERO" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Impact" size="80.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="BOTTOM_CENTER" layoutX="437.0" layoutY="154.0" prefHeight="225.0" prefWidth="427.0" text="TAP" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="Impact" size="81.0" />
+                     </font>
+                  </Label>
+                  <ImageView blendMode="EXCLUSION" fitHeight="106.0" fitWidth="119.0" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                     <image>
+                        <Image url="@imageres/Sprites/TapFinger.png" />
+                     </image>
+                  </ImageView>
+                  <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="151.0" prefWidth="369.0" style="-fx-border-color: transparenttransparent; -fx-background-color: transparent;">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="71.0" prefWidth="355.0">
+                           <children>
+                              <Icon content="SETTINGS" prefHeight="56.0" prefWidth="62.0" />
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="71.0" prefWidth="162.0">
+                           <children>
+                              <Label prefHeight="75.0" prefWidth="425.0" text="BEST: ">
+                                 <font>
+                                    <Font name="Impact" size="48.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+                  <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.rowIndex="4">
+                     <children>
+                        <BottomNavigation prefHeight="150.0" prefWidth="683.0">
+                           <actionItems>
+                              <BottomNavigationButton alignment="CENTER" contentDisplay="CENTER" selected="true" text="Load Game">
+                                 <graphic>
+                                    <Icon content="LIBRARY_ADD" />
+                                 </graphic>
+                                 <font>
+                                    <Font name="Impact" size="22.0" />
+                                 </font>
+                              </BottomNavigationButton>
+                           </actionItems>
+                        </BottomNavigation>
+                        <BottomNavigation prefHeight="150.0" prefWidth="646.0">
+                            <actionItems>
+                                <BottomNavigationButton alignment="CENTER" contentDisplay="CENTER" prefHeight="152.0" prefWidth="600.0" text="Exit">
+                                    <graphic>
+                                        <Icon content="CANCEL" />
+                                    </graphic>
+                                 <font>
+                                    <Font name="Impact" size="21.0" />
+                                 </font>
+                                </BottomNavigationButton>
+                            </actionItems>
+                        </BottomNavigation>
+                     </children>
+                  </HBox>
+                  <Label alignment="BOTTOM_CENTER" layoutX="449.0" layoutY="161.0" prefHeight="225.0" prefWidth="427.0" text="WILL" GridPane.columnIndex="1">
+                     <font>
+                        <Font name="Impact" size="80.0" />
+                     </font>
+                  </Label>
+               </children>
+            </GridPane>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>

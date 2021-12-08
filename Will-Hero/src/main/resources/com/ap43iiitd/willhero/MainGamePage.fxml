@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ap43iiitd.willhero.MainGamePage">
+   <children>
+      <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" smooth="false">
+         <image>
+            <Image url="@imageres/Sprite/GradientFont.png" />
+         </image>
+      </ImageView>
+      <Group fx:id="GameScreenMove">
+         <children>
+            <AnchorPane>
+               <children>
+                  <ImageView fitHeight="166.0" fitWidth="368.0" layoutX="809.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imageres/Sprite/WH_Cloud_02.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="157.0" fitWidth="277.0" layoutX="243.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imageres/Sprite/WH_Cloud_01.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="1035.0" layoutY="479.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imageres/Sprite/T_Islands_01.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="751.0" layoutY="456.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imageres/Sprite/T_Islands_04.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="427.0" layoutY="484.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imageres/Sprite/T_Islands_02.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="1177.0" layoutY="333.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imageres/Sprites/Trees/Tree6.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="114.0" layoutY="472.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imageres/Sprites/Islands/T_Islands_01.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="537.0" layoutY="333.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imageres/Sprites/Trees/Tree7.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="Orc" fitHeight="95.0" fitWidth="97.0" layoutX="819.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imageres/Sprites/Orcs/8%20%2350709.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children>
+      </Group>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <ImageView fx:id="Hero" fitHeight="70.0" fitWidth="60.0" layoutX="174.0" layoutY="465.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imageres/Sprites/Iron.png" />
+               </image>
+            </ImageView>
+            <HBox alignment="CENTER" layoutY="653.0" prefHeight="68.0" prefWidth="1280.0">
+               <children>
+                  <Label fx:id="tapToPlay" text="TAP TO PLAY">
+                     <font>
+                        <Font name="Impact" size="49.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fff8f" height="68.0" layoutY="653.0" opacity="0.24" stroke="BLACK" strokeType="INSIDE" width="1280.0" />
+         </children>
+      </AnchorPane>
+      <Button fx:id="tapSense" mnemonicParsing="false" onAction="#onHelloButtonClick" opacity="0.0" prefHeight="720.0" prefWidth="1280.0" text="Tap Sense" />
+   </children>
+</StackPane>
