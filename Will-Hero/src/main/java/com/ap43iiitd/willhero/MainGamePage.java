@@ -16,7 +16,7 @@ public class MainGamePage {
     private Label tapToPlay;
 
     @FXML
-    private Button tapSense;
+    private AnchorPane tapSense;
 
     @FXML
     private ImageView Orc;
@@ -35,6 +35,8 @@ public class MainGamePage {
 
     final static Random r1 = new Random(1337);
 
+    Timeline timeline;
+
     public void initialize(){
 
         //have a static array of initialized objects
@@ -45,7 +47,7 @@ public class MainGamePage {
         //getCurrent Y, jump with delta (720-current) and if collide with land, destroy animation
         //specify interpolator curve with a quadratic equation.
 
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), ev -> {
+        timeline = new Timeline(new KeyFrame(Duration.seconds(1), ev -> {
 
             TranslateTransition heroTranslationUp = new TranslateTransition(Duration.millis(400), Hero);
             heroTranslationUp.interpolatorProperty().set(Interpolator.SPLINE(.1, .1, .9, .9));
@@ -101,6 +103,7 @@ public class MainGamePage {
     @FXML
     protected void pauseClick() {
         System.out.println("Hello World");
+        timeline.pause();
     }
 
 
