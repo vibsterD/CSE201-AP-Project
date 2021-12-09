@@ -95,7 +95,7 @@
       </AnchorPane>
       <AnchorPane fx:id="tapSense" onMouseClicked="#onHelloButtonClick">
          <children>
-            <ImageView fx:id="pauseButton" fitHeight="75.0" fitWidth="60.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#pauseClick" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="pauseButton" fitHeight="75.0" fitWidth="60.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@imageres/res/drawable-xhdpi-v4/tt_new_pause_video_press.png" />
                </image>

@@ -31,7 +31,7 @@ public class MainGamePage {
     private Label score;
 
     @FXML
-    private ImageView pauseButton;
+    protected ImageView pauseButton;
 
     final static Random r1 = new Random(1337);
 
@@ -98,12 +98,6 @@ public class MainGamePage {
         translation.setByX(-150);
         translation.setCycleCount(1);
         translation.play();
-    }
-
-    @FXML
-    protected void pauseClick() {
-        System.out.println("Hello World");
-        timeline.pause();
     }
 
 

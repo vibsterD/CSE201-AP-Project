@@ -3,6 +3,7 @@ package com.ap43iiitd.willhero;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -16,7 +17,11 @@ public class HelloApplication extends Application {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
-        System.out.println(scene.lookup("pauseButton"));
+        MainGamePage mpg = fxmlLoader.getController();
+        ImageView pauseSense = mpg.pauseButton;
+        pauseSense.setOnMouseClicked(e->{
+            System.out.println("THAT");
+        });
 
     }
 
