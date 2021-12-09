@@ -33,14 +33,20 @@ public class EnterMenuOverlay {
         private ImageView tapFinger;
 
         @FXML
+        private Button loadGame;
+
+        @FXML
         public void makeNewGame() {
+                playFadeTransition().setOnFinished(e->sceneSwitcher("MainGamePage.fxml"));
+        }
+
+        private FadeTransition playFadeTransition(){
                 FadeTransition fTrans = new FadeTransition();
                 fTrans.setDuration(Duration.millis(500));
                 fTrans.setToValue(0);
                 fTrans.setNode(mainScreen);
                 fTrans.play();
-                fTrans.setOnFinished(e->sceneSwitcherGame("MainGamePage.fxml"));
-
+                return fTrans;
         }
 
         public void initialize(){
@@ -68,10 +74,10 @@ public class EnterMenuOverlay {
 
         @FXML
         public void loadGame(){
-                System.out.println("LOADING");
+                playFadeTransition().setOnFinished(e->sceneSwitcher("LoadMenuOverlay.fxml"));
         }
 
-        private void sceneSwitcherGame(String fxmlName){
+        private void sceneSwitcher(String fxmlName){
                 Stage runningInstance = (Stage) newGame.getScene().getWindow();
                 System.out.println(runningInstance);
                 FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(fxmlName));
