@@ -7,6 +7,7 @@ import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
 public class MainGamePage {
@@ -20,10 +21,13 @@ public class MainGamePage {
     private ImageView Orc;
 
     @FXML
-    private Group GameScreenMove;
+    private AnchorPane GameScreenMove;
 
     @FXML
     private ImageView Hero;
+
+    @FXML
+    private Label score;
 
     public void initialize(){
         //have a static array of initialized objects
@@ -51,6 +55,7 @@ public class MainGamePage {
     protected void onHelloButtonClick() {
         //also spawn a new island with an orc maybe
         tapToPlay.setText("For the next deadline!");
+        score.setText(String.valueOf(Integer.parseInt(score.getText())+1));
         TranslateTransition translation = new TranslateTransition(Duration.millis(150), GameScreenMove);
         translation.interpolatorProperty().set(Interpolator.SPLINE(.1, .1, .7, .7));
         translation.setByX(-150);
