@@ -1,113 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.BottomNavigation?>
-<?import com.gluonhq.charm.glisten.control.BottomNavigationButton?>
-<?import com.gluonhq.charm.glisten.control.Icon?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ap43iiitd.willhero.EnterMenuOverlay">
+<StackPane fx:id="mainScreen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ap43iiitd.willhero.EnterMenuOverlay">
    <children>
-      <StackPane prefHeight="720.0" prefWidth="1280.0">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <ImageView fitHeight="753.0" fitWidth="1315.0">
+            <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@imageres/Sprites/SeaBack.png" />
+                  <Image url="@imageres/Sprite/GradientFont.png" />
                </image>
             </ImageView>
-            <GridPane>
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
+            <Group fx:id="cloudMover" layoutX="109.0" layoutY="93.0">
                <children>
-                  <Label alignment="TOP_CENTER" prefHeight="225.0" prefWidth="427.0" text="HERO" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <font>
-                        <Font name="Impact" size="80.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="BOTTOM_CENTER" layoutX="437.0" layoutY="154.0" prefHeight="225.0" prefWidth="427.0" text="TAP" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                     <font>
-                        <Font name="Impact" size="81.0" />
-                     </font>
-                  </Label>
-                  <ImageView blendMode="EXCLUSION" fitHeight="106.0" fitWidth="119.0" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                  <ImageView fitHeight="177.0" fitWidth="320.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@imageres/Sprites/TapFinger.png" />
+                        <Image url="@imageres/Sprite/WH_Cloud_02.png" />
                      </image>
                   </ImageView>
-                  <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="151.0" prefWidth="369.0" style="-fx-border-color: transparenttransparent; -fx-background-color: transparent;">
-                    <items>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="71.0" prefWidth="355.0">
-                           <children>
-                              <Icon content="SETTINGS" prefHeight="56.0" prefWidth="62.0" />
-                           </children>
-                        </AnchorPane>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="71.0" prefWidth="162.0">
-                           <children>
-                              <Label prefHeight="75.0" prefWidth="425.0" text="BEST: ">
-                                 <font>
-                                    <Font name="Impact" size="48.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </AnchorPane>
-                    </items>
-                  </SplitPane>
-                  <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.rowIndex="4">
-                     <children>
-                        <BottomNavigation prefHeight="150.0" prefWidth="683.0">
-                           <actionItems>
-                              <BottomNavigationButton alignment="CENTER" contentDisplay="CENTER" selected="true" text="Load Game">
-                                 <graphic>
-                                    <Icon content="LIBRARY_ADD" />
-                                 </graphic>
-                                 <font>
-                                    <Font name="Impact" size="22.0" />
-                                 </font>
-                              </BottomNavigationButton>
-                           </actionItems>
-                        </BottomNavigation>
-                        <BottomNavigation prefHeight="150.0" prefWidth="646.0">
-                            <actionItems>
-                                <BottomNavigationButton alignment="CENTER" contentDisplay="CENTER" prefHeight="152.0" prefWidth="600.0" text="Exit">
-                                    <graphic>
-                                        <Icon content="CANCEL" />
-                                    </graphic>
-                                 <font>
-                                    <Font name="Impact" size="21.0" />
-                                 </font>
-                                </BottomNavigationButton>
-                            </actionItems>
-                        </BottomNavigation>
-                     </children>
-                  </HBox>
-                  <Label alignment="BOTTOM_CENTER" layoutX="449.0" layoutY="161.0" prefHeight="225.0" prefWidth="427.0" text="WILL" GridPane.columnIndex="1">
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="849.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imageres/Sprite/Cloud_4.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="676.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imageres/Sprite/Cloud_3.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Group>
+            <Group fx:id="logoWillHero" layoutX="569.0" layoutY="140.0">
+               <children>
+                  <Label layoutX="6.0" text="WILL" textFill="WHITE">
                      <font>
-                        <Font name="Impact" size="80.0" />
+                        <Font name="Impact" size="70.0" />
+                     </font>
+                  </Label>
+                  <Label layoutY="87.0" text="HERO" textFill="WHITE">
+                     <font>
+                        <Font name="Impact" size="70.0" />
                      </font>
                   </Label>
                </children>
-            </GridPane>
+            </Group>
+            <Label layoutX="604.0" layoutY="373.0" text="TAP" textFill="WHITE">
+               <font>
+                  <Font name="Impact" size="50.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="tapFinger" fitHeight="62.0" fitWidth="45.0" layoutX="619.0" layoutY="454.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imageres/Sprites/TapFinger.png" />
+               </image>
+            </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="86.0" layoutY="634.0" stroke="BLACK" strokeType="INSIDE" width="1280.0" />
+            <Label layoutX="527.0" layoutY="647.0" onMouseClicked="#loadGame" text="LOAD GAME" textFill="WHITE">
+               <font>
+                  <Font name="Impact" size="49.0" />
+               </font>
+            </Label>
+            <Button fx:id="newGame" layoutX="-1.0" layoutY="-2.0" mnemonicParsing="false" onAction="#makeNewGame" opacity="0.0" prefHeight="636.0" prefWidth="1280.0" text="Button" />
+            <Button fx:id="loadGame" layoutY="635.0" mnemonicParsing="false" onAction="#loadGame" opacity="0.0" prefHeight="86.0" prefWidth="1280.0" text="Button" />
          </children>
-      </StackPane>
+      </AnchorPane>
    </children>
-</AnchorPane>
+</StackPane>
