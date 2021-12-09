@@ -83,7 +83,7 @@
                </children>
             </HBox>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fff8f" height="68.0" layoutY="653.0" opacity="0.24" stroke="BLACK" strokeType="INSIDE" width="1280.0" />
-            <HBox alignment="CENTER" layoutY="10.0" prefHeight="95.0" prefWidth="1280.0">
+            <HBox alignment="CENTER" prefHeight="95.0" prefWidth="1280.0">
                <children>
                   <Label fx:id="score" text="0">
                      <font>
@@ -95,5 +95,14 @@
          </children>
       </AnchorPane>
       <Button fx:id="tapSense" mnemonicParsing="false" onAction="#onHelloButtonClick" opacity="0.0" prefHeight="720.0" prefWidth="1280.0" text="Tap Sense" />
+      <AnchorPane>
+         <children>
+            <ImageView fx:id="pauseButton" fitHeight="75.0" fitWidth="60.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#pauseClick" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imageres/res/drawable-xhdpi-v4/tt_new_pause_video_press.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
    </children>
 </StackPane>
