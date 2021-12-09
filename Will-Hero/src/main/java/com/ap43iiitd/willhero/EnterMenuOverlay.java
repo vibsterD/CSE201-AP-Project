@@ -1,5 +1,6 @@
 package com.ap43iiitd.willhero;
 
+import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
@@ -9,12 +10,15 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 
 public class EnterMenuOverlay {
+
+        @FXML
+        private StackPane mainScreen;
 
         @FXML
         private Group cloudMover;
@@ -30,17 +34,13 @@ public class EnterMenuOverlay {
 
         @FXML
         public void makeNewGame() {
-                Stage runningInstance = (Stage) newGame.getScene().getWindow();
-                System.out.println(runningInstance);
-                FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("MainGamePage.fxml"));
-                try {
-                        Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
-                        runningInstance.setScene(scene);
-                }
-                catch (Exception e){
-                        System.out.println(e.getMessage());
-                        System.out.println("In-short: Looks like you misplaced some files")
-                }
+                FadeTransition fTrans = new FadeTransition();
+                fTrans.setDuration(Duration.millis(500));
+                fTrans.setToValue(0);
+                fTrans.setNode(mainScreen);
+                fTrans.play();
+                fTrans.setOnFinished(e->sceneSwitcherGame("MainGamePage.fxml"));
+
         }
 
         public void initialize(){
@@ -51,7 +51,7 @@ public class EnterMenuOverlay {
                 t1.setCycleCount(Timeline.INDEFINITE);
                 t1.play();
 
-                TranslateTransition t2 = new TranslateTransition(Duration.minutes(1), cloudMover);
+                TranslateTransition t2 = new TranslateTransition(Duration.minutes(2), cloudMover);
                 t2.interpolatorProperty().set(Interpolator.SPLINE(.1, .1, .2, .2));
                 t2.setByX(-2000);
                 t2.setCycleCount(Timeline.INDEFINITE);
@@ -69,6 +69,21 @@ public class EnterMenuOverlay {
         @FXML
         public void loadGame(){
                 System.out.println("LOADING");
+        }
+
+        private void sceneSwitcherGame(String fxmlName){
+                Stage runningInstance = (Stage) newGame.getScene().getWindow();
+                System.out.println(runningInstance);
+                FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(fxmlName));
+                try {
+                        Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+                        runningInstance.setScene(scene);
+                }
+                catch (Exception e){
+                        System.out.println(e.getMessage());
+                        System.out.println("In-short: Looks like you misplaced some files");
+                }
+
         }
 
 }
