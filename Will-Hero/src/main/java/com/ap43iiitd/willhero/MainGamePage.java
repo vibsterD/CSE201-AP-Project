@@ -35,7 +35,9 @@ public class MainGamePage {
 
     final static Random r1 = new Random(1337);
 
-    Timeline timeline;
+    protected Timeline timeline;
+
+    protected Boolean paused = false;
 
     public void initialize(){
 
@@ -90,6 +92,7 @@ public class MainGamePage {
     @FXML
     protected void onHelloButtonClick() {
         //also spawn a new island with an orc maybe
+        if(paused) return;
         tapToPlay.setText("For the next deadline!");
         score.setText(String.valueOf(Integer.parseInt(score.getText())+1));
         TranslateTransition translation = new TranslateTransition(Duration.millis(150), GameScreenMove);

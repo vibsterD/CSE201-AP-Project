@@ -1,5 +1,6 @@
 package com.ap43iiitd.willhero;
 
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -18,9 +19,12 @@ public class HelloApplication extends Application {
         stage.setResizable(false);
         stage.show();
         MainGamePage mpg = fxmlLoader.getController();
+        Timeline tl = mpg.timeline;
         ImageView pauseSense = mpg.pauseButton;
         pauseSense.setOnMouseClicked(e->{
-            System.out.println("THAT");
+            System.out.println("DON'T TOUCH THAT");
+            mpg.paused = true;
+            tl.pause();
         });
 
     }
