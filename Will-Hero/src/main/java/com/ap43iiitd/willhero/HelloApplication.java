@@ -12,20 +12,23 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("MainGamePage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("EnterMenuOverlay.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
         stage.setTitle("TestRun!");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
-        MainGamePage mpg = fxmlLoader.getController();
-        Timeline tl = mpg.timeline;
-        ImageView pauseSense = mpg.pauseButton;
-        pauseSense.setOnMouseClicked(e->{
-            System.out.println("DON'T TOUCH THAT");
-            mpg.paused = true;
-            tl.pause();
-        });
+        Boolean newGame = false;
+        if(false){
+            MainGamePage mpg = fxmlLoader.getController();
+            Timeline tl = mpg.timeline;
+            ImageView pauseSense = mpg.pauseButton;
+            pauseSense.setOnMouseClicked(e->{
+                System.out.println("DON'T TOUCH THAT");
+                mpg.paused = true;
+                tl.pause();
+            });
+        }
 
     }
 
