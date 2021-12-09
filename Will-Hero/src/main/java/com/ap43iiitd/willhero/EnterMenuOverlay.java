@@ -4,9 +4,13 @@ import javafx.animation.Interpolator;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 
@@ -19,14 +23,24 @@ public class EnterMenuOverlay {
         private Group logoWillHero;
 
         @FXML
-        private ImageView newGame;
+        private Button newGame;
 
         @FXML
         private ImageView tapFinger;
 
         @FXML
-        void makeNewGame(MouseEvent event) {
-                System.out.println("MAKING");
+        public void makeNewGame() {
+                Stage runningInstance = (Stage) newGame.getScene().getWindow();
+                System.out.println(runningInstance);
+                FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("MainGamePage.fxml"));
+                try {
+                        Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+                        runningInstance.setScene(scene);
+                }
+                catch (Exception e){
+                        System.out.println(e.getMessage());
+                        System.out.println("In-short: Looks like you misplaced some files")
+                }
         }
 
         public void initialize(){
@@ -50,6 +64,11 @@ public class EnterMenuOverlay {
                 t3.setCycleCount(Timeline.INDEFINITE);
                 t3.play();
 
+        }
+
+        @FXML
+        public void loadGame(){
+                System.out.println("LOADING");
         }
 
 }
