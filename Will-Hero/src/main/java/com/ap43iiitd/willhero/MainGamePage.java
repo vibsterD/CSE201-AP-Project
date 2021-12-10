@@ -113,12 +113,13 @@ public class MainGamePage {
     }
 
     @FXML
-    protected void pauseButton() {
+    protected void pauseButtonAction() {
         paused = true;
         timeline.pause();
         FadeTransition fTrans = new FadeTransition(Duration.millis(300), pauseScreenFilter);
         fTrans.setToValue(1);
         fTrans.play();
+        pauseButton.setDisable(true);
 
         //TODO: Implement menu methods in PauseMenuOverlay Class
 
@@ -127,7 +128,17 @@ public class MainGamePage {
             fxmlLoader.load();
             PauseMenuOverlay pmo= fxmlLoader.getController();
             System.out.println(pmo.overlayPane.getChildren());
-            gamePane.getChildren().addAll(pmo.overlayPane.getChildren());
+            gamePane.getChildren().add(pmo.overlayPane);
+            pmo.resumeButton.setOnAction(e->{
+                System.out.println("TAKING ACTION");
+                pmo.resumeGame();
+                System.out.println("OPACITY 0");
+                timeline.play();
+                pauseScreenFilter.setOpacity(0);
+                pauseButton.setDisable(false);
+                paused=false;
+
+            });
         }
         catch (Exception e){
             System.out.println(e.getMessage());

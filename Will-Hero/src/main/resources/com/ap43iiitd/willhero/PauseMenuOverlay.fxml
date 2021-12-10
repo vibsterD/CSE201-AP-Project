@@ -51,7 +51,6 @@
                         </StackPane>
                         <StackPane>
                            <children>
-                              <Button mnemonicParsing="false" opacity="0.0" prefHeight="99.0" prefWidth="341.0" text="Savegame" />
                               <HBox alignment="CENTER_LEFT">
                                  <children>
                                     <ImageView fitHeight="51.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
@@ -75,11 +74,11 @@
                                     <Insets left="15.0" />
                                  </padding>
                               </HBox>
+                              <Button mnemonicParsing="false" opacity="0.0" prefHeight="99.0" prefWidth="341.0" text="Savegame" />
                            </children>
                         </StackPane>
                         <StackPane>
                            <children>
-                              <Button mnemonicParsing="false" onAction="#resumeGame" opacity="0.0" prefHeight="99.0" prefWidth="341.0" text="Resume" />
                               <HBox alignment="CENTER_LEFT">
                                  <children>
                                     <ImageView fitHeight="51.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
@@ -103,11 +102,11 @@
                                     <Insets left="15.0" />
                                  </padding>
                               </HBox>
+                              <Button fx:id="resumeButton" mnemonicParsing="false" opacity="0.0" prefHeight="99.0" prefWidth="341.0" text="Resume" />
                            </children>
                         </StackPane>
                         <StackPane>
                            <children>
-                              <Button mnemonicParsing="false" opacity="0.0" prefHeight="99.0" prefWidth="341.0" text="Mainmenu" />
                               <HBox alignment="CENTER_LEFT">
                                  <children>
                                     <ImageView fitHeight="51.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
@@ -131,6 +130,7 @@
                                     <Insets left="15.0" />
                                  </padding>
                               </HBox>
+                              <Button mnemonicParsing="false" onAction="#mainMenu" opacity="0.0" prefHeight="99.0" prefWidth="341.0" text="Mainmenu" />
                            </children>
                         </StackPane>
                      </children>
