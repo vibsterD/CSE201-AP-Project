@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -16,6 +17,9 @@ import java.util.Random;
 
 public class MainGamePage {
     final static Random r1 = new Random(1337);
+
+    @FXML
+    private Rectangle pauseScreenFilter;
 
     @FXML
     protected ImageView pauseButton;
@@ -112,7 +116,12 @@ public class MainGamePage {
     protected void pauseButton() {
         paused = true;
         timeline.pause();
-        //TODO: Add overlay of pause menu
+        FadeTransition fTrans = new FadeTransition(Duration.millis(300), pauseScreenFilter);
+        fTrans.setToValue(1);
+        fTrans.play();
+
+        //TODO: Implement menu methods in PauseMenuOverlay Class
+
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("PauseMenuOverlay.fxml"));
         try {
             fxmlLoader.load();
