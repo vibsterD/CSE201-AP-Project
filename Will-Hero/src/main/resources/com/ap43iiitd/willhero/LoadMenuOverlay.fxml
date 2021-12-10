@@ -1,69 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Group?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ap43iiitd.willhero.LoadMenuOverlay">
+<AnchorPane fx:id="main_screen" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ap43iiitd.willhero.LoadMenuOverlay">
    <children>
       <StackPane prefHeight="720.0" prefWidth="1280.0">
          <children>
-            <ImageView fitHeight="753.0" fitWidth="1315.0">
-               <image>
-                  <Image url="@imageres/Sprites/SeaBack.png" />
-               </image>
-            </ImageView>
-            <ImageView disable="true" fitHeight="720.0" fitWidth="1280.0" opacity="0.0" preserveRatio="true" scaleX="2.0">
-               <image>
-                  <Image url="@imageres/Sprite/default_artwork_big.png" />
-               </image>
-            </ImageView>
-            <GridPane>
-              <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                  <RowConstraints maxHeight="225.10284423828125" minHeight="10.0" prefHeight="225.10284423828125" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="174.3621368408203" minHeight="10.0" prefHeight="134.89715576171875" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
+            <AnchorPane prefHeight="720.0" prefWidth="1280.0">
                <children>
-                  <SplitPane dividerPositions="0.35" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" style="-fx-background-color: transparent;" GridPane.columnSpan="2147483647">
-                    <items>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                           <children>
-                              <ImageView fitHeight="70.0" fitWidth="70.0" preserveRatio="true">
-                                 <image>
-                                    <Image url="@imageres/Sprites/Icons/noun-back-4437483.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </AnchorPane>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                           <children>
-                              <Label layoutX="31.0" layoutY="39.0" prefHeight="76.0" prefWidth="645.0" text="LOAD MENU">
-                                 <font>
-                                    <Font name="Impact" size="81.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </AnchorPane>
-                    </items>
-                  </SplitPane>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.rowIndex="1" GridPane.rowSpan="3">
+                  <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imageres/Sprites/GradientFont.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#switchToEnterMenu" onTouchReleased="#switchToEnterMenu" preserveRatio="true">
+                     <image>
+                        <Image url="@imageres/Sprites/Icons/noun-back-4437483.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="20.0" layoutY="50.0" prefHeight="76.0" prefWidth="645.0" text="LOAD MENU" textFill="WHITE">
+                     <font>
+                        <Font name="Impact" size="81.0" />
+                     </font>
+                  </Label>
+                  <Group fx:id="clouds" layoutX="141.0" layoutY="109.0">
                      <children>
-                        <StackPane layoutX="46.0" layoutY="93.0" prefHeight="236.0" prefWidth="257.0">
+                        <ImageView fitHeight="177.0" fitWidth="320.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imageres/Sprites/Clouds/WH_Cloud_02.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="849.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imageres/Sprites/Clouds/WH_Cloud_03.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="679.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imageres/Sprites/Clouds/WH_Cloud_04.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Group>
+                  <Group layoutX="126.0" layoutY="340.0">
+                     <children>
+                        <StackPane prefHeight="236.0" prefWidth="257.0">
+                           <children>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" opacity="0.65" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+                              <AnchorPane prefHeight="200.0" prefWidth="213.0">
+                                 <children>
+                                    <Label layoutX="81.0" layoutY="124.0" text="100/121" textFill="WHITE">
+                                       <font>
+                                          <Font name="Impact" size="28.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="80.0" layoutY="55.0" text="SAVE 1" textFill="WHITE">
+                                       <font>
+                                          <Font name="Impact" size="37.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </StackPane>
+                        <StackPane layoutX="257.0" prefHeight="236.0" prefWidth="257.0">
                            <children>
                               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" opacity="0.65" stroke="BLACK" strokeType="INSIDE" width="200.0" />
                               <AnchorPane prefHeight="200.0" prefWidth="213.0">
@@ -82,7 +89,7 @@
                               </AnchorPane>
                            </children>
                         </StackPane>
-                        <StackPane layoutX="367.0" layoutY="93.0" prefHeight="236.0" prefWidth="257.0">
+                        <StackPane layoutX="514.0" prefHeight="236.0" prefWidth="257.0">
                            <children>
                               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" opacity="0.65" stroke="BLACK" strokeType="INSIDE" width="200.0" />
                               <AnchorPane prefHeight="200.0" prefWidth="213.0">
@@ -101,26 +108,7 @@
                               </AnchorPane>
                            </children>
                         </StackPane>
-                        <StackPane layoutX="672.0" layoutY="90.0" prefHeight="236.0" prefWidth="257.0">
-                           <children>
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" opacity="0.65" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-                              <AnchorPane prefHeight="200.0" prefWidth="213.0">
-                                 <children>
-                                    <Label layoutX="81.0" layoutY="124.0" text="100/121">
-                                       <font>
-                                          <Font name="Impact" size="28.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="80.0" layoutY="55.0" text="SAVE 1">
-                                       <font>
-                                          <Font name="Impact" size="37.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </AnchorPane>
-                           </children>
-                        </StackPane>
-                        <StackPane layoutX="962.0" layoutY="93.0" prefHeight="236.0" prefWidth="257.0">
+                        <StackPane layoutX="771.0" prefHeight="236.0" prefWidth="257.0">
                            <children>
                               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" opacity="0.65" stroke="BLACK" strokeType="INSIDE" width="200.0" />
                               <AnchorPane prefHeight="200.0" prefWidth="213.0">
@@ -140,9 +128,9 @@
                            </children>
                         </StackPane>
                      </children>
-                  </AnchorPane>
+                  </Group>
                </children>
-            </GridPane>
+            </AnchorPane>
          </children>
       </StackPane>
    </children>

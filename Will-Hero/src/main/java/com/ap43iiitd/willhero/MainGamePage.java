@@ -2,15 +2,24 @@ package com.ap43iiitd.willhero;
 
 import javafx.animation.*;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.util.Random;
 
 public class MainGamePage {
     final static Random r1 = new Random(1337);
+
+    @FXML
+    private Rectangle pauseScreenFilter;
 
     @FXML
     protected ImageView pauseButton;
@@ -26,6 +35,9 @@ public class MainGamePage {
 
     @FXML
     private ImageView Orc;
+
+    @FXML
+    private StackPane gamePane;
 
     @FXML
     private AnchorPane GameScreenMove;
@@ -101,12 +113,39 @@ public class MainGamePage {
     }
 
     @FXML
-    protected void pauseButton() {
+    protected void pauseButtonAction() {
         paused = true;
         timeline.pause();
-        //TODO: Add overlay of pause menu
-        //idk just merge the pause menu here instead of separation
+        FadeTransition fTrans = new FadeTransition(Duration.millis(300), pauseScreenFilter);
+        fTrans.setToValue(1);
+        fTrans.play();
+        pauseButton.setDisable(true);
+
+        //TODO: Implement menu methods in PauseMenuOverlay Class
+
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("PauseMenuOverlay.fxml"));
+        try {
+            fxmlLoader.load();
+            PauseMenuOverlay pmo= fxmlLoader.getController();
+            System.out.println(pmo.overlayPane.getChildren());
+            gamePane.getChildren().add(pmo.overlayPane);
+            pmo.resumeButton.setOnAction(e->{
+                System.out.println("TAKING ACTION");
+                pmo.resumeGame();
+                System.out.println("OPACITY 0");
+                timeline.play();
+                pauseScreenFilter.setOpacity(0);
+                pauseButton.setDisable(false);
+                paused=false;
+
+            });
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            System.out.println("In-short: Looks like you misplaced some files");
+        }
     }
+
 
 
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -11,141 +12,132 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane fx:id="overlayPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ap43iiitd.willhero.PauseMenuOverlay">
    <children>
-      <ImageView fitHeight="721.0" fitWidth="1280.0" pickOnBounds="true">
-         <image>
-            <Image url="@imageres/Sprite/default_artwork_big.png" />
-         </image>
-      </ImageView>
-      <HBox alignment="CENTER">
+      <Group>
          <children>
-            <VBox alignment="CENTER" prefHeight="720.0" prefWidth="458.0">
+            <StackPane>
                <children>
-                  <StackPane prefHeight="203.0" prefWidth="301.0">
+                  <Rectangle arcHeight="5.0" arcWidth="12.0" fill="DODGERBLUE" height="264.0" opacity="0.82" stroke="BLACK" strokeType="INSIDE" width="404.0" />
+                  <VBox alignment="TOP_CENTER" prefHeight="232.0" prefWidth="405.0">
                      <children>
-                        <Rectangle arcHeight="5.0" arcWidth="12.0" fill="DODGERBLUE" height="218.0" opacity="0.82" stroke="BLACK" strokeType="INSIDE" width="459.0" />
-                        <VBox alignment="TOP_CENTER" prefHeight="457.0" prefWidth="301.0">
+                        <StackPane prefHeight="61.0" prefWidth="332.0">
                            <children>
-                              <StackPane>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1ff6ff" height="61.0" opacity="0.53" stroke="BLACK" strokeType="INSIDE" width="405.0" />
+                              <HBox alignment="CENTER_LEFT">
                                  <children>
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1ff6ff" height="61.0" opacity="0.53" stroke="BLACK" strokeType="INSIDE" width="458.0" />
-                                    <HBox alignment="CENTER_LEFT">
-                                       <children>
-                                          <ImageView fitHeight="51.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@imageres/res/drawable-xhdpi-v4/tt_new_pause_video.png" />
-                                             </image>
-                                          </ImageView>
-                                          <Label text="PAUSE MENU" textFill="WHITE">
-                                             <font>
-                                                <Font name="Impact" size="33.0" />
-                                             </font>
-                                             <padding>
-                                                <Insets left="10.0" />
-                                             </padding>
-                                          </Label>
-                                       </children>
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
+                                    <ImageView fitHeight="51.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@imageres/res/drawable-xhdpi-v4/tt_new_pause_video.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label text="PAUSE MENU" textFill="WHITE">
+                                       <font>
+                                          <Font name="Impact" size="33.0" />
+                                       </font>
                                        <padding>
-                                          <Insets left="15.0" />
+                                          <Insets left="10.0" />
                                        </padding>
-                                    </HBox>
+                                    </Label>
                                  </children>
-                              </StackPane>
-                              <StackPane>
-                                 <children>
-                                    <Button mnemonicParsing="false" opacity="0.0" prefHeight="99.0" prefWidth="341.0" text="Savegame" />
-                                    <HBox alignment="CENTER_LEFT">
-                                       <children>
-                                          <ImageView fitHeight="51.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@imageres/res/drawable-xhdpi-v4/abc_btn_radio_to_on_mtrl_015.png" />
-                                             </image>
-                                          </ImageView>
-                                          <Label text="SAVE GAME" textFill="WHITE">
-                                             <font>
-                                                <Font name="Impact" size="33.0" />
-                                             </font>
-                                             <padding>
-                                                <Insets left="10.0" />
-                                             </padding>
-                                          </Label>
-                                       </children>
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
-                                       <padding>
-                                          <Insets left="15.0" />
-                                       </padding>
-                                    </HBox>
-                                 </children>
-                              </StackPane>
-                              <StackPane>
-                                 <children>
-                                    <Button mnemonicParsing="false" opacity="0.0" prefHeight="99.0" prefWidth="341.0" text="Resume" />
-                                    <HBox alignment="CENTER_LEFT">
-                                       <children>
-                                          <ImageView fitHeight="51.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@imageres/res/drawable-xhdpi-v4/abc_btn_radio_to_on_mtrl_015.png" />
-                                             </image>
-                                          </ImageView>
-                                          <Label text="RESUME" textFill="WHITE">
-                                             <font>
-                                                <Font name="Impact" size="33.0" />
-                                             </font>
-                                             <padding>
-                                                <Insets left="10.0" />
-                                             </padding>
-                                          </Label>
-                                       </children>
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
-                                       <padding>
-                                          <Insets left="15.0" />
-                                       </padding>
-                                    </HBox>
-                                 </children>
-                              </StackPane>
-                              <StackPane>
-                                 <children>
-                                    <Button mnemonicParsing="false" opacity="0.0" prefHeight="99.0" prefWidth="341.0" text="Mainmenu" />
-                                    <HBox alignment="CENTER_LEFT">
-                                       <children>
-                                          <ImageView fitHeight="51.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@imageres/res/drawable-xhdpi-v4/abc_btn_radio_to_on_mtrl_015.png" />
-                                             </image>
-                                          </ImageView>
-                                          <Label text="MAIN MENU" textFill="WHITE">
-                                             <font>
-                                                <Font name="Impact" size="33.0" />
-                                             </font>
-                                             <padding>
-                                                <Insets left="10.0" />
-                                             </padding>
-                                          </Label>
-                                       </children>
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
-                                       <padding>
-                                          <Insets left="15.0" />
-                                       </padding>
-                                    </HBox>
-                                 </children>
-                              </StackPane>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <padding>
+                                    <Insets left="15.0" />
+                                 </padding>
+                              </HBox>
                            </children>
-                        </VBox>
+                        </StackPane>
+                        <StackPane>
+                           <children>
+                              <HBox alignment="CENTER_LEFT">
+                                 <children>
+                                    <ImageView fitHeight="51.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@imageres/res/drawable-xhdpi-v4/abc_btn_radio_to_on_mtrl_015.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label text="SAVE GAME" textFill="WHITE">
+                                       <font>
+                                          <Font name="Impact" size="33.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <padding>
+                                    <Insets left="15.0" />
+                                 </padding>
+                              </HBox>
+                              <Button mnemonicParsing="false" opacity="0.0" prefHeight="99.0" prefWidth="341.0" text="Savegame" />
+                           </children>
+                        </StackPane>
+                        <StackPane>
+                           <children>
+                              <HBox alignment="CENTER_LEFT">
+                                 <children>
+                                    <ImageView fitHeight="51.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@imageres/res/drawable-xhdpi-v4/abc_btn_radio_to_on_mtrl_015.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label text="RESUME" textFill="WHITE">
+                                       <font>
+                                          <Font name="Impact" size="33.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <padding>
+                                    <Insets left="15.0" />
+                                 </padding>
+                              </HBox>
+                              <Button fx:id="resumeButton" mnemonicParsing="false" opacity="0.0" prefHeight="99.0" prefWidth="341.0" text="Resume" />
+                           </children>
+                        </StackPane>
+                        <StackPane>
+                           <children>
+                              <HBox alignment="CENTER_LEFT">
+                                 <children>
+                                    <ImageView fitHeight="51.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@imageres/res/drawable-xhdpi-v4/abc_btn_radio_to_on_mtrl_015.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label text="MAIN MENU" textFill="WHITE">
+                                       <font>
+                                          <Font name="Impact" size="33.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <padding>
+                                    <Insets left="15.0" />
+                                 </padding>
+                              </HBox>
+                              <Button mnemonicParsing="false" onAction="#mainMenu" opacity="0.0" prefHeight="99.0" prefWidth="341.0" text="Mainmenu" />
+                           </children>
+                        </StackPane>
                      </children>
-                  </StackPane>
+                  </VBox>
                </children>
-            </VBox>
+            </StackPane>
          </children>
-      </HBox>
+      </Group>
    </children>
 </StackPane>
