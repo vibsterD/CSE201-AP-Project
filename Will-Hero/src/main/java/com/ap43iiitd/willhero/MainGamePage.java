@@ -2,9 +2,14 @@ package com.ap43iiitd.willhero;
 
 import javafx.animation.*;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.util.Random;
@@ -26,6 +31,9 @@ public class MainGamePage {
 
     @FXML
     private ImageView Orc;
+
+    @FXML
+    private StackPane gamePane;
 
     @FXML
     private AnchorPane GameScreenMove;
@@ -105,8 +113,19 @@ public class MainGamePage {
         paused = true;
         timeline.pause();
         //TODO: Add overlay of pause menu
-        //idk just merge the pause menu here instead of separation
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("PauseMenuOverlay.fxml"));
+        try {
+            fxmlLoader.load();
+            PauseMenuOverlay pmo= fxmlLoader.getController();
+            System.out.println(pmo.overlayPane.getChildren());
+            gamePane.getChildren().addAll(pmo.overlayPane.getChildren());
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            System.out.println("In-short: Looks like you misplaced some files");
+        }
     }
+
 
 
 }
