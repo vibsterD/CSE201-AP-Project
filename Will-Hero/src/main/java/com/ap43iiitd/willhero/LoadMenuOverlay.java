@@ -1,6 +1,7 @@
 package com.ap43iiitd.willhero;
 
 import javafx.animation.FadeTransition;
+import javafx.animation.Interpolator;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
@@ -40,6 +41,7 @@ public class LoadMenuOverlay {
 
     public void initialize() {
         TranslateTransition clouds_transition = new TranslateTransition(Duration.minutes(2), clouds);
+        clouds_transition.interpolatorProperty().set(Interpolator.SPLINE(.1, .1, .2, .2));
         clouds_transition.setByX(-2000);
         clouds_transition.setCycleCount(Timeline.INDEFINITE);
         clouds_transition.play();
