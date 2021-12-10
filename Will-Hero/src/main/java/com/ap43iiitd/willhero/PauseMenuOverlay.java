@@ -11,7 +11,7 @@ public class PauseMenuOverlay {
 
     @FXML
     void resumeGame() {
-        System.out.println("A tempting resume");
+        System.out.println("Attempting resume");
 
     }
 

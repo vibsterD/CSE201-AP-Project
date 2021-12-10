@@ -60,6 +60,7 @@ public class EnterMenuOverlay {
                 TranslateTransition t2 = new TranslateTransition(Duration.minutes(2), cloudMover);
                 t2.interpolatorProperty().set(Interpolator.SPLINE(.1, .1, .2, .2));
                 t2.setByX(-2000);
+//                t2.setAutoReverse(true);
                 t2.setCycleCount(Timeline.INDEFINITE);
                 t2.play();
 
