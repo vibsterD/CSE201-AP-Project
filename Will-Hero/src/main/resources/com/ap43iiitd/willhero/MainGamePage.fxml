@@ -13,7 +13,7 @@
    <children>
       <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" smooth="false">
          <image>
-            <Image url="@imageres/Sprite/GradientFont.png" />
+            <Image url="@imageres/Sprites/GradientFont.png" />
          </image>
       </ImageView>
       <Rectangle fx:id="pauseScreenFilter" arcHeight="5.0" arcWidth="5.0" fill="#acbdcd" height="720.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="1280.0" />
@@ -21,27 +21,27 @@
          <children>
             <ImageView fitHeight="166.0" fitWidth="368.0" layoutX="809.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@imageres/Sprite/WH_Cloud_02.png" />
+                  <Image url="@imageres/Sprites/Clouds/WH_Cloud_02.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="157.0" fitWidth="277.0" layoutX="243.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@imageres/Sprite/WH_Cloud_01.png" />
+                  <Image url="@imageres/Sprites/Clouds/WH_Cloud_01.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="1035.0" layoutY="479.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@imageres/Sprite/T_Islands_01.png" />
+                  <Image url="@imageres/Sprites/Islands/T_Islands_01.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="751.0" layoutY="456.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@imageres/Sprite/T_Islands_04.png" />
+                  <Image url="@imageres/Sprites/Islands/T_Islands_04.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="427.0" layoutY="484.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@imageres/Sprite/T_Islands_02.png" />
+                  <Image url="@imageres/Sprites/Islands/T_Islands_02.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="1177.0" layoutY="333.0" pickOnBounds="true" preserveRatio="true">

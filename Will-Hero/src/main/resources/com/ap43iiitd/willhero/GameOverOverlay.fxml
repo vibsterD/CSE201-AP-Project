@@ -16,7 +16,7 @@
    <children>
       <ImageView fitHeight="727.0" fitWidth="1281.0" pickOnBounds="true" smooth="false">
          <image>
-            <Image url="@imageres/Sprite/default_artwork_big.png" />
+            <Image url="@imageres/Sprites/default_artwork_big.png" />
          </image>
       </ImageView>
       <VBox alignment="TOP_CENTER" prefHeight="410.0" prefWidth="600.0">
@@ -62,7 +62,7 @@
                                     </Label>
                                     <ImageView fitHeight="42.0" fitWidth="44.0" pickOnBounds="true" smooth="false">
                                        <image>
-                                          <Image url="@imageres/Sprite/Trophy.png" />
+                                          <Image url="@imageres/Sprites/Trophy.png" />
                                        </image>
                                     </ImageView>
                                     <StackPane>
