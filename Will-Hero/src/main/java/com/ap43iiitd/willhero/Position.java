@@ -11,6 +11,8 @@ public class Position implements Serializable {
     private double vel_x;
     private double vel_y;
     private final double gravity = 30;
+    private Boolean dash_flag = false;
+
     private final TranslateTransition splineTranslate = new TranslateTransition(Duration.millis(1000.0/30));
 
     public Position() {
@@ -33,10 +35,15 @@ public class Position implements Serializable {
         splineTranslate.setInterpolator(Interpolator.LINEAR);
         splineTranslate.setByY(vel_y);
         splineTranslate.play();
+
+        if(!dash_flag) {
+            // update X
+        }
+
         //imageView.setTranslateY(imageView.getTranslateY()+vel_y);
     }
 
-    public void setVelocity(int vel_x, int vel_y) {
+    public void setVelocity(double vel_x, double vel_y) {
         this.vel_x = vel_x;
         this.vel_y = vel_y;
     }

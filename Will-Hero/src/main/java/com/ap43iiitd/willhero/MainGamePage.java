@@ -44,10 +44,12 @@ public class MainGamePage {
     private AnchorPane GameScreenMove;
 
     @FXML
-    private ImageView Hero;
-
-    @FXML
     private Label score;
+
+    private Player hero;
+
+    Boolean counter_active = false;
+    Boolean dash_flag = false;
 
     public void initialize() {
 
@@ -61,9 +63,12 @@ public class MainGamePage {
 
         Orc orc2 = new GreenOrc(new Position());
         orc2.addToScene(GameScreenMove);
+        hero = new Player();
+        hero.addToScene(GameScreenMove);
 
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), ev -> {
             orc2.getPosition().updatePosition(orc2.getOrc_fx());
+            hero.getPosition().updatePosition(hero.getHero_fx());
         }));
 
         timeline.setCycleCount(Timeline.INDEFINITE);
@@ -81,8 +86,17 @@ public class MainGamePage {
         ///// DO NOT MOVE BY GAME SCREEN, MOVE EACH OBJECT
         translation.interpolatorProperty().set(Interpolator.SPLINE(.1, .1, .7, .7));
         translation.setByX(-150);
+//        Hero.setTranslateX(Hero.getTranslateX() + 150);
+        hero.getPosition().setVelocity(150, 0);
+        TranslateTransition translation2 = new TranslateTransition(Duration.millis(150), hero.getHero_fx());
+        ///// DO NOT MOVE BY GAME SCREEN, MOVE EACH OBJECT
+        translation2.interpolatorProperty().set(Interpolator.SPLINE(.1, .1, .7, .7));
+        translation2.setByX(150);
         translation.setCycleCount(1);
         translation.play();
+        translation2.setCycleCount(1);
+        translation2.play();
+        translation2.setOnFinished(ev -> {hero.getPosition().setVelocity(0, hero.getPosition().getVel_y());});
     }
 
     @FXML
