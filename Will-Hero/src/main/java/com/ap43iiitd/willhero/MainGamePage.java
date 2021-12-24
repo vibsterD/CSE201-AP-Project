@@ -36,6 +36,7 @@ public class MainGamePage {
     @FXML
     private ImageView Orc;
 
+
     @FXML
     private StackPane gamePane;
 
@@ -57,6 +58,10 @@ public class MainGamePage {
         //getCurrent Y, jump delta of 10?
         //getCurrent Y, jump with delta (720-current) and if collide with land, destroy animation
         //specify interpolator curve with a quadratic equation.
+
+        Orc orc2 = new GreenOrc(null);
+        orc2.addToScene(GameScreenMove);
+
 
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), ev -> {
 
@@ -143,6 +148,7 @@ public class MainGamePage {
         catch (Exception e){
             System.out.println(e.getMessage());
             System.out.println("In-short: Looks like you misplaced some files");
+            System.out.println(e.getStackTrace());
         }
     }
 
