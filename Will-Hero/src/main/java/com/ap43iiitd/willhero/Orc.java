@@ -52,6 +52,14 @@ public class Orc extends GameObject implements Serializable {
 
     }
 
+    public ImageView getOrc_fx() {
+        return orc_fx;
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+
     @Override
     public void collide(GameObject o1){
 

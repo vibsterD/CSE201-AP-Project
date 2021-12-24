@@ -59,11 +59,11 @@ public class MainGamePage {
         //getCurrent Y, jump with delta (720-current) and if collide with land, destroy animation
         //specify interpolator curve with a quadratic equation.
 
-        Orc orc2 = new GreenOrc(null);
+        Orc orc2 = new GreenOrc(new Position());
         orc2.addToScene(GameScreenMove);
 
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), ev -> {
-            orc2.update();
+            orc2.getPosition().updatePosition(orc2.getOrc_fx());
         }));
 
         timeline.setCycleCount(Timeline.INDEFINITE);
