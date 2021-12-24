@@ -1,6 +1,8 @@
 package com.ap43iiitd.willhero;
 
-public class Player extends GameObject {
+import java.io.Serializable;
+
+public class Player extends GameObject implements Serializable {
     private int coins;
     private Helmet helmet;
     private Boolean respawned;
