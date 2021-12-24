@@ -10,5 +10,5 @@ public abstract class Chest extends GameObject implements Serializable {
 
     }
 
-    public abstract void reward(Player player)
+    public abstract void reward(Player player);
 }
