@@ -24,7 +24,7 @@ public class Orc extends GameObject implements Serializable {
         this.position = position;
         // ../../../../resources/com/ap43iiitd/willhero/imageres/
 //        System.out.println("UPPPWER as asd asd asd ");
-        Image image = new Image("com/ap43iiitd/willhero/imageres/Sprites/Orcs/orc.png");
+        Image image = new Image("com/ap43iiitd/willhero/imageres/Sprites/Orcs/6.png");
 //        System.out.println("asdnalsndlasndlksanld");
         this.orc_fx = new ImageView(image);
     }
