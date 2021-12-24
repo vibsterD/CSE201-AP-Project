@@ -1,6 +1,8 @@
 package com.ap43iiitd.willhero;
 
-public class Position implements Serializable{
+import java.io.Serializable;
+
+public class Position implements Serializable {
     private int x;
     private int y;
     private int delta_x;

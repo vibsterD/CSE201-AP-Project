@@ -1,6 +1,8 @@
 package com.ap43iiitd.willhero;
 
-public abstract class Helmet {
+import java.io.Serializable;
+
+public abstract class Helmet implements Serializable {
     private Weapon current_weapon;
 
     public Helmet() {}
