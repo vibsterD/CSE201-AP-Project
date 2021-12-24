@@ -1,25 +1,32 @@
 package com.ap43iiitd.willhero;
 
+import javafx.scene.image.ImageView;
+
 import java.io.Serializable;
 
 public class Position implements Serializable {
-    private int x;
-    private int y;
-    private int delta_x;
-    private int delta_y;
+    private int vel_x;
+    private int vel_y;
 
-    public Position(int x, int y) {
-        this.x = x;
-        this.y = y;
+    public Position() {
+        this.vel_x = 0;
+        this.vel_y = 0;
     }
 
-    public int getX() {
-        return this.x;
+    public int getVel_x() {
+        return vel_x;
     }
 
-    public void updatePosition() {}
-    public void setDelta(int delta_x, int delta_y) {
-        this.delta_x = delta_x;
-        this.delta_y = delta_y;
+    public int getVel_y() {
+        return vel_y;
+    }
+
+    public void updatePosition(ImageView imageView) {
+        System.out.println(imageView);
+    }
+
+    public void setVelocity(int vel_x, int vel_y) {
+        this.vel_x = vel_x;
+        this.vel_y = vel_y;
     }
 }
