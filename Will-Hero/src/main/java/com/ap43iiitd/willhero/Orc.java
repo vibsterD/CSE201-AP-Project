@@ -1,10 +1,13 @@
 package com.ap43iiitd.willhero;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 
 import java.io.Serializable;
 
@@ -54,12 +57,15 @@ public class Orc extends GameObject implements Serializable {
 
     }
 
+    public void update(){
+        orc_fx.setTranslateX(orc_fx.getTranslateX()+2);
+    }
+
     public void addToScene(AnchorPane pane) {
         orc_fx.setScaleX(0.7);
         orc_fx.setScaleY(0.7);
         orc_fx.setLayoutX(1400);
         orc_fx.setLayoutY(200);
         pane.getChildren().add(orc_fx);
-        System.out.println(pane.getWidth());
     }
 }

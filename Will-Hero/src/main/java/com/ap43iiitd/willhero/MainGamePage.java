@@ -62,44 +62,12 @@ public class MainGamePage {
         Orc orc2 = new GreenOrc(null);
         orc2.addToScene(GameScreenMove);
 
-
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), ev -> {
-
-            TranslateTransition heroTranslationUp = new TranslateTransition(Duration.millis(400), Hero);
-            heroTranslationUp.interpolatorProperty().set(Interpolator.SPLINE(.1, .1, .9, .9));
-            heroTranslationUp.setByY(-100);
-            TranslateTransition heroTranslationDown = new TranslateTransition(Duration.millis(400), Hero);
-            heroTranslationDown.interpolatorProperty().set(Interpolator.SPLINE(1, 1, .7, .7));
-            heroTranslationDown.setByY(100);
-            TranslateTransition orcTranslationUp = new TranslateTransition(Duration.millis(400), Orc);
-            orcTranslationUp.interpolatorProperty().set(Interpolator.SPLINE(.1, .1, .9, .9));
-            int diff = r1.nextInt(70);
-            orcTranslationUp.setByY(-70 + diff);
-            TranslateTransition orcTranslationDown = new TranslateTransition(Duration.millis(400), Orc);
-            orcTranslationDown.interpolatorProperty().set(Interpolator.SPLINE(1, 1, .7, .7));
-            orcTranslationDown.setByY(70 - diff);
-//            Transition squish = new Transition() {
-//                {
-//                    setCycleDuration(Duration.millis(100));
-//                }
-//
-//                protected void interpolate(double frac) {
-//                    System.out.println(frac);
-//                    Hero.setFitHeight(Hero.getFitHeight()*frac);
-////                    Hero.setY(Hero.getY()-Hero.getFitHeight()+0.5);
-//
-//                }
-//
-//            };
-//            squish.setCycleCount(1);
-//            squish.setAutoReverse(true);
-            SequentialTransition st1 = new SequentialTransition(heroTranslationUp, heroTranslationDown);
-            SequentialTransition st2 = new SequentialTransition(orcTranslationUp, orcTranslationDown);
-            st1.play();
-            st2.play();
-
+            orc2.update();
         }));
+
         timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.setRate(30);
         timeline.play();
     }
 
