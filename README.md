@@ -9,5 +9,5 @@ Vibhu Dubey - 2020150
 | Deadline  | Name | Progress |
 | ------------- | ------------- | ------------- |
 | 1. 21/11/21 | [UML Diagrams](https://github.com/vibsterD/CSE201-AP-Project/tree/main/UML) | ✔️ |
-| 2. 10/12/21 | [Static GUI, Base Animation Components]()  | 🤔 |
-| 3. 24/12/21 | [Complete Project]()  | :x: |	
+| 2. 10/12/21 | [Static GUI, Base Animation Components]()  | ✔️ |
+| 3. 24/12/21 | [Complete Project]()  | 🤔 |	
