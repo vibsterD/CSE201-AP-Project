@@ -85,5 +85,34 @@ public class Orc extends GameObject implements Serializable {
             }
 
         }
+
+        if(o1 instanceof Orc) {
+            Orc orc1 = (Orc) o1;
+            if(orc1.getImage_fx().getBoundsInParent().intersects(orc2.getImage_fx().getBoundsInParent())) {
+                double orc_min_y = orc2.getImage_fx().getBoundsInParent().getMinY();
+                double orc1_max_y = orc1.getImage_fx().getBoundsInParent().getMaxY();
+                double y_del_down = Math.abs(orc_min_y - orc1_max_y);
+
+                if (y_del_down < 10.0) {
+                    //                System.out.println( "Orc : " + orc2.getOrc_fx().getBoundsInParent().getMaxY());
+//                System.out.println( "Hero: " + hero.getHero_fx().getBoundsInParent().getMinY());
+//                    System.out.println("HELLLO");
+                    orc1.getPosition().setVelocity(0, -5);
+                    return;
+                }
+
+                // orc1 orc2
+
+                double orc_min_x = orc2.getImage_fx().getBoundsInParent().getMinX();
+                double orc1_max_x = orc1.getImage_fx().getBoundsInParent().getMaxX();
+                double x_del_right = Math.abs(orc_min_x - orc1_max_x);
+//            System.out.println("XDEL: " + x_del_right);
+                if (x_del_right < 50.0) {
+                    System.out.println("COLLIDING ORC ORC");
+                    orc2.getPosition().setVelocity(50, -1);
+//                orc1.dash_collision = true;
+                }
+            }
+        }
     }
 }

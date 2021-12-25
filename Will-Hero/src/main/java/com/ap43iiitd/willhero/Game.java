@@ -47,12 +47,12 @@ public class Game implements Serializable {
             if(red_or_green == 0) {
                 // red
                 orcs.add(new RedOrc(new Position()));
-                orcs.get(i).addToScene(game_screen, 220 + i*200 + r1.nextInt(20), 300 + r1.nextInt(10));
+                orcs.get(i).addToScene(game_screen, 220 + i*250 + r1.nextInt(20), 300 + r1.nextInt(10));
                 game_objects.add(orcs.get(i));
             }else {
                 // green
                 orcs.add(new GreenOrc(new Position()));
-                orcs.get(i).addToScene(game_screen, 220 + i*200 + r1.nextInt(20), 300 + r1.nextInt(10));
+                orcs.get(i).addToScene(game_screen, 220 + i*240 + r1.nextInt(20), 300 + r1.nextInt(10));
                 game_objects.add(orcs.get(i));
             }
         }

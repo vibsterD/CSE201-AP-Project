@@ -170,7 +170,7 @@ public class Player extends GameObject implements Serializable {
                 System.out.println("XDEL: " + x_del_right);
                 if(x_del_right < 50.0) {
                     System.out.println("COLLIDING ORC");
-                    orc2.getPosition().setVelocity(50, -1);
+                    orc2.getPosition().setVelocity(30, -1);
                     this.dash_collision = true;
                 }
 
