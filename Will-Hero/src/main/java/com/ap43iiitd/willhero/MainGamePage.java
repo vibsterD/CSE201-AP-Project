@@ -50,6 +50,7 @@ public class MainGamePage {
 
     Boolean counter_active = false;
     Boolean dash_flag = false;
+    Boolean dash_translation = false;
 
     private ArrayList<GameObject> game_objects;
 //    private ArrayList<Island> islands;
@@ -117,7 +118,9 @@ public class MainGamePage {
     @FXML
     protected void onHelloButtonClick() {
         //also spawn a new island with an orc maybe
-        if (paused) return;
+        if (paused || dash_translation) return;
+
+        dash_translation = true;
         tapToPlay.setText("For the next deadline!");
         score.setText(String.valueOf(Integer.parseInt(score.getText()) + 1));
         TranslateTransition translation = new TranslateTransition(Duration.millis(150), GameScreenMove);
@@ -125,19 +128,22 @@ public class MainGamePage {
         translation.interpolatorProperty().set(Interpolator.SPLINE(.1, .1, .7, .7));
         translation.setByX(-150);
 //        Hero.setTranslateX(Hero.getTranslateX() + 150);
-        hero.getPosition().setVelocity(150, 0);
+//        hero.getPosition().setVelocity(150, 0);
         TranslateTransition translation2 = new TranslateTransition(Duration.millis(150), hero.getImage_fx());
         ///// DO NOT MOVE BY GAME SCREEN, MOVE EACH OBJECT
         translation2.interpolatorProperty().set(Interpolator.SPLINE(.1, .1, .7, .7));
         translation2.setByX(150);
         translation.setCycleCount(1);
+        hero.getPosition().setDash_flag(true);
         translation.play();
         translation2.setCycleCount(1);
         translation2.play();
 //        hero.getPosition().updatePosition(hero.getHero_fx());
         translation2.setOnFinished(ev -> {
-            System.out.println("Vel-y during dash: "+ hero.getPosition().getVel_y());
-            hero.getPosition().setVelocity(1, hero.getPosition().getVel_y());
+//            System.out.println("Vel-y during dash: "+ hero.getPosition().getVel_y());
+//            hero.getPosition().setVelocity(0, hero.getPosition().getVel_y());
+            hero.getPosition().setDash_flag(false);
+            dash_translation = false;
         });
     }
 

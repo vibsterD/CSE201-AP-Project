@@ -41,8 +41,16 @@ public class Position implements Serializable {
         splineTranslate.setByY(vel_y);
         splineTranslate.play();
 //        System.out.println(this.vel_y);
+        if(this.vel_x > 0) {
+            System.out.println("VELX: " + this.vel_x);
+        }
         if(!dash_flag) {
             // update X
+            this.vel_x = vel_x;
+            splineTranslate.setNode(imageView);
+            splineTranslate.setInterpolator(Interpolator.LINEAR);
+            splineTranslate.setByX(vel_x);
+            splineTranslate.play();
         }
 
         //imageView.setTranslateY(imageView.getTranslateY()+vel_y);
@@ -53,5 +61,7 @@ public class Position implements Serializable {
         this.vel_y = vel_y;
     }
 
-
+    public void setDash_flag(Boolean dash_flag) {
+        this.dash_flag = dash_flag;
+    }
 }

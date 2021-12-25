@@ -148,9 +148,37 @@ public class Player extends GameObject implements Serializable {
                     System.out.println("HELLLO");
                     hero.getPosition().setVelocity(0, -5);
                 }
+
+                // Orc Hero
+
+                double orc_max_x = orc2.getImage_fx().getBoundsInParent().getMaxX();
+                double hero_min_x = hero.getImage_fx().getBoundsInParent().getMinX();
+                double x_del = Math.abs(orc_max_x - hero_min_x);
+
+                if(x_del < 10.0) {
+                    System.out.println("Orc Hero SUPER RARE!!");
+                }
+
+                // Hero Orc
+
+                double orc_min_x = orc2.getImage_fx().getBoundsInParent().getMinX();
+                double hero_max_x = hero.getImage_fx().getBoundsInParent().getMaxX();
+                double x_del_right = Math.abs(orc_min_x - hero_max_x);
+                System.out.println("XDEL: " + x_del_right);
+                if(x_del_right < 15.0) {
+                    System.out.println("COLLIDING ORC");
+                    orc2.getPosition().setVelocity(50, -1);
+                    this.dash_collision = true;
+                }
+
+
             }
 
 
         }
+    }
+
+    public Boolean getDash_collision() {
+        return dash_collision;
     }
 }
