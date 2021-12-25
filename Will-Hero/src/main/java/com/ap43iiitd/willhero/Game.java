@@ -16,6 +16,7 @@ public class Game implements Serializable {
     ArrayList<GameObject> game_objects;
     ArrayList<Island> islands;
     ArrayList<Orc> orcs;
+    ArrayList<Chest> chests;
     Player hero;
 
     public Game(AnchorPane game_screen) {
@@ -23,6 +24,7 @@ public class Game implements Serializable {
         game_objects = new ArrayList<GameObject>();
         islands = new ArrayList<Island>();
         orcs = new ArrayList<Orc>();
+        chests = new ArrayList<Chest>();
         initialize_game();
     }
 
@@ -37,11 +39,25 @@ public class Game implements Serializable {
         game_objects.add(hero);
     }
 
+    // generate islands and chests
     private void initialize_islands() {
         for(int i = 0; i < 50; i++) {
             islands.add(new Island(new Position(0)));
-            islands.get(i).addToScene(game_screen, 114 + i*300, 400 + r1.nextInt(100));
+            int x = 114 + i*300 + r1.nextInt(10);
+            int y = 400 + r1.nextInt(100);
+            islands.get(i).addToScene(game_screen, x, y);
             game_objects.add(islands.get(i));
+
+            int generate_chest = r1.nextInt(10);
+            if(generate_chest == 0 || i == 1) {
+                // generate chest at this island
+//                Chest temp = new CoinChest();
+                System.out.println("THIS IS WORKING12");
+                chests.add(new CoinChest());
+                System.out.println("THIS IS WORKING");
+                chests.get(chests.size()-1).addToScene(game_screen, x, y, islands.get(i));
+                game_objects.add(chests.get(chests.size()-1));
+            }
         }
     }
 
@@ -98,6 +114,10 @@ public class Game implements Serializable {
         Image image = new Image("com/ap43iiitd/willhero/imageres/Sprites/Clouds/C (".concat(String.valueOf(orc_num)).concat(").png"));
         return new ImageView(image);
     }
+
+//    public void initialize_chests() {
+//
+//    }
 
     public void update() {
 

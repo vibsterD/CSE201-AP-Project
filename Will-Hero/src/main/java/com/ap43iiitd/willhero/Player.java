@@ -69,6 +69,7 @@ public class Player extends GameObject implements Serializable {
     }
 
     public void updateCoins(int delta) {
+        this.coins = this.coins + delta;
     }
 
     public int getCoins() {
