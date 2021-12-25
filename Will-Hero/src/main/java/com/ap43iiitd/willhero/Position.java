@@ -13,7 +13,7 @@ public class Position implements Serializable {
     private double gravity = 10;
     private Boolean dash_flag = false;
 
-    private final TranslateTransition splineTranslate = new TranslateTransition(Duration.millis(1000.0/250.0));
+    private final TranslateTransition splineTranslate = new TranslateTransition(Duration.millis(1000.0/60.0));
 
     public Position() {
         this.vel_x = 0;
@@ -39,7 +39,7 @@ public class Position implements Serializable {
         splineTranslate.setNode(imageView);
         splineTranslate.setInterpolator(Interpolator.LINEAR);
         splineTranslate.setByY(vel_y);
-        splineTranslate.play();
+//        splineTranslate.play();
 //        System.out.println(this.vel_y);
         if(this.vel_x > 0) {
             System.out.println("VELX: " + this.vel_x);
@@ -47,11 +47,12 @@ public class Position implements Serializable {
         if(!dash_flag) {
             // update X
             this.vel_x = vel_x;
-            splineTranslate.setNode(imageView);
-            splineTranslate.setInterpolator(Interpolator.LINEAR);
+//            splineTranslate.setNode(imageView);
+//            splineTranslate.setInterpolator(Interpolator.LINEAR);
             splineTranslate.setByX(vel_x);
-            splineTranslate.play();
+
         }
+        splineTranslate.play();
 
         //imageView.setTranslateY(imageView.getTranslateY()+vel_y);
     }

@@ -136,6 +136,7 @@ public class Player extends GameObject implements Serializable {
                     orc2.getPosition().setVelocity(0, 0);
                     hero.getPosition().setVelocity(0, 0);
                     System.out.println("FUCKING DEAD");
+                    return;
                 }
 
                 double orc_min_y = orc2.getImage_fx().getBoundsInParent().getMinY();
@@ -145,8 +146,9 @@ public class Player extends GameObject implements Serializable {
                 if (y_del_down < 10.0) {
                     //                System.out.println( "Orc : " + orc2.getOrc_fx().getBoundsInParent().getMaxY());
 //                System.out.println( "Hero: " + hero.getHero_fx().getBoundsInParent().getMinY());
-                    System.out.println("HELLLO");
+//                    System.out.println("HELLLO");
                     hero.getPosition().setVelocity(0, -5);
+                    return;
                 }
 
                 // Orc Hero
@@ -157,6 +159,7 @@ public class Player extends GameObject implements Serializable {
 
                 if(x_del < 10.0) {
                     System.out.println("Orc Hero SUPER RARE!!");
+
                 }
 
                 // Hero Orc
@@ -165,7 +168,7 @@ public class Player extends GameObject implements Serializable {
                 double hero_max_x = hero.getImage_fx().getBoundsInParent().getMaxX();
                 double x_del_right = Math.abs(orc_min_x - hero_max_x);
                 System.out.println("XDEL: " + x_del_right);
-                if(x_del_right < 15.0) {
+                if(x_del_right < 50.0) {
                     System.out.println("COLLIDING ORC");
                     orc2.getPosition().setVelocity(50, -1);
                     this.dash_collision = true;
