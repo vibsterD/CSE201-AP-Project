@@ -80,8 +80,8 @@ public class MainGamePage {
 //        island.addToScene(GameScreenMove);
 
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), ev -> {
-            orc2.getPosition().updatePosition(orc2.getOrc_fx());
-            hero.getPosition().updatePosition(hero.getHero_fx());
+            orc2.getPosition().updatePosition(orc2.getImage_fx());
+            hero.getPosition().updatePosition(hero.getImage_fx());
 
         }));
 
@@ -94,11 +94,11 @@ public class MainGamePage {
 //            hero.collide(island);
 //            orc2.collide(island);
             ArrayList <GameObject> in_scene = new ArrayList<GameObject>();
-            double x_pos = hero.getHero_fx().getTranslateX();
-            for(int i = 0; i < game_objects.size(); i++) {
-                if(Math.abs(game_objects.get(i).getImage_fx().getBoundsInParent().getCenterX() - x_pos) < 1280) {
+            double x_pos = hero.getImage_fx().getTranslateX();
+            for (GameObject game_object : game_objects) {
+                if (Math.abs(game_object.getImage_fx().getBoundsInParent().getCenterX() - x_pos) < 1280) {
                     // in scene
-                    in_scene.add(game_objects.get(i));
+                    in_scene.add(game_object);
                 }
             }
 
@@ -125,7 +125,7 @@ public class MainGamePage {
         translation.setByX(-150);
 //        Hero.setTranslateX(Hero.getTranslateX() + 150);
         hero.getPosition().setVelocity(150, 0);
-        TranslateTransition translation2 = new TranslateTransition(Duration.millis(150), hero.getHero_fx());
+        TranslateTransition translation2 = new TranslateTransition(Duration.millis(150), hero.getImage_fx());
         ///// DO NOT MOVE BY GAME SCREEN, MOVE EACH OBJECT
         translation2.interpolatorProperty().set(Interpolator.SPLINE(.1, .1, .7, .7));
         translation2.setByX(150);

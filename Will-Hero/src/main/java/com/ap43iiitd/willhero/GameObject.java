@@ -19,7 +19,7 @@ public abstract class GameObject implements Serializable {
                 // island
 
                 Island island = (Island) o1;
-                if (hero.getHero_fx().getBoundsInParent().intersects(island.getImage_fx().getBoundsInParent())) {
+                if (hero.getImage_fx().getBoundsInParent().intersects(island.getImage_fx().getBoundsInParent())) {
                     double height = island.getImage_fx().getFitHeight() / 2;
                     if (hero.getPosition().getVel_y() > 0) {
 //                    hero.getHero_fx().setTranslateY(hero.getHero_fx().getTranslateY() + height);
@@ -36,11 +36,11 @@ public abstract class GameObject implements Serializable {
                 // orc
                 Orc orc2 = (Orc) o1;
 
-                if (orc2.getOrc_fx().getBoundsInParent().intersects(hero.getHero_fx().getBoundsInParent())) {
+                if (orc2.getImage_fx().getBoundsInParent().intersects(hero.getImage_fx().getBoundsInParent())) {
 //                System.out.println( "Orc : " + orc2.getOrc_fx().getBoundsInParent().getMaxY());
 //                System.out.println( "Hero: " + hero.getHero_fx().getBoundsInParent().getMinY());
-                    double orc_max_y = orc2.getOrc_fx().getBoundsInParent().getMaxY();
-                    double hero_min_y = hero.getHero_fx().getBoundsInParent().getMinY();
+                    double orc_max_y = orc2.getImage_fx().getBoundsInParent().getMaxY();
+                    double hero_min_y = hero.getImage_fx().getBoundsInParent().getMinY();
                     double y_del = Math.abs(orc_max_y - hero_min_y);
 
                     // checking if up/down
@@ -51,8 +51,8 @@ public abstract class GameObject implements Serializable {
                         System.out.println("FUCKING DEAD");
                     }
 
-                    double orc_min_y = orc2.getOrc_fx().getBoundsInParent().getMinY();
-                    double hero_max_y = hero.getHero_fx().getBoundsInParent().getMaxY();
+                    double orc_min_y = orc2.getImage_fx().getBoundsInParent().getMinY();
+                    double hero_max_y = hero.getImage_fx().getBoundsInParent().getMaxY();
                     double y_del_down = Math.abs(orc_min_y - hero_max_y);
 
                     if (y_del_down < 10.0) {
@@ -71,7 +71,7 @@ public abstract class GameObject implements Serializable {
             Orc orc2 = (Orc) this;
             if (o1 instanceof Island) {
                 Island island = (Island) o1;
-                if (orc2.getOrc_fx().getBoundsInParent().intersects(island.getImage_fx().getBoundsInParent())) {
+                if (orc2.getImage_fx().getBoundsInParent().intersects(island.getImage_fx().getBoundsInParent())) {
                     double height = island.getImage_fx().getFitHeight() / 2;
                     if (orc2.getPosition().getVel_y() > 0) {
 //                    hero.getHero_fx().setTranslateY(hero.getHero_fx().getTranslateY() + height);

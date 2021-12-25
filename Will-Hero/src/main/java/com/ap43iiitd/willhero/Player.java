@@ -10,7 +10,6 @@ import java.io.Serializable;
 
 public class Player extends GameObject implements Serializable {
     @FXML
-    private ImageView hero_fx;
     private Position position;
     private int coins;
     private Helmet helmet;
@@ -31,7 +30,7 @@ public class Player extends GameObject implements Serializable {
         this.dash_collision = false;
         this.position = new Position();
         Image image = new Image("com/ap43iiitd/willhero/imageres/Sprites/Iron.png");
-        this.hero_fx = new ImageView(image);
+        this.image_fx = new ImageView(image);
     }
 
     public Player(Boolean respawned, Position position, int location, Weapon weapon) {
@@ -40,19 +39,15 @@ public class Player extends GameObject implements Serializable {
         this.has_won = false;
         this.dash_collision = false;
         Image image = new Image("com/ap43iiitd/willhero/imageres/Sprites/Iron.png");
-        this.hero_fx = new ImageView(image);
+        this.image_fx = new ImageView(image);
     }
 
     public void addToScene(AnchorPane pane) {
-        hero_fx.setScaleX(0.5);
-        hero_fx.setScaleY(0.5);
-        hero_fx.setLayoutX(174);
-        hero_fx.setLayoutY(100);
-        pane.getChildren().add(hero_fx);
-    }
-
-    public ImageView getHero_fx() {
-        return hero_fx;
+        image_fx.setScaleX(0.5);
+        image_fx.setScaleY(0.5);
+        image_fx.setLayoutX(174);
+        image_fx.setLayoutY(100);
+        pane.getChildren().add(image_fx);
     }
 
     public Position getPosition() {

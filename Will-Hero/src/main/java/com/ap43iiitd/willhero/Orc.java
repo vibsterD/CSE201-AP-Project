@@ -13,7 +13,6 @@ import java.io.Serializable;
 
 public class Orc extends GameObject implements Serializable {
     @FXML
-    private ImageView orc_fx;
     private final String color;
     private final int size;
     private int hp;
@@ -29,7 +28,7 @@ public class Orc extends GameObject implements Serializable {
 //        System.out.println("UPPPWER as asd asd asd ");
         Image image = new Image("com/ap43iiitd/willhero/imageres/Sprites/Orcs/6.png");
 //        System.out.println("asdnalsndlasndlksanld");
-        this.orc_fx = new ImageView(image);
+        this.image_fx = new ImageView(image);
     }
 
     public void jump(){
@@ -52,25 +51,16 @@ public class Orc extends GameObject implements Serializable {
 
     }
 
-    public ImageView getOrc_fx() {
-        return orc_fx;
-    }
-
     public Position getPosition() {
         return position;
     }
 
-
-    public void update(){
-        orc_fx.setTranslateX(orc_fx.getTranslateX()+2);
-    }
-
     public void addToScene(AnchorPane pane) {
-        orc_fx.setScaleX(0.7);
-        orc_fx.setScaleY(0.7);
-        orc_fx.setLayoutX(170);
-        orc_fx.setLayoutY(300);
-        pane.getChildren().add(orc_fx);
+        image_fx.setScaleX(0.7);
+        image_fx.setScaleY(0.7);
+        image_fx.setLayoutX(170);
+        image_fx.setLayoutY(300);
+        pane.getChildren().add(image_fx);
     }
 
 
