@@ -13,6 +13,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class MainGamePage {
@@ -52,7 +53,17 @@ public class MainGamePage {
     Boolean counter_active = false;
     Boolean dash_flag = false;
 
+    private ArrayList<Island> islands;
+
     public void initialize() {
+        islands = new ArrayList<Island>();
+
+        for(int i = 0; i < 50; i++) {
+            islands.add(new Island(1, new Position()));
+            islands.get(i).addToScene(GameScreenMove, 114 + i*300, 472 + r1.nextInt(100));
+        }
+
+        island = islands.get(0);
 
         //have a static array of initialized objects
         //read from that array and if orc or hero, animate jump
@@ -67,23 +78,23 @@ public class MainGamePage {
         hero = new Player();
         hero.addToScene(GameScreenMove);
 
-        island = new Island(1, new Position());
-        island.addToScene(GameScreenMove);
+//        island = new Island(1, new Position());
+//        island.addToScene(GameScreenMove);
 
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), ev -> {
             orc2.getPosition().updatePosition(orc2.getOrc_fx());
             hero.getPosition().updatePosition(hero.getHero_fx());
 
-            if(hero.getHero_fx().getBoundsInParent().intersects(island.getIsland_fx().getBoundsInParent())) {
-                double height = island.getIsland_fx().getFitHeight()/2;
-                if(hero.getPosition().getVel_y() > 0) {
-//                    hero.getHero_fx().setTranslateY(hero.getHero_fx().getTranslateY() + height);
-//                    if(hero.getHero_fx().getBoundsInParent().intersects(island.getIsland_fx().getBoundsInParent()))
-                    System.out.println("Collided with island");
-                    hero.getPosition().setVelocity(0, -2);
-                }
-
-            }
+//            if(hero.getHero_fx().getBoundsInParent().intersects(island.getIsland_fx().getBoundsInParent())) {
+//                double height = island.getIsland_fx().getFitHeight()/2;
+//                if(hero.getPosition().getVel_y() > 0) {
+////                    hero.getHero_fx().setTranslateY(hero.getHero_fx().getTranslateY() + height);
+////                    if(hero.getHero_fx().getBoundsInParent().intersects(island.getIsland_fx().getBoundsInParent()))
+//                    System.out.println("Collided with island");
+//                    hero.getPosition().setVelocity(0, -2);
+//                }
+//
+//            }
 
             if(orc2.getOrc_fx().getBoundsInParent().intersects(hero.getHero_fx().getBoundsInParent())) {
 //                System.out.println( "Orc : " + orc2.getOrc_fx().getBoundsInParent().getMaxY());

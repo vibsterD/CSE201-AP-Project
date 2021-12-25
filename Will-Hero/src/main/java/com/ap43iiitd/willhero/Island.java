@@ -29,12 +29,12 @@ public class Island extends GameObject implements Serializable {
         return island_fx;
     }
 
-    public void addToScene(AnchorPane pane) {
+    public void addToScene(AnchorPane pane, int x, int y) {
 //        island_fx.setScaleX(0.2);
 //        island_fx.setScaleY(0.2);
         island_fx.setPreserveRatio(true);
-        island_fx.setLayoutX(114);
-        island_fx.setLayoutY(472);
+        island_fx.setLayoutX(x);
+        island_fx.setLayoutY(y);
         island_fx.setFitWidth(200);
 //        island_fx.setFitHeight(150);
         pane.getChildren().add(island_fx);
