@@ -18,6 +18,7 @@ public class Island extends GameObject implements Serializable {
         this.position = pos;
         this.restitution = restitution;
         int island_get = 1+r1.nextInt(11);
+        System.out.println("CREATING ISLAND");
         Image image = new Image("com/ap43iiitd/willhero/imageres/Sprites/Islands/ (".concat(String.valueOf(island_get)).concat(").png"));
         this.image_fx = new ImageView(image);
     }

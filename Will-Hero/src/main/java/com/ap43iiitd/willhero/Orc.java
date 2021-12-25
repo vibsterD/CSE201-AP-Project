@@ -31,7 +31,6 @@ public class Orc extends GameObject implements Serializable {
 //        System.out.println("UPPPWER as asd asd asd ");
         int orc_num = 1+r1.nextInt(4);
         Image image = new Image("com/ap43iiitd/willhero/imageres/Sprites/Orcs/O (".concat(String.valueOf(orc_num)).concat(").png"));
-        System.out.println("asdnalsndlasndlksanld");
         this.image_fx = new ImageView(image);
     }
 
