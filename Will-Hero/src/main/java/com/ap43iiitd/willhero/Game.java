@@ -17,6 +17,8 @@ public class Game implements Serializable {
     ArrayList<Island> islands;
     ArrayList<Orc> orcs;
     ArrayList<Chest> chests;
+    ArrayList<TNT> tnts;
+    ArrayList<GameObject> in_scene;
     Player hero;
 
     public Game(AnchorPane game_screen) {
@@ -25,6 +27,7 @@ public class Game implements Serializable {
         islands = new ArrayList<Island>();
         orcs = new ArrayList<Orc>();
         chests = new ArrayList<Chest>();
+        tnts = new ArrayList<TNT>();
         initialize_game();
     }
 
@@ -39,7 +42,7 @@ public class Game implements Serializable {
         game_objects.add(hero);
     }
 
-    // generate islands and chests
+    // generate islands and chests and TNTs
     private void initialize_islands() {
         for(int i = 0; i < 50; i++) {
             islands.add(new Island(new Position(0)));
@@ -57,6 +60,13 @@ public class Game implements Serializable {
                 System.out.println("THIS IS WORKING");
                 chests.get(chests.size()-1).addToScene(game_screen, x, y, islands.get(i));
                 game_objects.add(chests.get(chests.size()-1));
+            }
+
+            int generate_tnt = r1.nextInt(7);
+            if(generate_tnt == 0 || i == 2) {
+                tnts.add(new TNT(this));
+                tnts.get(tnts.size()-1).addToScene(game_screen, x, y, islands.get(i));
+                game_objects.add(tnts.get(tnts.size()-1));
             }
         }
     }
@@ -146,6 +156,17 @@ public class Game implements Serializable {
     private void respawn() {}
     public void addToRender() {}
     public void eraseObject() {}
+
+    // TEMPORARY FUNCTION FOR IN_SCENE
+
+
+    public void setIn_scene(ArrayList<GameObject> in_scene) {
+        this.in_scene = in_scene;
+    }
+
+    public ArrayList<GameObject> getIn_scene() {
+        return in_scene;
+    }
 }
 
 

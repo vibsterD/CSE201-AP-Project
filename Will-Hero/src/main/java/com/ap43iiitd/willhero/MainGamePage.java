@@ -77,11 +77,14 @@ public class MainGamePage {
                 }
             }
 //            System.out.println("inscene: " + in_scene.size());
+            // Temp line
+            game.setIn_scene(in_scene);
+            // Temp line
             for(int i = 0; i < in_scene.size(); i++) {
                 in_scene.get(i).getPosition().updatePosition(in_scene.get(i).getImage_fx());
                 for(int j = i + 1; j < in_scene.size(); j++) {
 
-//                    in_scene.get(i).collide(in_scene.get(j));
+                    in_scene.get(i).collide(in_scene.get(j));
                     in_scene.get(j).collide(in_scene.get(i));
                 }
             }

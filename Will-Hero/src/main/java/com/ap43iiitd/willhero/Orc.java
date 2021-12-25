@@ -38,7 +38,14 @@ public abstract class Orc extends GameObject implements Serializable {
     }
 
     private void die(){
+        System.out.println("ORC DIED");
+//        image_fx.setVisible(false);
+        image_fx.setFitWidth(20);
+    }
 
+
+    public void eliminate() {
+        die();
     }
 
 
