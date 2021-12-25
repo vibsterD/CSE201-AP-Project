@@ -4,6 +4,20 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Iron extends Helmet implements Serializable {
-    ArrayList<Weapon> weapon_slots;
+    //uses default constructor with nothing
+    //doing below for sake
+
+    //TODO: REMOVE
+    public Iron(){
+        weapon_slots = new ArrayList<Weapon>(2);
+
+        weapon_slots.add(null);
+        weapon_slots.add(null);
+
+        weapon_slots.set(0,new Shuriken()); //usually null
+        weapon_slots.set(1,null); //usually null
+
+    }
+
 
 }
