@@ -11,7 +11,7 @@ public abstract class GameObject implements Serializable {
     private Position position;
 
     public void collide(GameObject o1) {
-        System.out.println(this.getClass());
+//        System.out.println(this.getClass());
         if (this instanceof Player) {
             // player collid logic
             Player hero = (Player) this;
@@ -25,7 +25,7 @@ public abstract class GameObject implements Serializable {
 //                    hero.getHero_fx().setTranslateY(hero.getHero_fx().getTranslateY() + height);
 //                    if(hero.getHero_fx().getBoundsInParent().intersects(island.getIsland_fx().getBoundsInParent()))
                         System.out.println("Collided with island");
-                        hero.getPosition().setVelocity(0, -2);
+                        hero.getPosition().setVelocity(0, -10);
                     }
                 }
 
@@ -59,7 +59,7 @@ public abstract class GameObject implements Serializable {
                         //                System.out.println( "Orc : " + orc2.getOrc_fx().getBoundsInParent().getMaxY());
 //                System.out.println( "Hero: " + hero.getHero_fx().getBoundsInParent().getMinY());
                         System.out.println("HELLLO");
-                        hero.getPosition().setVelocity(0, -2);
+                        hero.getPosition().setVelocity(0, -10);
                     }
                 }
             }
@@ -67,7 +67,7 @@ public abstract class GameObject implements Serializable {
         }
         else if (this instanceof Orc) {
             // orc collide logic
-            System.out.println("ORRRRCCCC");
+//            System.out.println("ORRRRCCCC");
             Orc orc2 = (Orc) this;
             if (o1 instanceof Island) {
                 Island island = (Island) o1;
@@ -77,7 +77,7 @@ public abstract class GameObject implements Serializable {
 //                    hero.getHero_fx().setTranslateY(hero.getHero_fx().getTranslateY() + height);
 //                    if(hero.getHero_fx().getBoundsInParent().intersects(island.getIsland_fx().getBoundsInParent()))
                         System.out.println("Collided with island");
-                        orc2.getPosition().setVelocity(0, -2);
+                        orc2.getPosition().setVelocity(0, -10);
                     }
 
                 }
@@ -86,7 +86,7 @@ public abstract class GameObject implements Serializable {
 
         }
         else{
-            System.out.println(this.getClass());
+//            System.out.println(this.getClass());
         }
 
     }

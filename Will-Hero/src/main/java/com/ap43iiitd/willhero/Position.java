@@ -10,7 +10,7 @@ import java.io.Serializable;
 public class Position implements Serializable {
     private double vel_x;
     private double vel_y;
-    private final double gravity = 20;
+    private final double gravity = 30;
     private Boolean dash_flag = false;
 
     private final TranslateTransition splineTranslate = new TranslateTransition(Duration.millis(1000.0/250.0));

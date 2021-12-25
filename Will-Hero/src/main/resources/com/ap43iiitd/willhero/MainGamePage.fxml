@@ -29,36 +29,6 @@
                   <Image url="@imageres/Sprites/Clouds/WH_Cloud_01.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="1035.0" layoutY="479.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@imageres/Sprites/Islands/T_Islands_01.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="751.0" layoutY="456.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@imageres/Sprites/Islands/T_Islands_04.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="427.0" layoutY="484.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@imageres/Sprites/Islands/T_Islands_02.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="1177.0" layoutY="333.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@imageres/Sprites/Trees/Tree6.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="537.0" layoutY="333.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@imageres/Sprites/Trees/Tree7.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="Orc" fitHeight="95.0" fitWidth="97.0" layoutX="819.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@imageres/Sprites/Orcs/8%20%2350709.png" />
-               </image>
-            </ImageView>
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">

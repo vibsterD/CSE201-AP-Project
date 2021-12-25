@@ -34,9 +34,6 @@ public class MainGamePage {
     @FXML
     private AnchorPane tapSense;
 
-    @FXML
-    private ImageView Orc;
-
 
     @FXML
     private StackPane gamePane;
@@ -89,7 +86,7 @@ public class MainGamePage {
         timeline.setRate(250);
         timeline.play();
 
-        Timeline collisionMan = new Timeline(new KeyFrame(Duration.millis(1), event->{
+        Timeline collisionMan = new Timeline(new KeyFrame(Duration.millis(10), event->{
 //            hero.collide(orc2);
 //            hero.collide(island);
 //            orc2.collide(island);
@@ -101,10 +98,11 @@ public class MainGamePage {
                     in_scene.add(game_object);
                 }
             }
-
+            System.out.println("inscene: " + in_scene.size());
             for(int i = 0; i < in_scene.size(); i++) {
                 for(int j = i + 1; j < in_scene.size(); j++) {
                     in_scene.get(i).collide(in_scene.get(j));
+                    in_scene.get(j).collide(in_scene.get(i));
                 }
             }
 
