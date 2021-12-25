@@ -51,9 +51,9 @@ public class Game implements Serializable {
             int generate_chest = r1.nextInt(10);
             if(generate_chest == 0 || i == 1) {
                 // generate chest at this island
-                Chest temp = new CoinChest();
+//                Chest temp = new CoinChest();
                 System.out.println("THIS IS WORKING12");
-                chests.add(new WeaponChest());
+                chests.add(new CoinChest());
                 System.out.println("THIS IS WORKING");
                 chests.get(chests.size()-1).addToScene(game_screen, x, y, islands.get(i));
                 game_objects.add(chests.get(chests.size()-1));

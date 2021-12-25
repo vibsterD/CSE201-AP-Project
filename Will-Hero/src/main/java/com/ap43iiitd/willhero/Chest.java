@@ -24,12 +24,17 @@ public abstract class Chest extends GameObject implements Serializable {
 
     @Override
     public void collide(GameObject o1){
-        if(o1 instanceof Player) {
+        if(o1 instanceof Player && isEmpty == false) {
             Player player = (Player) o1;
             if(player.getImage_fx().getBoundsInParent().intersects(this.image_fx.getBoundsInParent())) {
                 // chest open
                 System.out.println("CHESTTTT");
                 image_fx.setImage(opened_chest);
+                if(this instanceof CoinChest) {
+                    image_fx.setLayoutY(image_fx.getLayoutY() + 15.0);
+                }
+                isEmpty = true;
+                reward(player);
             }
         }
     }
