@@ -4,11 +4,19 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class CoinChest extends Chest{
-    @Override
-    public void reward(Player player){
+
+    public CoinChest() {
+        System.out.println("WRDDDDDDDD");
         this.closed_chest = new Image("com/ap43iiitd/willhero/imageres/Sprites/Chests/ (5).png");
         this.opened_chest = new Image("com/ap43iiitd/willhero/imageres/Sprites/Chests/ (79).png");
-        this.chest = new ImageView(this.closed_chest);
+        System.out.println("ASDSADASDAS");
+        this.image_fx = new ImageView(this.closed_chest);
+        this.image_fx.setPreserveRatio(true);
+    }
+
+    @Override
+    public void reward(Player player){
+//        this.chest.setImage(this.opened_chest);
     }
 
 
