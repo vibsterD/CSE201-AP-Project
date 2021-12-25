@@ -59,8 +59,8 @@ public class MainGamePage {
 
 
         for(int i = 0; i < 50; i++) {
-            game_objects.add(new Island(1, new Position()));
-            ((Island)game_objects.get(i)).addToScene(GameScreenMove, 114 + i*300, 472 + r1.nextInt(100));
+            game_objects.add(new Island(1, new Position(0)));
+            ((Island)game_objects.get(i)).addToScene(GameScreenMove, 114 + i*300, 400 + r1.nextInt(100));
         }
 
         island = (Island) game_objects.get(0);
@@ -76,9 +76,10 @@ public class MainGamePage {
 //        island = new Island(1, new Position());
 //        island.addToScene(GameScreenMove);
 
-        timeline = new Timeline(new KeyFrame(Duration.seconds(1), ev -> {
-            orc2.getPosition().updatePosition(orc2.getImage_fx());
-            hero.getPosition().updatePosition(hero.getImage_fx());
+        timeline = new Timeline(new KeyFrame(Duration.seconds(2), ev -> {
+//            orc2.getPosition().updatePosition(orc2.getImage_fx());
+//            hero.getPosition().updatePosition(hero.getImage_fx());
+//            System.out.println("Sanity check");
 
         }));
 
@@ -86,7 +87,7 @@ public class MainGamePage {
         timeline.setRate(250);
         timeline.play();
 
-        Timeline collisionMan = new Timeline(new KeyFrame(Duration.millis(10), event->{
+        Timeline collisionMan = new Timeline(new KeyFrame(Duration.millis(5), event->{
 //            hero.collide(orc2);
 //            hero.collide(island);
 //            orc2.collide(island);
@@ -98,9 +99,11 @@ public class MainGamePage {
                     in_scene.add(game_object);
                 }
             }
-            System.out.println("inscene: " + in_scene.size());
+//            System.out.println("inscene: " + in_scene.size());
             for(int i = 0; i < in_scene.size(); i++) {
+                in_scene.get(i).getPosition().updatePosition(in_scene.get(i).getImage_fx());
                 for(int j = i + 1; j < in_scene.size(); j++) {
+
                     in_scene.get(i).collide(in_scene.get(j));
                     in_scene.get(j).collide(in_scene.get(i));
                 }
@@ -132,7 +135,10 @@ public class MainGamePage {
         translation2.setCycleCount(1);
         translation2.play();
 //        hero.getPosition().updatePosition(hero.getHero_fx());
-        translation2.setOnFinished(ev -> {hero.getPosition().setVelocity(0, hero.getPosition().getVel_y());});
+        translation2.setOnFinished(ev -> {
+            System.out.println("Vel-y during dash: "+ hero.getPosition().getVel_y());
+            hero.getPosition().setVelocity(1, hero.getPosition().getVel_y());
+        });
     }
 
     @FXML

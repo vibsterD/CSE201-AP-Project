@@ -9,8 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import java.io.Serializable;
 
 public class Player extends GameObject implements Serializable {
-    @FXML
-    private Position position;
+
     private int coins;
     private Helmet helmet;
     private Boolean respawned;
@@ -50,34 +49,108 @@ public class Player extends GameObject implements Serializable {
         pane.getChildren().add(image_fx);
     }
 
-    public Position getPosition() {
-        return position;
+//    public Position getPosition() {
+//        return position;
+//    }
+
+    public void jump() {
     }
 
-    public void jump() {}
-    private void attack() {}
-    public void dash() {}
-    public void updateCoins(int delta) {}
+    private void attack() {
+    }
+
+    public void dash() {
+    }
+
+    public void updateCoins(int delta) {
+    }
+
     public int getCoins() {
         return this.coins;
     }
-    public void updateWeapon(Weapon weapon) {}
-    private void upgradeWeapon() {}
-    public void eliminate() {}
+
+    public void updateWeapon(Weapon weapon) {
+    }
+
+    private void upgradeWeapon() {
+    }
+
+    public void eliminate() {
+    }
+
     public Boolean hasRespawned() {
         return true;
     }
+
     public Boolean getDashCollision() {
         return true;
     }
+
     public Boolean hasWon() {
         return this.has_won;
     }
+
     public Boolean eliminated() {
         return this.is_eliminated;
     }
+
     public void setHasWon() {
         this.has_won = true;
     }
 
+    @Override
+    public void collide(GameObject o1) {
+        // player collid logic
+        Player hero = (Player) this;
+        if (o1 instanceof Island) {
+            // island
+
+            Island island = (Island) o1;
+            if (hero.getImage_fx().getBoundsInParent().intersects(island.getImage_fx().getBoundsInParent())) {
+                double height = island.getImage_fx().getFitHeight() / 2;
+                if (hero.getPosition().getVel_y() > 0) {
+//                    hero.getHero_fx().setTranslateY(hero.getHero_fx().getTranslateY() + height);
+//                    if(hero.getHero_fx().getBoundsInParent().intersects(island.getIsland_fx().getBoundsInParent()))
+                    System.out.println("Collided with island");
+                    hero.getPosition().setVelocity(0, -10);
+                }
+            }
+
+        }
+
+
+        if (o1 instanceof Orc) {
+            // orc
+            Orc orc2 = (Orc) o1;
+
+            if (orc2.getImage_fx().getBoundsInParent().intersects(hero.getImage_fx().getBoundsInParent())) {
+//                System.out.println( "Orc : " + orc2.getOrc_fx().getBoundsInParent().getMaxY());
+//                System.out.println( "Hero: " + hero.getHero_fx().getBoundsInParent().getMinY());
+                double orc_max_y = orc2.getImage_fx().getBoundsInParent().getMaxY();
+                double hero_min_y = hero.getImage_fx().getBoundsInParent().getMinY();
+                double y_del = Math.abs(orc_max_y - hero_min_y);
+
+                // checking if up/down
+                if (y_del < 10.0) {
+                    // orc is above hero
+                    orc2.getPosition().setVelocity(0, 0);
+                    hero.getPosition().setVelocity(0, 0);
+                    System.out.println("FUCKING DEAD");
+                }
+
+                double orc_min_y = orc2.getImage_fx().getBoundsInParent().getMinY();
+                double hero_max_y = hero.getImage_fx().getBoundsInParent().getMaxY();
+                double y_del_down = Math.abs(orc_min_y - hero_max_y);
+
+                if (y_del_down < 10.0) {
+                    //                System.out.println( "Orc : " + orc2.getOrc_fx().getBoundsInParent().getMaxY());
+//                System.out.println( "Hero: " + hero.getHero_fx().getBoundsInParent().getMinY());
+                    System.out.println("HELLLO");
+                    hero.getPosition().setVelocity(0, -5);
+                }
+            }
+
+
+        }
+    }
 }

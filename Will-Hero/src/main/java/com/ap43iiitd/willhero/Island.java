@@ -10,7 +10,7 @@ import java.io.Serializable;
 public class Island extends GameObject implements Serializable {
     @FXML
 //    private ImageView image_fx;
-    private Position position;
+
     private int restitution;
 
 
@@ -36,4 +36,8 @@ public class Island extends GameObject implements Serializable {
         pane.getChildren().add(image_fx);
     }
 
+    @Override
+    public void collide(GameObject o1) {
+        return;
+    }
 }

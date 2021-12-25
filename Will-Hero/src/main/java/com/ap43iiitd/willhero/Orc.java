@@ -17,7 +17,7 @@ public class Orc extends GameObject implements Serializable {
     private final int size;
     private int hp;
     private String state = "sleep";
-    private Position position;
+
 
     public Orc(String color, int size, int hp, Position position){
         this.color = color;
@@ -51,9 +51,9 @@ public class Orc extends GameObject implements Serializable {
 
     }
 
-    public Position getPosition() {
-        return position;
-    }
+//    public Position getPosition() {
+//        return position;
+//    }
 
     public void addToScene(AnchorPane pane) {
         image_fx.setScaleX(0.7);
@@ -63,5 +63,22 @@ public class Orc extends GameObject implements Serializable {
         pane.getChildren().add(image_fx);
     }
 
+    @Override
+    public void collide(GameObject o1) {
+        Orc orc2 = (Orc) this;
+        if (o1 instanceof Island) {
+            Island island = (Island) o1;
+            if (orc2.getImage_fx().getBoundsInParent().intersects(island.getImage_fx().getBoundsInParent())) {
+                double height = island.getImage_fx().getFitHeight() / 2;
+                if (orc2.getPosition().getVel_y() > 0) {
+//                    hero.getHero_fx().setTranslateY(hero.getHero_fx().getTranslateY() + height);
+//                    if(hero.getHero_fx().getBoundsInParent().intersects(island.getIsland_fx().getBoundsInParent()))
+                    System.out.println("Collided with island");
+                    orc2.getPosition().setVelocity(0, -5);
+                }
 
+            }
+
+        }
+    }
 }
