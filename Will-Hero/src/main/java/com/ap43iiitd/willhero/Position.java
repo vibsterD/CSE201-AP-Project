@@ -10,14 +10,14 @@ import java.io.Serializable;
 public class Position implements Serializable {
     private double vel_x;
     private double vel_y;
-    private final double gravity = 30;
+    private final double gravity = 10;
     private Boolean dash_flag = false;
 
-    private final TranslateTransition splineTranslate = new TranslateTransition(Duration.millis(1000.0/30));
+    private final TranslateTransition splineTranslate = new TranslateTransition(Duration.millis(1000.0/250.0));
 
     public Position() {
         this.vel_x = 0;
-        this.vel_y = -10;
+        this.vel_y = 0;
     }
 
     public double getVel_x() {
@@ -30,12 +30,12 @@ public class Position implements Serializable {
 
     public void updatePosition(ImageView imageView) {
 
-        this.vel_y = vel_y + gravity/60;
+        this.vel_y = vel_y + gravity/1620;
         splineTranslate.setNode(imageView);
         splineTranslate.setInterpolator(Interpolator.LINEAR);
         splineTranslate.setByY(vel_y);
         splineTranslate.play();
-
+//        System.out.println(this.vel_y);
         if(!dash_flag) {
             // update X
         }
@@ -47,4 +47,6 @@ public class Position implements Serializable {
         this.vel_x = vel_x;
         this.vel_y = vel_y;
     }
+
+
 }

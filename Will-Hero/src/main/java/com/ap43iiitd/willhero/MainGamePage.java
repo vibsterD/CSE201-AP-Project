@@ -80,15 +80,53 @@ public class MainGamePage {
 //                    hero.getHero_fx().setTranslateY(hero.getHero_fx().getTranslateY() + height);
 //                    if(hero.getHero_fx().getBoundsInParent().intersects(island.getIsland_fx().getBoundsInParent()))
                     System.out.println("Collided with island");
-                    hero.getPosition().setVelocity(0, -hero.getPosition().getVel_y());
+                    hero.getPosition().setVelocity(0, -2);
                 }
 
             }
 
+            if(orc2.getOrc_fx().getBoundsInParent().intersects(hero.getHero_fx().getBoundsInParent())) {
+//                System.out.println( "Orc : " + orc2.getOrc_fx().getBoundsInParent().getMaxY());
+//                System.out.println( "Hero: " + hero.getHero_fx().getBoundsInParent().getMinY());
+                double orc_max_y = orc2.getOrc_fx().getBoundsInParent().getMaxY();
+                double hero_min_y = hero.getHero_fx().getBoundsInParent().getMinY();
+                double y_del = Math.abs(orc_max_y - hero_min_y);
+
+                // checking if up/down
+                if(y_del < 10.0) {
+                    // orc is above hero
+                    orc2.getPosition().setVelocity(0,0);
+                    hero.getPosition().setVelocity(0,0);
+                    System.out.println("FUCKING DEAD");
+                }
+
+                double orc_min_y = orc2.getOrc_fx().getBoundsInParent().getMinY();
+                double hero_max_y = hero.getHero_fx().getBoundsInParent().getMaxY();
+                double y_del_down = Math.abs(orc_min_y - hero_max_y);
+
+                if(y_del_down < 10.0) {
+                    //                System.out.println( "Orc : " + orc2.getOrc_fx().getBoundsInParent().getMaxY());
+//                System.out.println( "Hero: " + hero.getHero_fx().getBoundsInParent().getMinY());
+                    System.out.println("HELLLO");
+                    hero.getPosition().setVelocity(0, -2);
+                }
+
+            }
+
+            if(orc2.getOrc_fx().getBoundsInParent().intersects(island.getIsland_fx().getBoundsInParent())) {
+                double height = island.getIsland_fx().getFitHeight()/2;
+                if(orc2.getPosition().getVel_y() > 0) {
+//                    hero.getHero_fx().setTranslateY(hero.getHero_fx().getTranslateY() + height);
+//                    if(hero.getHero_fx().getBoundsInParent().intersects(island.getIsland_fx().getBoundsInParent()))
+                    System.out.println("Collided with island");
+                    orc2.getPosition().setVelocity(0, -2);
+                }
+
+            }
         }));
 
         timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.setRate(30);
+        timeline.setRate(250);
         timeline.play();
     }
 

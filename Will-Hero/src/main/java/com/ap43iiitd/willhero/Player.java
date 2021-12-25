@@ -47,7 +47,7 @@ public class Player extends GameObject implements Serializable {
         hero_fx.setScaleX(0.5);
         hero_fx.setScaleY(0.5);
         hero_fx.setLayoutX(174);
-        hero_fx.setLayoutY(300);
+        hero_fx.setLayoutY(100);
         pane.getChildren().add(hero_fx);
     }
 
