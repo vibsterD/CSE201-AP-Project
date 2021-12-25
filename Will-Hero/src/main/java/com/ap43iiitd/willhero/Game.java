@@ -24,6 +24,7 @@ public class Game implements Serializable {
 
 
     public void initialize_game() {
+
         hero = new Player();
         hero.addToScene(game_screen);
         initialize_islands();
