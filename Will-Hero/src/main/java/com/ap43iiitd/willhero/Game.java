@@ -1,5 +1,7 @@
 package com.ap43iiitd.willhero;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.Serializable;
@@ -29,6 +31,7 @@ public class Game implements Serializable {
         hero.addToScene(game_screen);
         initialize_islands();
         initialize_orcs();
+        initialize_clouds();
         game_objects.add(hero);
     }
 
@@ -57,6 +60,37 @@ public class Game implements Serializable {
             }
         }
 
+    }
+
+    public void initialize_clouds() {
+        for(int i = 0; i < 50; i++) {
+            int no_of_cloud = r1.nextInt(2);
+            for(int j = 0; j < 2; j++) {
+                if(no_of_cloud == 0 && j == 1) {
+                    continue;
+                }
+                ImageView image_fx = add_cloud();
+                image_fx.setPreserveRatio(true);
+                image_fx.setFitWidth(200 + r1.nextInt(150));
+                image_fx.setLayoutX(220 + i*700 + r1.nextInt(100));
+                image_fx.setViewOrder(20000);
+                if(j == 0) {
+                    image_fx.setLayoutY(100 + r1.nextInt(50));
+                }else {
+                    image_fx.setLayoutY(400 + r1.nextInt(50));
+                }
+                game_screen.getChildren().add(image_fx);
+            }
+        }
+    }
+
+    private ImageView add_cloud() {
+        System.out.println("CREATING Cloud");
+        
+        int orc_num = 1 + r1.nextInt(8);
+        Image image = new Image("com/ap43iiitd/willhero/imageres/Sprites/Clouds/C (".concat(String.valueOf(orc_num)).concat(").png"));
+        ImageView image_fx = new ImageView(image);
+        return image_fx;
     }
 
     public void update() {

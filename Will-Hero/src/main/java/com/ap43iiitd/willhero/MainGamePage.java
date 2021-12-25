@@ -121,7 +121,7 @@ public class MainGamePage {
     @FXML
     protected void pauseButtonAction() {
         paused = true;
-        timeline.pause();
+//        timeline.pause();
         FadeTransition fTrans = new FadeTransition(Duration.millis(300), pauseScreenFilter);
         fTrans.setToValue(1);
         fTrans.play();
