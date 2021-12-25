@@ -81,7 +81,7 @@ public class EnterMenuOverlay {
         private void sceneSwitcher(String fxmlName){
                 Stage runningInstance = (Stage) newGame.getScene().getWindow();
                 System.out.println(runningInstance);
-                FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(fxmlName));
+                FXMLLoader fxmlLoader = new FXMLLoader(WillHero.class.getResource(fxmlName));
                 try {
                         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
                         runningInstance.setScene(scene);

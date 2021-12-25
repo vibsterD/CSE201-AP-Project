@@ -9,12 +9,12 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class WillHero extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("EnterMenuOverlay.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(WillHero.class.getResource("EnterMenuOverlay.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
-        stage.setTitle("TestRun!");
+        stage.setTitle("WillHerooooo!");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();

@@ -129,7 +129,7 @@ public class MainGamePage {
 
         //TODO: Implement menu methods in PauseMenuOverlay Class
 
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("PauseMenuOverlay.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(WillHero.class.getResource("PauseMenuOverlay.fxml"));
         try {
             fxmlLoader.load();
             PauseMenuOverlay pmo= fxmlLoader.getController();
