@@ -21,7 +21,7 @@ public class WillHero extends Application {
         Boolean newGame = false;
         if(false){
             MainGamePage mpg = fxmlLoader.getController();
-            Timeline tl = mpg.timeline;
+            Timeline tl = mpg.collisionMan;
             ImageView pauseSense = mpg.pauseButton;
             pauseSense.setOnMouseClicked(e->{
                 System.out.println("DON'T TOUCH THAT");
