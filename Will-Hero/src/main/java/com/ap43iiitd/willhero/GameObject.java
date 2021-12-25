@@ -8,6 +8,7 @@ public abstract class GameObject implements Serializable {
     private Position position;
 
     public void collide(GameObject o1) {
+        System.out.println(this.getClass());
         if (this instanceof Player) {
             // player collid logic
             Player hero = (Player) this;
@@ -63,6 +64,7 @@ public abstract class GameObject implements Serializable {
         }
         else if (this instanceof Orc) {
             // orc collide logic
+            System.out.println("ORRRRCCCC");
             Orc orc2 = (Orc) this;
             if (o1 instanceof Island) {
                 Island island = (Island) o1;

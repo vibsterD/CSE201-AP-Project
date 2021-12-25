@@ -60,10 +60,6 @@ public class Orc extends GameObject implements Serializable {
         return position;
     }
 
-    @Override
-    public void collide(GameObject o1){
-
-    }
 
     public void update(){
         orc_fx.setTranslateX(orc_fx.getTranslateX()+2);
