@@ -6,20 +6,19 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.Serializable;
+import java.util.Random;
 
 public class Island extends GameObject implements Serializable {
-    @FXML
-//    private ImageView image_fx;
+
+    final static Random r1 = new Random(786);
 
     private int restitution;
-
-
-
 
     public Island(int restitution, Position pos) {
         this.position = pos;
         this.restitution = restitution;
-        Image image = new Image("com/ap43iiitd/willhero/imageres/Sprites/Islands/T_Islands_01.png");
+        int island_get = 1+r1.nextInt(11);
+        Image image = new Image("com/ap43iiitd/willhero/imageres/Sprites/Islands/".concat(String.valueOf(island_get)).concat(".png"));
         this.image_fx = new ImageView(image);
     }
 
