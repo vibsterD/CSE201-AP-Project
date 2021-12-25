@@ -22,7 +22,6 @@ public class MainGamePage {
     @FXML
     protected ImageView pauseButton;
 
-    protected Timeline timeline;
     protected Boolean paused = false;
 
     @FXML
@@ -42,8 +41,8 @@ public class MainGamePage {
     private Label score;
 
     private Player hero;
-    private Island island;
-    private Orc orc2;
+
+    Timeline collisionMan;
 
     Game game;
 
@@ -52,7 +51,6 @@ public class MainGamePage {
     Boolean dash_translation = false;
 
     private ArrayList<GameObject> game_objects;
-//    private ArrayList<Island> islands;
 
     public void initialize() {
         game = new Game(game_screen);
@@ -61,7 +59,7 @@ public class MainGamePage {
 
 
 
-        Timeline collisionMan = new Timeline(new KeyFrame(Duration.millis(5), event->{
+        collisionMan = new Timeline(new KeyFrame(Duration.millis(5), event->{
 
             ArrayList <GameObject> in_scene = new ArrayList<GameObject>();
             double x_pos = hero.getImage_fx().getTranslateX();
@@ -121,7 +119,7 @@ public class MainGamePage {
     @FXML
     protected void pauseButtonAction() {
         paused = true;
-//        timeline.pause();
+        collisionMan.pause();
         FadeTransition fTrans = new FadeTransition(Duration.millis(300), pauseScreenFilter);
         fTrans.setToValue(1);
         fTrans.play();
@@ -129,7 +127,7 @@ public class MainGamePage {
 
         //TODO: Implement menu methods in PauseMenuOverlay Class
 
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("PauseMenuOverlay.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(WillHero.class.getResource("PauseMenuOverlay.fxml"));
         try {
             fxmlLoader.load();
             PauseMenuOverlay pmo= fxmlLoader.getController();
@@ -139,7 +137,7 @@ public class MainGamePage {
                 System.out.println("TAKING ACTION");
                 pmo.resumeGame();
                 System.out.println("OPACITY 0");
-                timeline.play();
+                collisionMan.play();
                 pauseScreenFilter.setOpacity(0);
                 pauseButton.setDisable(false);
                 paused=false;

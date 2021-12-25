@@ -23,17 +23,17 @@
                <children>
                   <ImageView fitHeight="177.0" fitWidth="320.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@imageres/Sprites/Clouds/WH_Cloud_01.png" />
+                        <Image url="@imageres/Sprites/Clouds/C%20(1).png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="849.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@imageres/Sprites/Clouds/WH_Cloud_04.png" />
+                        <Image url="@imageres/Sprites/Clouds/C%20(5).png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="676.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@imageres/Sprites/Clouds/WH_Cloud_02.png" />
+                        <Image url="@imageres/Sprites/Clouds/C%20(3).png" />
                      </image>
                   </ImageView>
                </children>

@@ -111,7 +111,7 @@ public class Player extends GameObject implements Serializable {
                 if (hero.getPosition().getVel_y() > 0) {
 //                    hero.getHero_fx().setTranslateY(hero.getHero_fx().getTranslateY() + height);
 //                    if(hero.getHero_fx().getBoundsInParent().intersects(island.getIsland_fx().getBoundsInParent()))
-                    System.out.println("Collided with island");
+//                    System.out.println("Collided with island");
                     hero.getPosition().setVelocity(0, -10);
                 }
             }
@@ -167,9 +167,9 @@ public class Player extends GameObject implements Serializable {
                 double orc_min_x = orc2.getImage_fx().getBoundsInParent().getMinX();
                 double hero_max_x = hero.getImage_fx().getBoundsInParent().getMaxX();
                 double x_del_right = Math.abs(orc_min_x - hero_max_x);
-                System.out.println("XDEL: " + x_del_right);
+//                System.out.println("XDEL: " + x_del_right);
                 if(x_del_right < 50.0) {
-                    System.out.println("COLLIDING ORC");
+//                    System.out.println("COLLIDING ORC");
                     orc2.getPosition().setVelocity(30, -1);
                     this.dash_collision = true;
                 }

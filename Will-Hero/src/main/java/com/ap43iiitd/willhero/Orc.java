@@ -16,7 +16,7 @@ public abstract class Orc extends GameObject implements Serializable {
         this.size = size;
         this.hp = hp;
         this.position = position;
-        System.out.println("CREATING ORC");
+//        System.out.println("CREATING ORC");
         Image image = new Image("com/ap43iiitd/willhero/imageres/Sprites/Orcs/O (".concat(String.valueOf(res_num)).concat(").png"));
         this.image_fx = new ImageView(image);
     }
@@ -58,7 +58,7 @@ public abstract class Orc extends GameObject implements Serializable {
             if (orc2.getImage_fx().getBoundsInParent().intersects(island.getImage_fx().getBoundsInParent())) {
                 double height = island.getImage_fx().getFitHeight() / 2;
                 if (orc2.getPosition().getVel_y() > 0) {
-                    System.out.println("Collided with island");
+//                    System.out.println("Collided with island");
                     orc2.getPosition().setVelocity(0, -5);
                 }
 
@@ -85,7 +85,7 @@ public abstract class Orc extends GameObject implements Serializable {
                 double x_del_right = Math.abs(orc_min_x - orc1_max_x);
 
                 if (x_del_right < 50.0) {
-                    System.out.println("COLLIDING ORC ORC");
+//                    System.out.println("COLLIDING ORC ORC");
                     orc2.getPosition().setVelocity(50, -1);
 
                 }

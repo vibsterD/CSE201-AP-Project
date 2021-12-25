@@ -1,8 +1,10 @@
 package com.ap43iiitd.willhero;
 
+import javafx.animation.TranslateTransition;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -35,7 +37,7 @@ public class Game implements Serializable {
         game_objects.add(hero);
     }
 
-    public void initialize_islands() {
+    private void initialize_islands() {
         for(int i = 0; i < 50; i++) {
             islands.add(new Island(new Position(0)));
             islands.get(i).addToScene(game_screen, 114 + i*300, 400 + r1.nextInt(100));
@@ -43,9 +45,9 @@ public class Game implements Serializable {
         }
     }
 
-    public void initialize_orcs() {
+    private void initialize_orcs() {
         int red_or_green;
-        for(int i = 0; i < 70; i++) {
+        for(int i = 0; i < 50; i++) {
             red_or_green = r1.nextInt(2);
             if(red_or_green == 0) {
                 // red
@@ -62,7 +64,7 @@ public class Game implements Serializable {
 
     }
 
-    public void initialize_clouds() {
+    private void initialize_clouds() {
         for(int i = 0; i < 50; i++) {
             int no_of_cloud = r1.nextInt(2);
             for(int j = 0; j < 2; j++) {
@@ -80,6 +82,11 @@ public class Game implements Serializable {
                     image_fx.setLayoutY(400 + r1.nextInt(50));
                 }
                 game_screen.getChildren().add(image_fx);
+                TranslateTransition cloud_mover = new TranslateTransition(Duration.seconds(300), image_fx);
+                cloud_mover.setByX(-20000);
+                cloud_mover.setCycleCount(1);
+                cloud_mover.play();
+
             }
         }
     }
@@ -89,8 +96,7 @@ public class Game implements Serializable {
         
         int orc_num = 1 + r1.nextInt(8);
         Image image = new Image("com/ap43iiitd/willhero/imageres/Sprites/Clouds/C (".concat(String.valueOf(orc_num)).concat(").png"));
-        ImageView image_fx = new ImageView(image);
-        return image_fx;
+        return new ImageView(image);
     }
 
     public void update() {
