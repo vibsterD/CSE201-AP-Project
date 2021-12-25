@@ -62,7 +62,7 @@ public class Orc extends GameObject implements Serializable {
         image_fx.setPreserveRatio(true);
 //        image_fx.setScaleX(0.5);
 //        image_fx.setScaleY(0.5);
-        image_fx.setFitWidth(70);
+        image_fx.setFitWidth(60);
         image_fx.setLayoutX(x);
         image_fx.setLayoutY(y);
         pane.getChildren().add(image_fx);
