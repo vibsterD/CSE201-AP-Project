@@ -66,7 +66,7 @@ public class MainGamePage {
             ArrayList <GameObject> in_scene = new ArrayList<GameObject>();
             double x_pos = hero.getImage_fx().getTranslateX();
             for (GameObject game_object : game_objects) {
-                if (Math.abs(game_object.getImage_fx().getBoundsInParent().getCenterX() - x_pos) < 2000) {
+                if (Math.abs(game_object.getImage_fx().getBoundsInParent().getCenterX() - x_pos) < 1500) {
                     // in scene
                     in_scene.add(game_object);
                 }
