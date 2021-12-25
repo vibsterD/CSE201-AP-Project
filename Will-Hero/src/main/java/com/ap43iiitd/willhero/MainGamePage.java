@@ -86,6 +86,7 @@ public class MainGamePage {
 
     @FXML
     protected void onHelloButtonClick() {
+        //TODO: When collide with treasure chest and got weapon, add opacity
         //also spawn a new island with an orc maybe
         if (paused || dash_translation) return;
 
