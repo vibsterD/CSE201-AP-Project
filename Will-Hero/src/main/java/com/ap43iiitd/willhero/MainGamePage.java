@@ -54,30 +54,27 @@ public class MainGamePage {
     Boolean counter_active = false;
     Boolean dash_flag = false;
 
-    private ArrayList<Island> islands;
+    private ArrayList<GameObject> game_objects;
+//    private ArrayList<Island> islands;
 
     public void initialize() {
-        islands = new ArrayList<Island>();
+        game_objects = new ArrayList<GameObject>();
+
 
         for(int i = 0; i < 50; i++) {
-            islands.add(new Island(1, new Position()));
-            islands.get(i).addToScene(GameScreenMove, 114 + i*300, 472 + r1.nextInt(100));
+            game_objects.add(new Island(1, new Position()));
+            ((Island)game_objects.get(i)).addToScene(GameScreenMove, 114 + i*300, 472 + r1.nextInt(100));
         }
 
-        island = islands.get(0);
-
-        //have a static array of initialized objects
-        //read from that array and if orc or hero, animate jump
-        //create translateTransition without node and duration
-        //nodes can be iterated, duration specified
-        //getCurrent Y, jump delta of 10?
-        //getCurrent Y, jump with delta (720-current) and if collide with land, destroy animation
-        //specify interpolator curve with a quadratic equation.
+        island = (Island) game_objects.get(0);
 
         orc2 = new GreenOrc(new Position());
         orc2.addToScene(GameScreenMove);
         hero = new Player();
         hero.addToScene(GameScreenMove);
+
+        game_objects.add(hero);
+        game_objects.add(orc2);
 
 //        island = new Island(1, new Position());
 //        island.addToScene(GameScreenMove);
@@ -86,55 +83,6 @@ public class MainGamePage {
             orc2.getPosition().updatePosition(orc2.getOrc_fx());
             hero.getPosition().updatePosition(hero.getHero_fx());
 
-//            if(hero.getHero_fx().getBoundsInParent().intersects(island.getIsland_fx().getBoundsInParent())) {
-//                double height = island.getIsland_fx().getFitHeight()/2;
-//                if(hero.getPosition().getVel_y() > 0) {
-////                    hero.getHero_fx().setTranslateY(hero.getHero_fx().getTranslateY() + height);
-////                    if(hero.getHero_fx().getBoundsInParent().intersects(island.getIsland_fx().getBoundsInParent()))
-//                    System.out.println("Collided with island");
-//                    hero.getPosition().setVelocity(0, -2);
-//                }
-//
-//            }
-//
-//            if(orc2.getOrc_fx().getBoundsInParent().intersects(hero.getHero_fx().getBoundsInParent())) {
-////                System.out.println( "Orc : " + orc2.getOrc_fx().getBoundsInParent().getMaxY());
-////                System.out.println( "Hero: " + hero.getHero_fx().getBoundsInParent().getMinY());
-//                double orc_max_y = orc2.getOrc_fx().getBoundsInParent().getMaxY();
-//                double hero_min_y = hero.getHero_fx().getBoundsInParent().getMinY();
-//                double y_del = Math.abs(orc_max_y - hero_min_y);
-//
-//                // checking if up/down
-//                if(y_del < 10.0) {
-//                    // orc is above hero
-//                    orc2.getPosition().setVelocity(0,0);
-//                    hero.getPosition().setVelocity(0,0);
-//                    System.out.println("FUCKING DEAD");
-//                }
-//
-//                double orc_min_y = orc2.getOrc_fx().getBoundsInParent().getMinY();
-//                double hero_max_y = hero.getHero_fx().getBoundsInParent().getMaxY();
-//                double y_del_down = Math.abs(orc_min_y - hero_max_y);
-//
-//                if(y_del_down < 10.0) {
-//                    //                System.out.println( "Orc : " + orc2.getOrc_fx().getBoundsInParent().getMaxY());
-////                System.out.println( "Hero: " + hero.getHero_fx().getBoundsInParent().getMinY());
-//                    System.out.println("HELLLO");
-//                    hero.getPosition().setVelocity(0, -2);
-//                }
-//
-//            }
-
-//            if(orc2.getOrc_fx().getBoundsInParent().intersects(island.getIsland_fx().getBoundsInParent())) {
-//                double height = island.getIsland_fx().getFitHeight()/2;
-//                if(orc2.getPosition().getVel_y() > 0) {
-////                    hero.getHero_fx().setTranslateY(hero.getHero_fx().getTranslateY() + height);
-////                    if(hero.getHero_fx().getBoundsInParent().intersects(island.getIsland_fx().getBoundsInParent()))
-//                    System.out.println("Collided with island");
-//                    orc2.getPosition().setVelocity(0, -2);
-//                }
-//
-//            }
         }));
 
         timeline.setCycleCount(Timeline.INDEFINITE);
@@ -142,9 +90,24 @@ public class MainGamePage {
         timeline.play();
 
         Timeline collisionMan = new Timeline(new KeyFrame(Duration.millis(1), event->{
-            hero.collide(orc2);
-            hero.collide(island);
-            orc2.collide(island);
+//            hero.collide(orc2);
+//            hero.collide(island);
+//            orc2.collide(island);
+            ArrayList <GameObject> in_scene = new ArrayList<GameObject>();
+            double x_pos = hero.getHero_fx().getTranslateX();
+            for(int i = 0; i < game_objects.size(); i++) {
+                if(Math.abs(game_objects.get(i).getImage_fx().getBoundsInParent().getCenterX() - x_pos) < 1280) {
+                    // in scene
+                    in_scene.add(game_objects.get(i));
+                }
+            }
+
+            for(int i = 0; i < in_scene.size(); i++) {
+                for(int j = i + 1; j < in_scene.size(); j++) {
+                    in_scene.get(i).collide(in_scene.get(j));
+                }
+            }
+
         }));
         collisionMan.setCycleCount(Timeline.INDEFINITE);
         collisionMan.play();

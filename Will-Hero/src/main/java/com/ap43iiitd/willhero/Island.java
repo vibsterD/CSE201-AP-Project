@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 public class Island extends GameObject implements Serializable {
     @FXML
-    private ImageView island_fx;
+//    private ImageView image_fx;
     private Position position;
     private int restitution;
 
@@ -19,25 +19,21 @@ public class Island extends GameObject implements Serializable {
     public Island(int restitution, Position pos) {
         this.position = pos;
         this.restitution = restitution;
-
         Image image = new Image("com/ap43iiitd/willhero/imageres/Sprites/Islands/T_Islands_01.png");
-        this.island_fx = new ImageView(image);
+        this.image_fx = new ImageView(image);
     }
 
 
-    public ImageView getIsland_fx() {
-        return island_fx;
-    }
 
     public void addToScene(AnchorPane pane, int x, int y) {
 //        island_fx.setScaleX(0.2);
 //        island_fx.setScaleY(0.2);
-        island_fx.setPreserveRatio(true);
-        island_fx.setLayoutX(x);
-        island_fx.setLayoutY(y);
-        island_fx.setFitWidth(200);
+        image_fx.setPreserveRatio(true);
+        image_fx.setLayoutX(x);
+        image_fx.setLayoutY(y);
+        image_fx.setFitWidth(200);
 //        island_fx.setFitHeight(150);
-        pane.getChildren().add(island_fx);
+        pane.getChildren().add(image_fx);
     }
 
 }

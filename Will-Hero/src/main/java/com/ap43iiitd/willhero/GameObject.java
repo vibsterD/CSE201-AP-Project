@@ -1,9 +1,12 @@
 package com.ap43iiitd.willhero;
 
+import javafx.scene.image.ImageView;
+
 import java.io.Serializable;
 
 public abstract class GameObject implements Serializable {
     private double gravity;
+    protected ImageView image_fx;
     private int restitution;
     private Position position;
 
@@ -16,8 +19,8 @@ public abstract class GameObject implements Serializable {
                 // island
 
                 Island island = (Island) o1;
-                if (hero.getHero_fx().getBoundsInParent().intersects(island.getIsland_fx().getBoundsInParent())) {
-                    double height = island.getIsland_fx().getFitHeight() / 2;
+                if (hero.getHero_fx().getBoundsInParent().intersects(island.getImage_fx().getBoundsInParent())) {
+                    double height = island.getImage_fx().getFitHeight() / 2;
                     if (hero.getPosition().getVel_y() > 0) {
 //                    hero.getHero_fx().setTranslateY(hero.getHero_fx().getTranslateY() + height);
 //                    if(hero.getHero_fx().getBoundsInParent().intersects(island.getIsland_fx().getBoundsInParent()))
@@ -68,8 +71,8 @@ public abstract class GameObject implements Serializable {
             Orc orc2 = (Orc) this;
             if (o1 instanceof Island) {
                 Island island = (Island) o1;
-                if (orc2.getOrc_fx().getBoundsInParent().intersects(island.getIsland_fx().getBoundsInParent())) {
-                    double height = island.getIsland_fx().getFitHeight() / 2;
+                if (orc2.getOrc_fx().getBoundsInParent().intersects(island.getImage_fx().getBoundsInParent())) {
+                    double height = island.getImage_fx().getFitHeight() / 2;
                     if (orc2.getPosition().getVel_y() > 0) {
 //                    hero.getHero_fx().setTranslateY(hero.getHero_fx().getTranslateY() + height);
 //                    if(hero.getHero_fx().getBoundsInParent().intersects(island.getIsland_fx().getBoundsInParent()))
@@ -86,6 +89,10 @@ public abstract class GameObject implements Serializable {
             System.out.println(this.getClass());
         }
 
+    }
+
+    public ImageView getImage_fx() {
+        return image_fx;
     }
 }
 
