@@ -10,8 +10,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
 import java.io.Serializable;
+import java.util.Random;
 
 public class Orc extends GameObject implements Serializable {
+    final static Random r1 = new Random(786);
     @FXML
     private final String color;
     private final int size;
@@ -26,6 +28,7 @@ public class Orc extends GameObject implements Serializable {
         this.position = position;
         // ../../../../resources/com/ap43iiitd/willhero/imageres/
 //        System.out.println("UPPPWER as asd asd asd ");
+        
         Image image = new Image("com/ap43iiitd/willhero/imageres/Sprites/Orcs/6.png");
 //        System.out.println("asdnalsndlasndlksanld");
         this.image_fx = new ImageView(image);
