@@ -43,23 +43,25 @@
       </AnchorPane>
       <AnchorPane fx:id="tapSense" onMouseClicked="#onHelloButtonClick">
          <children>
-            <ImageView fx:id="pauseButton" fitHeight="75.0" fitWidth="60.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#pauseButtonAction" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="pauseButton" fitHeight="74.0" fitWidth="74.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#pauseButtonAction" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@imageres/res/drawable-xhdpi-v4/tt_new_pause_video_press.png" />
                </image>
             </ImageView>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b2b2b2" height="89.0" layoutX="74.0" layoutY="531.0" opacity="0.58" stroke="BLACK" strokeType="INSIDE" width="89.0" />
+            <Rectangle fx:id="sword" arcHeight="5.0" arcWidth="5.0" fill="#b2b2b2" height="89.0" layoutX="74.0" layoutY="531.0" opacity="0.58" stroke="BLACK" strokeType="INSIDE" width="89.0" />
             <ImageView fitHeight="89.0" fitWidth="89.0" layoutX="111.0" layoutY="531.0" pickOnBounds="true" preserveRatio="true" rotate="45.0">
                <image>
                   <Image url="@imageres/Sprites/Weapons/SmallSword.png" />
                </image>
             </ImageView>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b2b2b2" height="89.0" layoutX="178.0" layoutY="531.0" opacity="0.58" stroke="BLACK" strokeType="INSIDE" width="89.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b2b2b2" height="89.0" layoutX="74.0" layoutY="531.0" onMouseClicked="#onSwordClick" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="89.0" />
+            <Rectangle fx:id="shuriken" arcHeight="5.0" arcWidth="5.0" fill="#b2b2b2" height="89.0" layoutX="178.0" layoutY="531.0" opacity="0.58" stroke="BLACK" strokeType="INSIDE" width="89.0" />
             <ImageView fitHeight="89.0" fitWidth="89.0" layoutX="178.0" layoutY="531.0" pickOnBounds="true" preserveRatio="true" rotate="45.0">
                <image>
                   <Image url="@imageres/Sprites/Weapons/Shuriken/Shuriken.png" />
                </image>
             </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b2b2b2" height="89.0" layoutX="178.0" layoutY="531.0" onMouseClicked="#onShurikenClick" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="89.0" />
          </children>
       </AnchorPane>
    </children>

@@ -23,6 +23,8 @@ public class Player extends GameObject implements Serializable {
 //    Boolean dash_flag;
 
     public Player() {
+        this.helmet = new Iron();
+        System.out.println("Creating player");
         this.respawned = false;
         this.is_eliminated = false;
         this.has_won = false;
@@ -49,7 +51,11 @@ public class Player extends GameObject implements Serializable {
         pane.getChildren().add(image_fx);
     }
 
-//    public Position getPosition() {
+    public Helmet getHelmet() {
+        return helmet;
+    }
+
+    //    public Position getPosition() {
 //        return position;
 //    }
 

@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
@@ -39,6 +40,12 @@ public class MainGamePage {
 
     @FXML
     private Label score;
+
+    @FXML
+    private Rectangle sword;
+
+    @FXML
+    private Rectangle shuriken;
 
     private Player hero;
 
@@ -74,9 +81,21 @@ public class MainGamePage {
                 in_scene.get(i).getPosition().updatePosition(in_scene.get(i).getImage_fx());
                 for(int j = i + 1; j < in_scene.size(); j++) {
 
-                    in_scene.get(i).collide(in_scene.get(j));
+//                    in_scene.get(i).collide(in_scene.get(j));
                     in_scene.get(j).collide(in_scene.get(i));
                 }
+            }
+
+            int ungray_weapons = hero.getHelmet().hasWeapon();
+            if(ungray_weapons==1){
+                sword.setFill(Color.valueOf("d2ff26"));
+            }
+            else if (ungray_weapons==2){
+                shuriken.setFill(Color.valueOf("d2ff26"));
+            }
+            else if (ungray_weapons==3){
+                sword.setFill(Color.valueOf("d2ff26"));
+                shuriken.setFill(Color.valueOf("d2ff26"));
             }
 
         }));
@@ -152,6 +171,15 @@ public class MainGamePage {
         }
     }
 
+    @FXML
+    protected void onSwordClick(){
+        System.out.println("Clicked sword");
+    }
+
+    @FXML
+    protected void onShurikenClick(){
+        System.out.println("Shuricken clicked");
+    }
 
 
 }
