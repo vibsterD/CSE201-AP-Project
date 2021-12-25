@@ -43,7 +43,7 @@ public class Position implements Serializable {
 //        splineTranslate.play();
 //        System.out.println(this.vel_y);
         if(this.vel_x > 0) {
-            System.out.println("VELX: " + this.vel_x);
+//            System.out.println("VELX: " + this.vel_x);
             x_drag = 0.3;
         }else {
             x_drag = 0;

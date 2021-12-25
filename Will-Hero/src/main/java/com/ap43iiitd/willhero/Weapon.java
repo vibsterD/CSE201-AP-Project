@@ -1,9 +1,9 @@
 package com.ap43iiitd.willhero;
 
 public abstract class Weapon extends GameObject{
-    private int level;
-    private int hp_damage;
-    private int hit_radius;
+    int level;
+    int hp_damage;
+    int hit_radius;
 
     public abstract void attack();
 
