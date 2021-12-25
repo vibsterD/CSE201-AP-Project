@@ -3,14 +3,11 @@ package com.ap43iiitd.willhero;
 import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.util.ArrayList;
@@ -39,7 +36,7 @@ public class MainGamePage {
     private StackPane gamePane;
 
     @FXML
-    private AnchorPane GameScreenMove;
+    private AnchorPane game_screen;
 
     @FXML
     private Label score;
@@ -47,6 +44,8 @@ public class MainGamePage {
     private Player hero;
     private Island island;
     private Orc orc2;
+
+    Game game;
 
     Boolean counter_active = false;
     Boolean dash_flag = false;
@@ -56,42 +55,14 @@ public class MainGamePage {
 //    private ArrayList<Island> islands;
 
     public void initialize() {
-        game_objects = new ArrayList<GameObject>();
+        game = new Game(game_screen);
+        game_objects = game.getGame_objects();
+        hero = game.getHero();
 
 
-        for(int i = 0; i < 50; i++) {
-            game_objects.add(new Island(1, new Position(0)));
-            ((Island)game_objects.get(i)).addToScene(GameScreenMove, 114 + i*300, 400 + r1.nextInt(100));
-        }
-
-        island = (Island) game_objects.get(0);
-
-        orc2 = new GreenOrc(new Position());
-        orc2.addToScene(GameScreenMove);
-        hero = new Player();
-        hero.addToScene(GameScreenMove);
-
-        game_objects.add(hero);
-        game_objects.add(orc2);
-
-//        island = new Island(1, new Position());
-//        island.addToScene(GameScreenMove);
-
-        timeline = new Timeline(new KeyFrame(Duration.seconds(2), ev -> {
-//            orc2.getPosition().updatePosition(orc2.getImage_fx());
-//            hero.getPosition().updatePosition(hero.getImage_fx());
-//            System.out.println("Sanity check");
-
-        }));
-
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.setRate(250);
-        timeline.play();
 
         Timeline collisionMan = new Timeline(new KeyFrame(Duration.millis(5), event->{
-//            hero.collide(orc2);
-//            hero.collide(island);
-//            orc2.collide(island);
+
             ArrayList <GameObject> in_scene = new ArrayList<GameObject>();
             double x_pos = hero.getImage_fx().getTranslateX();
             for (GameObject game_object : game_objects) {
@@ -123,7 +94,7 @@ public class MainGamePage {
         dash_translation = true;
         tapToPlay.setText("For the next deadline!");
         score.setText(String.valueOf(Integer.parseInt(score.getText()) + 1));
-        TranslateTransition translation = new TranslateTransition(Duration.millis(150), GameScreenMove);
+        TranslateTransition translation = new TranslateTransition(Duration.millis(150), game_screen);
         ///// DO NOT MOVE BY GAME SCREEN, MOVE EACH OBJECT
         translation.interpolatorProperty().set(Interpolator.SPLINE(.1, .1, .7, .7));
         translation.setByX(-150);
