@@ -47,6 +47,7 @@ public class MainGamePage {
     private Label score;
 
     private Player hero;
+    private Island island;
 
     Boolean counter_active = false;
     Boolean dash_flag = false;
@@ -66,9 +67,24 @@ public class MainGamePage {
         hero = new Player();
         hero.addToScene(GameScreenMove);
 
+        island = new Island(1, new Position());
+        island.addToScene(GameScreenMove);
+
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), ev -> {
             orc2.getPosition().updatePosition(orc2.getOrc_fx());
             hero.getPosition().updatePosition(hero.getHero_fx());
+
+            if(hero.getHero_fx().getBoundsInParent().intersects(island.getIsland_fx().getBoundsInParent())) {
+                double height = island.getIsland_fx().getFitHeight()/2;
+                if(hero.getPosition().getVel_y() > 0) {
+//                    hero.getHero_fx().setTranslateY(hero.getHero_fx().getTranslateY() + height);
+//                    if(hero.getHero_fx().getBoundsInParent().intersects(island.getIsland_fx().getBoundsInParent()))
+                    System.out.println("Collided with island");
+                    hero.getPosition().setVelocity(0, -hero.getPosition().getVel_y());
+                }
+
+            }
+
         }));
 
         timeline.setCycleCount(Timeline.INDEFINITE);
@@ -96,6 +112,7 @@ public class MainGamePage {
         translation.play();
         translation2.setCycleCount(1);
         translation2.play();
+//        hero.getPosition().updatePosition(hero.getHero_fx());
         translation2.setOnFinished(ev -> {hero.getPosition().setVelocity(0, hero.getPosition().getVel_y());});
     }
 

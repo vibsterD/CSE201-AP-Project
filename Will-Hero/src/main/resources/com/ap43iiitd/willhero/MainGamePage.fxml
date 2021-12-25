@@ -49,11 +49,6 @@
                   <Image url="@imageres/Sprites/Trees/Tree6.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="114.0" layoutY="472.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@imageres/Sprites/Islands/T_Islands_01.png" />
-               </image>
-            </ImageView>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="537.0" layoutY="333.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@imageres/Sprites/Trees/Tree7.png" />

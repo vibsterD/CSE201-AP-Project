@@ -76,4 +76,6 @@ public class Orc extends GameObject implements Serializable {
         orc_fx.setLayoutY(200);
         pane.getChildren().add(orc_fx);
     }
+
+
 }
