@@ -49,6 +49,7 @@ public class MainGamePage {
 
     private Player hero;
     private Island island;
+    private Orc orc2;
 
     Boolean counter_active = false;
     Boolean dash_flag = false;
@@ -73,7 +74,7 @@ public class MainGamePage {
         //getCurrent Y, jump with delta (720-current) and if collide with land, destroy animation
         //specify interpolator curve with a quadratic equation.
 
-        Orc orc2 = new GreenOrc(new Position());
+        orc2 = new GreenOrc(new Position());
         orc2.addToScene(GameScreenMove);
         hero = new Player();
         hero.addToScene(GameScreenMove);
@@ -84,10 +85,6 @@ public class MainGamePage {
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), ev -> {
             orc2.getPosition().updatePosition(orc2.getOrc_fx());
             hero.getPosition().updatePosition(hero.getHero_fx());
-
-            hero.collide(orc2);
-            hero.collide(island);
-            orc2.collide(island);
 
 //            if(hero.getHero_fx().getBoundsInParent().intersects(island.getIsland_fx().getBoundsInParent())) {
 //                double height = island.getIsland_fx().getFitHeight()/2;
@@ -143,6 +140,14 @@ public class MainGamePage {
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.setRate(250);
         timeline.play();
+
+        Timeline collisionMan = new Timeline(new KeyFrame(Duration.millis(1), event->{
+            hero.collide(orc2);
+            hero.collide(island);
+            orc2.collide(island);
+        }));
+        collisionMan.setCycleCount(Timeline.INDEFINITE);
+        collisionMan.play();
     }
 
     @FXML

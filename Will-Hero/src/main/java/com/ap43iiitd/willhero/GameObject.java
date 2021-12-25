@@ -60,20 +60,19 @@ public abstract class GameObject implements Serializable {
                 }
             }
 
-            if (this instanceof Orc) {
-                // orc collide logic
-                Orc orc2 = (Orc) this;
-                if (o1 instanceof Island) {
-                    Island island = (Island) o1;
-                    if (orc2.getOrc_fx().getBoundsInParent().intersects(island.getIsland_fx().getBoundsInParent())) {
-                        double height = island.getIsland_fx().getFitHeight() / 2;
-                        if (orc2.getPosition().getVel_y() > 0) {
+        }
+        else if (this instanceof Orc) {
+            // orc collide logic
+            Orc orc2 = (Orc) this;
+            if (o1 instanceof Island) {
+                Island island = (Island) o1;
+                if (orc2.getOrc_fx().getBoundsInParent().intersects(island.getIsland_fx().getBoundsInParent())) {
+                    double height = island.getIsland_fx().getFitHeight() / 2;
+                    if (orc2.getPosition().getVel_y() > 0) {
 //                    hero.getHero_fx().setTranslateY(hero.getHero_fx().getTranslateY() + height);
 //                    if(hero.getHero_fx().getBoundsInParent().intersects(island.getIsland_fx().getBoundsInParent()))
-                            System.out.println("Collided with island");
-                            orc2.getPosition().setVelocity(0, -2);
-                        }
-
+                        System.out.println("Collided with island");
+                        orc2.getPosition().setVelocity(0, -2);
                     }
 
                 }
@@ -81,7 +80,12 @@ public abstract class GameObject implements Serializable {
             }
 
         }
+        else{
+            System.out.println(this.getClass());
+        }
+
     }
 }
+
 
 
