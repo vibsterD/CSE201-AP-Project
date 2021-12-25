@@ -41,8 +41,7 @@ public class MainGamePage {
     private Label score;
 
     private Player hero;
-    private Island island;
-    private Orc orc2;
+
     Timeline collisionMan;
 
     Game game;
@@ -52,7 +51,6 @@ public class MainGamePage {
     Boolean dash_translation = false;
 
     private ArrayList<GameObject> game_objects;
-//    private ArrayList<Island> islands;
 
     public void initialize() {
         game = new Game(game_screen);
