@@ -37,7 +37,7 @@ public class Game implements Serializable {
 
     public void initialize_islands() {
         for(int i = 0; i < 50; i++) {
-            islands.add(new Island(1, new Position(0)));
+            islands.add(new Island(new Position(0)));
             islands.get(i).addToScene(game_screen, 114 + i*300, 400 + r1.nextInt(100));
             game_objects.add(islands.get(i));
         }
