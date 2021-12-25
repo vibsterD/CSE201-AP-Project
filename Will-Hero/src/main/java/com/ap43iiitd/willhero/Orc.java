@@ -26,10 +26,11 @@ public class Orc extends GameObject implements Serializable {
         this.size = size;
         this.hp = hp;
         this.position = position;
+        System.out.println("CREATING ORC");
         // ../../../../resources/com/ap43iiitd/willhero/imageres/
-        System.out.println("UPPPWER as asd asd asd ");
+//        System.out.println("UPPPWER as asd asd asd ");
         int orc_num = 1+r1.nextInt(4);
-        Image image = new Image("com/ap43iiitd/willhero/imageres/Sprites/Orcs/".concat(String.valueOf(orc_num)).concat(".png"));
+        Image image = new Image("com/ap43iiitd/willhero/imageres/Sprites/Orcs/O (".concat(String.valueOf(orc_num)).concat(").png"));
         System.out.println("asdnalsndlasndlksanld");
         this.image_fx = new ImageView(image);
     }
@@ -82,35 +83,6 @@ public class Orc extends GameObject implements Serializable {
                     orc2.getPosition().setVelocity(0, -5);
                 }
 
-            }
-
-        }
-
-        if(o1 instanceof Orc) {
-            Orc orc1 = (Orc) o1;
-
-            double orc_min_y = orc2.getImage_fx().getBoundsInParent().getMinY();
-            double orc1_max_y = orc1.getImage_fx().getBoundsInParent().getMaxY();
-            double y_del_down = Math.abs(orc_min_y - orc1_max_y);
-
-            if (y_del_down < 10.0) {
-                //                System.out.println( "Orc : " + orc2.getOrc_fx().getBoundsInParent().getMaxY());
-//                System.out.println( "Hero: " + hero.getHero_fx().getBoundsInParent().getMinY());
-//                    System.out.println("HELLLO");
-                orc1.getPosition().setVelocity(0, -5);
-                return;
-            }
-
-            // orc1 orc2
-
-            double orc_min_x = orc2.getImage_fx().getBoundsInParent().getMinX();
-            double orc1_max_x = orc1.getImage_fx().getBoundsInParent().getMaxX();
-            double x_del_right = Math.abs(orc_min_x - orc1_max_x);
-//            System.out.println("XDEL: " + x_del_right);
-            if(x_del_right < 50.0) {
-                System.out.println("COLLIDING ORC ORC");
-                orc2.getPosition().setVelocity(50, -1);
-//                orc1.dash_collision = true;
             }
 
         }
