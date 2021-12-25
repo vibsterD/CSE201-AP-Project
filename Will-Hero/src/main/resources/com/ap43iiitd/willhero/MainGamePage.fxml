@@ -17,20 +17,7 @@
          </image>
       </ImageView>
       <Rectangle fx:id="pauseScreenFilter" arcHeight="5.0" arcWidth="5.0" fill="#acbdcd" height="720.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="1280.0" />
-      <AnchorPane fx:id="GameScreenMove" maxWidth="1.7976931348623157E308" prefHeight="720.0" prefWidth="1280.0">
-         <children>
-            <ImageView fitHeight="166.0" fitWidth="368.0" layoutX="809.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@imageres/Sprites/Clouds/WH_Cloud_02.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="157.0" fitWidth="277.0" layoutX="243.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@imageres/Sprites/Clouds/WH_Cloud_01.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
+      <AnchorPane fx:id="game_screen" maxWidth="1.7976931348623157E308" prefHeight="720.0" prefWidth="1280.0" />
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
             <HBox alignment="CENTER" layoutY="653.0" prefHeight="68.0" prefWidth="1280.0">

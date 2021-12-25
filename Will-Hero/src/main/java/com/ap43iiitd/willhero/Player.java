@@ -44,8 +44,8 @@ public class Player extends GameObject implements Serializable {
     public void addToScene(AnchorPane pane) {
         image_fx.setScaleX(0.5);
         image_fx.setScaleY(0.5);
-        image_fx.setLayoutX(174);
-        image_fx.setLayoutY(100);
+        image_fx.setLayoutX(150);
+        image_fx.setLayoutY(40);
         pane.getChildren().add(image_fx);
     }
 
@@ -170,7 +170,7 @@ public class Player extends GameObject implements Serializable {
                 System.out.println("XDEL: " + x_del_right);
                 if(x_del_right < 50.0) {
                     System.out.println("COLLIDING ORC");
-                    orc2.getPosition().setVelocity(50, -1);
+                    orc2.getPosition().setVelocity(30, -1);
                     this.dash_collision = true;
                 }
 

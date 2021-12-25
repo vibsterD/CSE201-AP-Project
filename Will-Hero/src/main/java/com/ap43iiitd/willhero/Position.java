@@ -11,6 +11,7 @@ public class Position implements Serializable {
     private double vel_x;
     private double vel_y;
     private double gravity = 10;
+    private double x_drag = 0;
     private Boolean dash_flag = false;
 
     private final TranslateTransition splineTranslate = new TranslateTransition(Duration.millis(1000.0/60.0));
@@ -43,7 +44,13 @@ public class Position implements Serializable {
 //        System.out.println(this.vel_y);
         if(this.vel_x > 0) {
             System.out.println("VELX: " + this.vel_x);
+            x_drag = 0.3;
+        }else {
+            x_drag = 0;
         }
+
+        this.vel_x = this.vel_x - x_drag;
+
         if(!dash_flag) {
             // update X
             this.vel_x = vel_x;
