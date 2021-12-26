@@ -138,8 +138,14 @@ public class MainGamePage {
 //            dash_translation = false;
 //        });
         Position heroPos = hero.getPosition();
-        System.out.println("gamescreenpos: " +game_screen.getTranslateX());
+//        System.out.println("gamescreenpos: " +game_screen.getTranslateX());
         heroPos.setVelocity(30, heroPos.getVel_y());
+
+        Weapon att = hero.getHelmet().getCurrent_weapon();
+        if(att!=null){
+            att.attack();
+        }
+
 
     }
 
@@ -181,11 +187,13 @@ public class MainGamePage {
     @FXML
     protected void onSwordClick(){
         System.out.println("Clicked sword");
+        hero.getHelmet().setCurrent_weapon(0);
     }
 
     @FXML
     protected void onShurikenClick(){
         System.out.println("Shuricken clicked");
+        hero.getHelmet().setCurrent_weapon(1);
     }
 
 

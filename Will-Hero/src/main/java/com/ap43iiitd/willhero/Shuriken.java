@@ -18,6 +18,6 @@ public class Shuriken extends Weapon{
     }
 
     private void throwShuriken(){
-
+        System.out.println("I am a ninja, ranged attack, go!");
     }
 }

@@ -13,10 +13,10 @@ public class Sword extends Weapon{
     }
     @Override
     public void attack() {
-
+        meleeAttack();
     }
 
     private void meleeAttack(){
-
+        System.out.println("I attack melee");
     }
 }

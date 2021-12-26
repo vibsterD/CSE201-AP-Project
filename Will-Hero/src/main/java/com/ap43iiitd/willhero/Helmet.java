@@ -21,8 +21,10 @@ public abstract class Helmet implements Serializable {
         return retval;
     }
 
-    public void setCurrent_weapon(Weapon current_weapon) {
-        this.current_weapon = current_weapon;
+    public void setCurrent_weapon(int weapon_num) {
+        if(weapon_num>1||weapon_num<0) return;
+        current_weapon = weapon_slots.get(weapon_num);
+        System.out.println("Weapon has been set to: "+weapon_num);
     }
 
     public Weapon getCurrent_weapon() {

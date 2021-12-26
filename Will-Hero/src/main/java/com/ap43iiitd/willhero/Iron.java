@@ -19,5 +19,4 @@ public class Iron extends Helmet implements Serializable {
 
     }
 
-
 }
