@@ -60,13 +60,42 @@ public class MainGamePage {
     private ArrayList<GameObject> game_objects;
 
     public void initialize() {
+
         game = new Game(game_screen);
         game_objects = game.getGame_objects();
         hero = game.getHero();
+//        hero.getImage_fx().translateXProperty().addListener((obs, old, newValue) -> {
+//            System.out.println("IDK LOL: "+obs+" "+old+" "+newValue);
+//            int offset = newValue.intValue();
+//            if (offset > 340){
+//                System.out.println("LOLOL");
+//                game_screen.setLayoutX(-1000);
+//            }
+//        });
+
+        Timeline screen_mover = new Timeline((new KeyFrame(Duration.millis(1500), event -> {
+            //get gamescreen x_pos
+            //get hero x_pos
+            //if sum >= threshold -- shift game_screen
+
+            double gsp = game_screen.getTranslateX();
+            double sum = hero.getImage_fx().getTranslateX()+hero.getImage_fx().getLayoutX()+gsp;
+            if(sum>400){
+                // shift game_screen by sum
+                TranslateTransition gst = new TranslateTransition(Duration.millis(1500), game_screen);
+                gst.setCycleCount(1);
+                gst.setByX(-sum);
+                gst.play();
+                System.out.println(gsp);
+            }
+        })));
+        screen_mover.setCycleCount(Timeline.INDEFINITE);
+        screen_mover.play();
 
 
 
         collisionMan = new Timeline(new KeyFrame(Duration.millis(5), event->{
+
             if(!hero.getAlive()) {collisionMan.pause(); return;}
 
             ArrayList <GameObject> in_scene = new ArrayList<GameObject>();
@@ -117,19 +146,19 @@ public class MainGamePage {
 //        dash_translation = true;
         tapToPlay.setText("For the next deadline!");
         score.setText(String.valueOf(Integer.parseInt(score.getText()) + 1));
-        TranslateTransition translation = new TranslateTransition(Duration.millis(150), game_screen);
-        ///// DO NOT MOVE BY GAME SCREEN, MOVE EACH OBJECT
-        translation.interpolatorProperty().set(Interpolator.SPLINE(.1, .1, .7, .7));
-        translation.setByX(-150);
-//        Hero.setTranslateX(Hero.getTranslateX() + 150);
-//        hero.getPosition().setVelocity(150, 0);
-//        TranslateTransition translation2 = new TranslateTransition(Duration.millis(150), hero.getImage_fx());
-//        ///// DO NOT MOVE BY GAME SCREEN, MOVE EACH OBJECT
-//        translation2.interpolatorProperty().set(Interpolator.SPLINE(.1, .1, .7, .7));
-//        translation2.setByX(150);
-        translation.setCycleCount(1);
-//        hero.getPosition().setDash_flag(true);
-        translation.play();
+//        TranslateTransition translation = new TranslateTransition(Duration.millis(150), game_screen);
+//        /// DO NOT MOVE BY GAME SCREEN, MOVE EACH OBJECT
+//        translation.interpolatorProperty().set(Interpolator.SPLINE(.1, .1, .7, .7));
+//        translation.setByX(-150);
+////        Hero.setTranslateX(Hero.getTranslateX() + 150);
+////        hero.getPosition().setVelocity(150, 0);
+////        TranslateTransition translation2 = new TranslateTransition(Duration.millis(150), hero.getImage_fx());
+////        ///// DO NOT MOVE BY GAME SCREEN, MOVE EACH OBJECT
+////        translation2.interpolatorProperty().set(Interpolator.SPLINE(.1, .1, .7, .7));
+////        translation2.setByX(150);
+//        translation.setCycleCount(1);
+////        hero.getPosition().setDash_flag(true);
+//        translation.play();
 //        translation2.setCycleCount(1);
 //        translation2.play();
 //        hero.getPosition().updatePosition(hero.getHero_fx());
@@ -141,7 +170,7 @@ public class MainGamePage {
 //        });
         Position heroPos = hero.getPosition();
 //        System.out.println("gamescreenpos: " +game_screen.getTranslateX());
-        heroPos.setVelocity(29.9, heroPos.getVel_y());
+        heroPos.setVelocity(39.9, heroPos.getVel_y());
 
         Weapon att = hero.getHelmet().getCurrent_weapon();
         if(att!=null){

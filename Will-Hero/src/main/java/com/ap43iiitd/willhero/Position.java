@@ -50,8 +50,10 @@ public class Position implements Serializable {
         if(this.vel_x > 0) {
 //            System.out.println("VELX: " + this.vel_x);
             x_drag = 0.3;
-        }else {
+        }
+        else {
             x_drag = 0;
+            vel_x = 0;
         }
 
         this.vel_x = this.vel_x - x_drag;
