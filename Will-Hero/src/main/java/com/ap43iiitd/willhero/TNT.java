@@ -1,6 +1,5 @@
 package com.ap43iiitd.willhero;
 
-import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -42,23 +41,23 @@ public class TNT extends GameObject{
         double tnt_x = image_fx.getLayoutX();
         double tnt_y = image_fx.getLayoutY();
 
-        for(int i = 0; i < in_scene.size(); i++) {
-            if(in_scene.get(i) instanceof Player) {
-                Player player = (Player) in_scene.get(i);
+        for (GameObject gameObject : in_scene) {
+            if (gameObject instanceof Player) {
+                Player player = (Player) gameObject;
                 double player_x = player.getImage_fx().getLayoutX();
                 double player_y = player.getImage_fx().getLayoutY();
-                double distance = Math.sqrt((player_x - tnt_x)*(player_x - tnt_x)  +  (player_y - tnt_y)*(player_y - tnt_y));
-                if(distance < explosion_radius) {
+                double distance = Math.sqrt((player_x - tnt_x) * (player_x - tnt_x) + (player_y - tnt_y) * (player_y - tnt_y));
+                if (distance < explosion_radius) {
                     player.eliminate();
                 }
             }
 
-            if(in_scene.get(i) instanceof Orc) {
-                Orc orc = (Orc) in_scene.get(i);
+            if (gameObject instanceof Orc) {
+                Orc orc = (Orc) gameObject;
                 double orx_x = orc.getImage_fx().getLayoutX();
                 double orc_y = orc.getImage_fx().getLayoutY();
-                double distance = Math.sqrt((orx_x - tnt_x)*(orx_x - tnt_x)  +  (orc_y - tnt_y)*(orc_y - tnt_y));
-                if(distance < explosion_radius) {
+                double distance = Math.sqrt((orx_x - tnt_x) * (orx_x - tnt_x) + (orc_y - tnt_y) * (orc_y - tnt_y));
+                if (distance < explosion_radius) {
                     orc.eliminate();
                 }
             }

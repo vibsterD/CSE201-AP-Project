@@ -12,7 +12,7 @@ public class Position implements Serializable {
     private double vel_y;
     private double gravity = 10;
     private double x_drag = 0;
-    private Boolean dash_flag = false;
+    private Boolean timeout = false;
 
     private final TranslateTransition smoothenTransition = new TranslateTransition(Duration.millis(1000.0/60.0));
 
@@ -26,6 +26,10 @@ public class Position implements Serializable {
         this.gravity = gravity;
     }
 
+    public Position(Boolean timeout){
+        this.timeout = timeout;
+    }
+
     public double getVel_x() {
         return vel_x;
     }
@@ -35,6 +39,7 @@ public class Position implements Serializable {
     }
 
     public void updatePosition(ImageView imageView) {
+        if(timeout && this.vel_x<=0) imageView.setOpacity(0); //disappearing throwables
 
         this.vel_y = vel_y + gravity/250;
         smoothenTransition.setNode(imageView);
@@ -51,14 +56,14 @@ public class Position implements Serializable {
 
         this.vel_x = this.vel_x - x_drag;
 
-        if(!dash_flag) {
+
             // update X
             this.vel_x = vel_x;
 //            splineTranslate.setNode(imageView);
 //            splineTranslate.setInterpolator(Interpolator.LINEAR);
             smoothenTransition.setByX(vel_x);
 
-        }
+
         smoothenTransition.play();
 
         //imageView.setTranslateY(imageView.getTranslateY()+vel_y);
@@ -69,7 +74,4 @@ public class Position implements Serializable {
         this.vel_y = vel_y;
     }
 
-    public void setDash_flag(Boolean dash_flag) {
-        this.dash_flag = dash_flag;
-    }
 }

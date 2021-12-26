@@ -67,6 +67,7 @@ public class MainGamePage {
 
 
         collisionMan = new Timeline(new KeyFrame(Duration.millis(5), event->{
+            if(!hero.getAlive()) {collisionMan.pause(); return;}
 
             ArrayList <GameObject> in_scene = new ArrayList<GameObject>();
             double x_pos = hero.getImage_fx().getTranslateX();
@@ -110,6 +111,7 @@ public class MainGamePage {
     protected void onHelloButtonClick() {
         //TODO: When collide with treasure chest and got weapon, add opacity
         //also spawn a new island with an orc maybe
+        if(!hero.getAlive()) return;
         if (paused || hero.getPosition().getVel_x()>0) return;
 
 //        dash_translation = true;
@@ -139,12 +141,14 @@ public class MainGamePage {
 //        });
         Position heroPos = hero.getPosition();
 //        System.out.println("gamescreenpos: " +game_screen.getTranslateX());
-        heroPos.setVelocity(30, heroPos.getVel_y());
+        heroPos.setVelocity(29.9, heroPos.getVel_y());
 
         Weapon att = hero.getHelmet().getCurrent_weapon();
         if(att!=null){
             att.attack(game_objects, game_screen, hero.getImage_fx().getTranslateX()+hero.getImage_fx().getLayoutX(), hero.getImage_fx().getTranslateY()+hero.getImage_fx().getLayoutY());
         }
+
+        //TODO: Add screen normalisation logic
 
 
     }

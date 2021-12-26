@@ -1,7 +1,5 @@
 package com.ap43iiitd.willhero;
 
-import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -17,7 +15,8 @@ public class Player extends GameObject implements Serializable {
     private Boolean is_eliminated;
     private Game game;
     private Boolean has_won;
-    private Boolean dash_collision;
+    private Boolean alive = true;
+//    private Boolean dash_collision;
     private int jump_length;
     private int jump_frequency;
 //    Boolean dash_flag;
@@ -28,7 +27,7 @@ public class Player extends GameObject implements Serializable {
         this.respawned = false;
         this.is_eliminated = false;
         this.has_won = false;
-        this.dash_collision = false;
+//        this.dash_collision = false;
         this.position = new Position();
         Image image = new Image("com/ap43iiitd/willhero/imageres/Sprites/Iron.png");
         this.image_fx = new ImageView(image);
@@ -38,7 +37,7 @@ public class Player extends GameObject implements Serializable {
         this.respawned = false;
         this.is_eliminated = false;
         this.has_won = false;
-        this.dash_collision = false;
+//        this.dash_collision = false;
         Image image = new Image("com/ap43iiitd/willhero/imageres/Sprites/Iron.png");
         this.image_fx = new ImageView(image);
     }
@@ -58,6 +57,18 @@ public class Player extends GameObject implements Serializable {
     //    public Position getPosition() {
 //        return position;
 //    }
+
+    public void not_alive(){
+        this.alive = false;
+    }
+
+    public Boolean getAlive() {
+        return alive;
+    }
+
+    public void setAlive() {
+        this.alive = true;
+    }
 
     public void jump() {
     }
@@ -180,7 +191,7 @@ public class Player extends GameObject implements Serializable {
                 if(x_del_right < 50.0) {
 //                    System.out.println("COLLIDING ORC");
                     orc2.getPosition().setVelocity(30, -1);
-                    this.dash_collision = true;
+//                    this.dash_collision = true;
                 }
 
 
@@ -190,7 +201,7 @@ public class Player extends GameObject implements Serializable {
         }
     }
 
-    public Boolean getDash_collision() {
-        return dash_collision;
-    }
+//    public Boolean getDash_collision() {
+//        return dash_collision;
+//    }
 }
