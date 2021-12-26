@@ -80,13 +80,13 @@ public class MainGamePage {
 
             double gsp = game_screen.getTranslateX();
             double sum = hero.getImage_fx().getTranslateX()+hero.getImage_fx().getLayoutX()+gsp;
-            if(sum>400){
+            if(sum>300||sum<0){
                 // shift game_screen by sum
                 TranslateTransition gst = new TranslateTransition(Duration.millis(1500), game_screen);
                 gst.setCycleCount(1);
                 gst.setByX(-sum);
                 gst.play();
-                System.out.println(gsp);
+
             }
         })));
         screen_mover.setCycleCount(Timeline.INDEFINITE);
