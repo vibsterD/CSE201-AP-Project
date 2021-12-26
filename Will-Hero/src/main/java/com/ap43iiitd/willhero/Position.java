@@ -13,6 +13,7 @@ public class Position implements Serializable {
     private double gravity = 10;
     private double x_drag = 0;
     private Boolean dash_flag = false;
+    private Boolean timeout = false;
 
     private final TranslateTransition smoothenTransition = new TranslateTransition(Duration.millis(1000.0/60.0));
 
@@ -26,6 +27,10 @@ public class Position implements Serializable {
         this.gravity = gravity;
     }
 
+    public Position(Boolean timeout){
+        this.timeout = timeout;
+    }
+
     public double getVel_x() {
         return vel_x;
     }
@@ -35,6 +40,7 @@ public class Position implements Serializable {
     }
 
     public void updatePosition(ImageView imageView) {
+        if(timeout && this.vel_x<=0) imageView.setOpacity(0); //disappearing throwables
 
         this.vel_y = vel_y + gravity/250;
         smoothenTransition.setNode(imageView);
