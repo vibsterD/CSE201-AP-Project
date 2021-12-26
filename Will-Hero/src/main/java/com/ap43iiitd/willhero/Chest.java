@@ -1,7 +1,6 @@
 package com.ap43iiitd.willhero;
 
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.Serializable;
