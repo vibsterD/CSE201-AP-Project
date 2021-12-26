@@ -143,7 +143,7 @@ public class MainGamePage {
 
         Weapon att = hero.getHelmet().getCurrent_weapon();
         if(att!=null){
-            att.attack();
+            att.attack(game_objects, game_screen, hero.getImage_fx().getTranslateX()+hero.getImage_fx().getLayoutX(), hero.getImage_fx().getTranslateY()+hero.getImage_fx().getLayoutY());
         }
 
 

@@ -2,6 +2,9 @@ package com.ap43iiitd.willhero;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+
+import java.util.ArrayList;
 
 public class Sword extends Weapon{
 
@@ -12,7 +15,7 @@ public class Sword extends Weapon{
         this.level = 1;
     }
     @Override
-    public void attack() {
+    public void attack(ArrayList<GameObject> gameObjects, AnchorPane pane, double x, double y) {
         meleeAttack();
     }
 
