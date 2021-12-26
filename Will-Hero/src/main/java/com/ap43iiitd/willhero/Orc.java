@@ -25,7 +25,8 @@ public abstract class Orc extends GameObject implements Serializable {
 
     }
 
-    private void killPlayer(Player player){
+    public void killPlayer(Player player){
+        System.out.println("Oh no, our player, it's dead");
 
     }
 

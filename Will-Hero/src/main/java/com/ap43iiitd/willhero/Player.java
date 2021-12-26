@@ -120,7 +120,7 @@ public class Player extends GameObject implements Serializable {
 //                    hero.getHero_fx().setTranslateY(hero.getHero_fx().getTranslateY() + height);
 //                    if(hero.getHero_fx().getBoundsInParent().intersects(island.getIsland_fx().getBoundsInParent()))
 //                    System.out.println("Collided with island");
-                    hero.getPosition().setVelocity(0, -10);
+                    hero.getPosition().setVelocity(hero.getPosition().getVel_x(), -10);
                 }
             }
 
@@ -143,7 +143,8 @@ public class Player extends GameObject implements Serializable {
                     // orc is above hero
                     orc2.getPosition().setVelocity(0, 0);
                     hero.getPosition().setVelocity(0, 0);
-                    System.out.println("FUCKING DEAD");
+                    orc2.killPlayer(hero);
+                    System.out.println("**** DEAD");
                     return;
                 }
 
@@ -155,7 +156,7 @@ public class Player extends GameObject implements Serializable {
                     //                System.out.println( "Orc : " + orc2.getOrc_fx().getBoundsInParent().getMaxY());
 //                System.out.println( "Hero: " + hero.getHero_fx().getBoundsInParent().getMinY());
 //                    System.out.println("HELLLO");
-                    hero.getPosition().setVelocity(0, -5);
+                    hero.getPosition().setVelocity(hero.getPosition().getVel_x(), -5);
                     return;
                 }
 
