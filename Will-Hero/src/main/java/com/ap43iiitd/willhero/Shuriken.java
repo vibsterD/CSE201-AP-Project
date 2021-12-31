@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 public class Shuriken extends Weapon{
 
+    // TODO: Add range limit
+
     public Shuriken(){
         this.image_fx = new ImageView(new Image("com/ap43iiitd/willhero/imageres/Sprites/Weapons/Shuriken/Shuriken.png"));
         this.hp_damage = 100;

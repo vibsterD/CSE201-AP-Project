@@ -24,11 +24,11 @@ public class TNT extends GameObject{
         this.explosion_radius = 150;
     }
 
-    public void activate(GameObject o1) {
+    public void activate() {
         image_fx.setFitWidth(100);
-        explode(o1);
+        explode();
     }
-    private void explode(GameObject o1) {
+    private void explode() {
 //        if(o1 instanceof Player) {
 //            ((Player) o1).eliminate();
 //        }else {
@@ -87,7 +87,7 @@ public class TNT extends GameObject{
                 // chest open
                 System.out.println("TNTNTNTNTNT");
 //                image_fx.setImage(opened_chest);
-                activate(o1);
+                activate();
                 is_exploded = true;
             }
         }
@@ -98,7 +98,7 @@ public class TNT extends GameObject{
                 // chest open
                 System.out.println("TNTNTNNTN");
 //                image_fx.setImage(opened_chest);
-                activate(o1);
+                activate();
                 is_exploded = true;
             }
         }

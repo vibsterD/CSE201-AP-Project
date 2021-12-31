@@ -35,7 +35,7 @@ public abstract class Orc extends GameObject implements Serializable {
         return hp;
     }
 
-    private void setHp(int hp) {
+    public void setHp(int hp) {
         this.hp = hp;
     }
 
