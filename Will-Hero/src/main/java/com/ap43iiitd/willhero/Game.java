@@ -208,7 +208,7 @@ public class Game implements Serializable {
         game_objects.add(hero);
     }
 
-    // generate islands and chests and TNTs
+    // generate islands and chests and TNTs and coins and trees
     private void initialize_islands() {
         for(int i = 0; i < 50; i++) {
             islands.add(new Island(new Position(0)));
@@ -239,6 +239,20 @@ public class Game implements Serializable {
                 tnts.get(tnts.size()-1).addToScene(game_screen, x, y, islands.get(i));
                 game_objects.add(tnts.get(tnts.size()-1));
             }
+
+            // generate Trees
+            int tree_get = 1 + r1.nextInt(19);
+            Image tree_image = new Image("com/ap43iiitd/willhero/imageres/Sprites/Trees/ (".concat(String.valueOf(tree_get)).concat(").png"));
+//            Image tree_image = new Image("com/ap43iiitd/willhero/imageres/Sprites/Trees/ (1).png");
+            ImageView tree_fx = new ImageView(tree_image);
+            tree_fx.setPreserveRatio(true);
+            tree_fx.setFitHeight(100 + r1.nextInt(60));
+            tree_fx.setLayoutX(x + r1.nextInt(100));
+            tree_fx.setLayoutY(y);
+            tree_fx.setViewOrder(200000);
+            double y_delta = islands.get(i).getImage_fx().getBoundsInParent().getMinY() - tree_fx.getBoundsInParent().getMaxY();
+            tree_fx.setLayoutY(tree_fx.getLayoutY() + y_delta);
+            game_screen.getChildren().add(tree_fx);
         }
     }
 
