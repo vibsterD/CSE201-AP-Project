@@ -10,10 +10,9 @@ import java.util.Random;
 public abstract class Chest extends GameObject implements Serializable {
     final static Random r1 = new Random(1337);
     private Boolean isEmpty = false;
-    protected Image closed_chest;
-    protected ArrayList<Image> transition_chests;
-    protected Image opened_chest;
-//    protected ImageView image_fx;
+    transient protected Image closed_chest;
+    transient protected ArrayList<Image> transition_chests;
+    transient protected Image opened_chest;
     private Position position;
 
     public Chest() {

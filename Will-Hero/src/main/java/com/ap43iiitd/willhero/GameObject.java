@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 public abstract class GameObject implements Serializable {
     private double gravity;
-    protected ImageView image_fx;
+    transient protected ImageView image_fx;
     private int restitution;
     protected Position position;
 
