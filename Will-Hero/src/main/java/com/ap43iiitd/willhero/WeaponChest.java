@@ -17,7 +17,7 @@ public class WeaponChest extends Chest{
     @Override
     public void reward(Player player){
         // update or upgrade weapon
-//        player.updateWeapon(new Sword());
+//        player.updateWeapon(new ThrowingKnives());
 //        player.updateWeapon(new Shuriken());
     }
 }
