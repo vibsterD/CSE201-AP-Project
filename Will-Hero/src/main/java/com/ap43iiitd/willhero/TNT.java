@@ -21,7 +21,7 @@ public class TNT extends GameObject{
         this.position = new Position(0);
         this.is_exploded = false;
         this.game = game;
-        this.explosion_radius = 150;
+        this.explosion_radius = 500;
     }
 
     public void activate() {
@@ -38,14 +38,14 @@ public class TNT extends GameObject{
 
         ArrayList<GameObject> in_scene = game.getIn_scene();
 
-        double tnt_x = image_fx.getLayoutX();
-        double tnt_y = image_fx.getLayoutY();
+        double tnt_x = image_fx.getBoundsInParent().getCenterX();
+        double tnt_y = image_fx.getBoundsInParent().getCenterY();
 
         for (GameObject gameObject : in_scene) {
             if (gameObject instanceof Player) {
                 Player player = (Player) gameObject;
-                double player_x = player.getImage_fx().getLayoutX();
-                double player_y = player.getImage_fx().getLayoutY();
+                double player_x = player.getImage_fx().getBoundsInParent().getCenterX();
+                double player_y = player.getImage_fx().getBoundsInParent().getCenterY();
                 double distance = Math.sqrt((player_x - tnt_x) * (player_x - tnt_x) + (player_y - tnt_y) * (player_y - tnt_y));
                 if (distance < explosion_radius) {
                     player.eliminate();
@@ -54,8 +54,8 @@ public class TNT extends GameObject{
 
             if (gameObject instanceof Orc) {
                 Orc orc = (Orc) gameObject;
-                double orx_x = orc.getImage_fx().getLayoutX();
-                double orc_y = orc.getImage_fx().getLayoutY();
+                double orx_x = orc.getImage_fx().getBoundsInParent().getCenterX();
+                double orc_y = orc.getImage_fx().getBoundsInParent().getCenterY();
                 double distance = Math.sqrt((orx_x - tnt_x) * (orx_x - tnt_x) + (orc_y - tnt_y) * (orc_y - tnt_y));
                 if (distance < explosion_radius) {
                     orc.eliminate();
