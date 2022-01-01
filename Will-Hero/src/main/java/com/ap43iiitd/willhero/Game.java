@@ -135,11 +135,6 @@ public class Game implements Serializable {
         }
     }
 
-    public Boolean getPaused() {
-        return paused;
-    }
-
-
     public void pause(ImageView pauseButton, Rectangle pause_screen_filter) {
         paused = true;
         collisionMan.pause();
@@ -179,13 +174,16 @@ public class Game implements Serializable {
         if(hero.hasRespawned()) {
             //game is really over
         }
-        //add a button to tapsense
 
         FXMLLoader fxmlLoader = new FXMLLoader(WillHero.class.getResource("GameOverOverlay.fxml"));
         try {
             fxmlLoader.load();
             GameOverOverlay goc = fxmlLoader.getController();
             game_pane.getChildren().add(goc.overlayPane);
+            goc.cost.setText("LOL");
+            goc.reviveButton.setOnAction(event -> {
+                System.out.println("LMAOO WORKING ");
+            });
 
         }
         catch (Exception e){
@@ -293,9 +291,6 @@ public class Game implements Serializable {
         return new ImageView(image);
     }
 
-//    public void initialize_chests() {
-//
-//    }
 
     public void update() {
 

@@ -98,10 +98,5 @@ public class MainGamePage {
         System.out.println("Shuricken clicked");
         hero.getHelmet().setCurrent_weapon(1);
     }
-//
-//    private void gameOver(){
-//        game.gameOver(gamePane);
-//    }
-
 
 }
