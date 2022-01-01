@@ -45,12 +45,21 @@ public class Game implements Serializable {
         this.game_pane = game_pane;
         this.game_screen = game_screen;
         this.coins_counter = coins_counter;
-        game_objects = new ArrayList<GameObject>();
-        islands = new ArrayList<Island>();
-        orcs = new ArrayList<Orc>();
-        chests = new ArrayList<Chest>();
-        tnts = new ArrayList<TNT>();
-        initialize_game();
+        this.sword = sword;
+        this.shuriken = shuriken;
+        this.paused = false;
+            game_objects = new ArrayList<GameObject>();
+            islands = new ArrayList<Island>();
+            orcs = new ArrayList<Orc>();
+            chests = new ArrayList<Chest>();
+            tnts = new ArrayList<TNT>();
+            initialize_game();
+    }
+
+    public void setPrev(AnchorPane game_screen, Rectangle sword, Rectangle shuriken, StackPane game_pane, Label coins_counter){
+        this.game_pane = game_pane;
+        this.game_screen = game_screen;
+        this.coins_counter = coins_counter;
         this.sword = sword;
         this.shuriken = shuriken;
         this.paused = false;
