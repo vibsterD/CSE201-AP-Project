@@ -186,6 +186,11 @@ public class Game implements Serializable {
             goc.progressBar.setProgress(currentScore/100.0);
             goc.reviveButton.setOnAction(event -> {
                 System.out.println("LMAOO WORKING ");
+                hero.getImage_fx().setY(hero.getImage_fx().getY()-300);
+                hero.setAlive();
+                goc.overlayPane.setDisable(true);
+                goc.overlayPane.setOpacity(0);
+                collisionMan.play();
             });
 
         }
