@@ -26,7 +26,7 @@ public class Island extends GameObject implements Serializable {
         image_fx.setPreserveRatio(true);
         image_fx.setLayoutX(x);
         image_fx.setLayoutY(y);
-        imageWidth = 200;
+        imageWidth = 200 + r1.nextInt(50);
         image_fx.setFitWidth(imageWidth);
         pane.getChildren().add(image_fx);
     }

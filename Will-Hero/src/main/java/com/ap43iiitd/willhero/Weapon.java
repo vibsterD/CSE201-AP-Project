@@ -12,7 +12,8 @@ public abstract class Weapon extends GameObject{
     public abstract void attack(ArrayList<GameObject> gameObjects, AnchorPane pane, double x, double y);
 
     public void upgrade(){
-
+        level++;
+        hp_damage += 5;
     }
 
     @Override

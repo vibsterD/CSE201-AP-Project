@@ -252,14 +252,15 @@ public class Game implements Serializable {
         initialize_islands();
         initialize_orcs();
         initialize_clouds();
+        initialize_trees();
         game_objects.add(hero);
     }
 
     // generate islands and chests and TNTs and coins and trees
     private void initialize_islands() {
-        for(int i = 0; i < 50; i++) {
+        for(int i = 0; i < 100; i++) {
             islands.add(new Island(new Position(0)));
-            int x = 114 + i*300 + r1.nextInt(10);
+            int x = 114 + i*350 + r1.nextInt(20);
             int y = 400 + r1.nextInt(100);
             islands.get(i).addToScene(game_screen, x, y);
             game_objects.add(islands.get(i));
@@ -288,18 +289,7 @@ public class Game implements Serializable {
             }
 
             // generate Trees
-            int tree_get = 1 + r1.nextInt(19);
-            Image tree_image = new Image("com/ap43iiitd/willhero/imageres/Sprites/Trees/ (".concat(String.valueOf(tree_get)).concat(").png"));
-//            Image tree_image = new Image("com/ap43iiitd/willhero/imageres/Sprites/Trees/ (1).png");
-            ImageView tree_fx = new ImageView(tree_image);
-            tree_fx.setPreserveRatio(true);
-            tree_fx.setFitHeight(100 + r1.nextInt(60));
-            tree_fx.setLayoutX(x + r1.nextInt(100));
-            tree_fx.setLayoutY(y);
-            tree_fx.setViewOrder(200000);
-            double y_delta = islands.get(i).getImage_fx().getBoundsInParent().getMinY() - tree_fx.getBoundsInParent().getMaxY();
-            tree_fx.setLayoutY(tree_fx.getLayoutY() + y_delta);
-            game_screen.getChildren().add(tree_fx);
+
 
             // generate Coins
             int generate_coins = r1.nextInt(2);
@@ -316,9 +306,28 @@ public class Game implements Serializable {
         }
     }
 
+    public void initialize_trees() {
+        for (Island island : islands) {
+            Double x = island.getImage_fx().getLayoutX() + island.getImage_fx().getTranslateX();
+            Double y = island.getImage_fx().getLayoutY() + island.getImage_fx().getTranslateY();
+            int tree_get = 1 + r1.nextInt(19);
+            Image tree_image = new Image("com/ap43iiitd/willhero/imageres/Sprites/Trees/ (".concat(String.valueOf(tree_get)).concat(").png"));
+//            Image tree_image = new Image("com/ap43iiitd/willhero/imageres/Sprites/Trees/ (1).png");
+            ImageView tree_fx = new ImageView(tree_image);
+            tree_fx.setPreserveRatio(true);
+            tree_fx.setFitHeight(100 + r1.nextInt(60));
+            tree_fx.setLayoutX(x + r1.nextInt(100));
+            tree_fx.setLayoutY(y);
+            tree_fx.setViewOrder(200000);
+            double y_delta = island.getImage_fx().getBoundsInParent().getMinY() - tree_fx.getBoundsInParent().getMaxY();
+            tree_fx.setLayoutY(tree_fx.getLayoutY() + y_delta);
+            game_screen.getChildren().add(tree_fx);
+        }
+    }
+
     private void initialize_orcs() {
         int red_or_green;
-        for(int i = 0; i < 50; i++) {
+        for(int i = 0; i < 100; i++) {
             red_or_green = r1.nextInt(2);
             if(red_or_green == 0) {
                 // red
@@ -335,7 +344,7 @@ public class Game implements Serializable {
 
     }
 
-    private void initialize_clouds() {
+    public void initialize_clouds() {
         for(int i = 0; i < 50; i++) {
             int no_of_cloud = r1.nextInt(2);
             for(int j = 0; j < 2; j++) {
@@ -346,7 +355,7 @@ public class Game implements Serializable {
                 image_fx.setPreserveRatio(true);
                 image_fx.setFitWidth(200 + r1.nextInt(150));
                 image_fx.setLayoutX(220 + i*700 + r1.nextInt(100));
-                image_fx.setViewOrder(20009);
+                image_fx.setViewOrder(200090);
                 if(j == 0) {
                     image_fx.setLayoutY(100 + r1.nextInt(50));
                 }else {

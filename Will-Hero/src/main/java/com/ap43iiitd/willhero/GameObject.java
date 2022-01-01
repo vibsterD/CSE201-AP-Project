@@ -11,11 +11,12 @@ public abstract class GameObject implements Serializable {
     transient protected ImageView image_fx;
     private int restitution;
     protected String url;
-    private static final int serialVersionUID = 1;
+    private static final int serialVersionUID = 69;
     protected Position position;
     protected double x;
     protected double y;
     protected double imageWidth = 100;
+    protected Double view_order = null;
 
     public abstract void collide(GameObject o1);
     public ImageView getImage_fx() {
@@ -37,6 +38,9 @@ public abstract class GameObject implements Serializable {
         image_fx.setFitWidth(imageWidth);
         image_fx.setTranslateX(x);
         image_fx.setTranslateY(y);
+        if(view_order != null) {
+            image_fx.setViewOrder(view_order);
+        }
         pane.getChildren().add(image_fx);
     }
 }

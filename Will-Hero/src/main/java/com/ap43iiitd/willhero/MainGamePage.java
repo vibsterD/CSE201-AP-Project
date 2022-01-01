@@ -82,6 +82,8 @@ public class MainGamePage {
         for(GameObject i: game_objects){
             i.reload(game_screen);
         }
+        game.initialize_trees();
+        game.initialize_clouds();
         hero = game.getHero();
 
         game.play();

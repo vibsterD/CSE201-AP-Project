@@ -13,7 +13,7 @@ public class ThrowingKnives extends Weapon{
         this.image_fx = new ImageView(new Image(url));
         this.hp_damage = 70;
         this.hit_radius = 2000;
-        this.level = 4;
+        this.level = 1;
         this.position = new Position(true);
         this.getPosition().setVelocity(100, -(Math.random()*10));
     }

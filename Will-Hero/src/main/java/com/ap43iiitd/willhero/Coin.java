@@ -37,7 +37,8 @@ public class Coin extends GameObject{
         image_fx.setPreserveRatio(true);
         imageWidth = 30;
         image_fx.setFitWidth(imageWidth);
-        image_fx.setViewOrder(1000);
+        view_order = 1000.0;
+        image_fx.setViewOrder(view_order);
 
         image_fx.setLayoutX(x);
         image_fx.setLayoutY(y);

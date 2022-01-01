@@ -70,7 +70,8 @@ public class TNT extends Obstacle{
         imageWidth = 60;
         image_fx.setPreserveRatio(true);
         image_fx.setFitWidth(imageWidth);
-        image_fx.setViewOrder(10000);
+        view_order = 10000.0;
+        image_fx.setViewOrder(view_order);
 
         image_fx.setLayoutX(x + r1.nextInt(100));
         image_fx.setLayoutY(y);
