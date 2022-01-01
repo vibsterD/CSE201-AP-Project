@@ -20,7 +20,8 @@ public abstract class Orc extends GameObject implements Serializable {
         this.position = position;
         this.collidable = true;
 //        System.out.println("CREATING ORC");
-        Image image = new Image("com/ap43iiitd/willhero/imageres/Sprites/Orcs/O (".concat(String.valueOf(res_num)).concat(").png"));
+        url = "com/ap43iiitd/willhero/imageres/Sprites/Orcs/O (".concat(String.valueOf(res_num)).concat(").png");
+        Image image = new Image(url);
         this.image_fx = new ImageView(image);
         dead = false;
     }

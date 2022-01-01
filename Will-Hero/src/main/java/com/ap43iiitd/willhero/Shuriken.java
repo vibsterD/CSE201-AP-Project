@@ -11,7 +11,8 @@ public class Shuriken extends Weapon{
     // TODO: Add range limit
 
     public Shuriken(){
-        this.image_fx = new ImageView(new Image("com/ap43iiitd/willhero/imageres/Sprites/Weapons/Shuriken/Shuriken.png"));
+        url = "com/ap43iiitd/willhero/imageres/Sprites/Weapons/Shuriken/Shuriken.png";
+        this.image_fx = new ImageView(new Image(url));
         this.hp_damage = 70;
         this.hit_radius = 2000;
         this.level = 4;

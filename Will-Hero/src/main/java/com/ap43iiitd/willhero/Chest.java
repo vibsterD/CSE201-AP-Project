@@ -14,6 +14,7 @@ public abstract class Chest extends GameObject implements Serializable {
     transient protected ArrayList<Image> transition_chests;
     transient protected Image opened_chest;
     private Position position;
+    protected String open_chest_url = "com/ap43iiitd/willhero/imageres/Sprites/Chests/ (75).png";
 
     public Chest() {
         transition_chests = new ArrayList<Image>();
@@ -26,6 +27,7 @@ public abstract class Chest extends GameObject implements Serializable {
             Player player = (Player) o1;
             if(player.getImage_fx().getBoundsInParent().intersects(this.image_fx.getBoundsInParent())) {
                 // chest open
+                url = open_chest_url;
                 System.out.println("CHESTTTT");
                 image_fx.setImage(opened_chest);
                 if(this instanceof CoinChest) {

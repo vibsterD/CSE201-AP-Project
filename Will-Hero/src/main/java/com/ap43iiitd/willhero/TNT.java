@@ -16,7 +16,8 @@ public class TNT extends GameObject{
     Game game;
 
     public TNT(Game game) {
-        Image image = new Image("com/ap43iiitd/willhero/imageres/Sprites/TNT.png");
+        url = "com/ap43iiitd/willhero/imageres/Sprites/TNT.png";
+        Image image = new Image(url);
         this.image_fx = new ImageView(image);
         this.position = new Position(0);
         this.is_exploded = false;

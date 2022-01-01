@@ -11,7 +11,8 @@ public class Coin extends GameObject{
     final static Random r1 = new Random(1337);
 
     public Coin() {
-        Image image = new Image("com/ap43iiitd/willhero/imageres/Sprites/coin.png");
+        url = "com/ap43iiitd/willhero/imageres/Sprites/coin.png";
+        Image image = new Image(url);
         this.image_fx = new ImageView(image);
         this.position = new Position(0);
         this.collided = false;

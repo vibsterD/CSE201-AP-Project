@@ -7,8 +7,10 @@ public class CoinChest extends Chest{
 
     public CoinChest() {
         System.out.println("WRDDDDDDDD");
-        this.closed_chest = new Image("com/ap43iiitd/willhero/imageres/Sprites/Chests/ (2).png");
-        this.opened_chest = new Image("com/ap43iiitd/willhero/imageres/Sprites/Chests/ (75).png");
+        url = "com/ap43iiitd/willhero/imageres/Sprites/Chests/ (2).png";
+        this.closed_chest = new Image(url);
+        open_chest_url = "com/ap43iiitd/willhero/imageres/Sprites/Chests/ (75).png";
+        this.opened_chest = new Image(open_chest_url);
         System.out.println("ASDSADASDAS");
         this.image_fx = new ImageView(this.closed_chest);
         this.image_fx.setPreserveRatio(true);

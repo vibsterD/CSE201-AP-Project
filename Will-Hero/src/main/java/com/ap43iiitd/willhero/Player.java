@@ -29,7 +29,8 @@ public class Player extends GameObject implements Serializable {
         this.has_won = false;
 //        this.dash_collision = false;
         this.position = new Position();
-        Image image = new Image("com/ap43iiitd/willhero/imageres/Sprites/Iron.png");
+        url = "com/ap43iiitd/willhero/imageres/Sprites/Iron.png";
+        Image image = new Image(url);
         this.image_fx = new ImageView(image);
         this.coins = 0;
     }
