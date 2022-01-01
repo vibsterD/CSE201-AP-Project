@@ -3,6 +3,7 @@ package com.ap43iiitd.willhero;
 import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -140,7 +141,10 @@ public class MainGamePage {
     protected void onHelloButtonClick() {
         //TODO: When collide with treasure chest and got weapon, add opacity
         //also spawn a new island with an orc maybe
-        if(!hero.getAlive()) return;
+        if(!hero.getAlive()) {
+            gameOver();
+            return;
+        }
         if (paused || hero.getPosition().getVel_x()>0) return;
 
 //        dash_translation = true;
@@ -227,6 +231,33 @@ public class MainGamePage {
     protected void onShurikenClick(){
         System.out.println("Shuricken clicked");
         hero.getHelmet().setCurrent_weapon(1);
+    }
+
+    private void gameOver(){
+        collisionMan.pause();
+        if(hero.hasRespawned()) {
+            //game is really over
+        }
+        //add a button to tapsense
+
+        FXMLLoader fxmlLoader = new FXMLLoader(WillHero.class.getResource("GameOverOverlay.fxml"));
+        try {
+            fxmlLoader.load();
+            GameOverOverlay goc = fxmlLoader.getController();
+            gamePane.getChildren().add(goc.overlayPane);
+
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            System.out.println("In-short: Looks like you misplaced some files");
+            System.out.println(e.getStackTrace());
+        }
+
+        System.out.println("Testing deez");
+
+
+        hero.setRespawned();
+
     }
 
 
