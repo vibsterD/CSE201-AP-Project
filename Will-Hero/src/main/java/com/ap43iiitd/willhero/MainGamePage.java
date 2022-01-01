@@ -173,7 +173,7 @@ public class MainGamePage {
         heroPos.setVelocity(39.9, heroPos.getVel_y());
 
         Weapon att = hero.getHelmet().getCurrent_weapon();
-        if(att!=null){
+        if(att!=null) {
             att.attack(game_objects, game_screen, hero.getImage_fx().getTranslateX()+hero.getImage_fx().getLayoutX(), hero.getImage_fx().getTranslateY()+hero.getImage_fx().getLayoutY());
         }
 

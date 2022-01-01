@@ -31,6 +31,7 @@ public class Player extends GameObject implements Serializable {
         this.position = new Position();
         Image image = new Image("com/ap43iiitd/willhero/imageres/Sprites/Iron.png");
         this.image_fx = new ImageView(image);
+        this.coins = 0;
     }
 
     public Player(Boolean respawned, Position position, int location, Weapon weapon) {
@@ -88,6 +89,7 @@ public class Player extends GameObject implements Serializable {
     }
 
     public void updateWeapon(Weapon weapon) {
+        helmet.rewardWeapon(weapon);
     }
 
     private void upgradeWeapon() {
