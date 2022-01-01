@@ -1,11 +1,16 @@
 package com.ap43iiitd.willhero;
 
+import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
@@ -13,6 +18,7 @@ import javafx.util.Duration;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Stack;
 
 public class Game implements Serializable {
     final static Random r1 = new Random(1337);
@@ -27,8 +33,11 @@ public class Game implements Serializable {
     private Timeline collisionMan;
     private Rectangle sword;
     private Rectangle shuriken;
+    private Boolean paused;
+    private StackPane game_pane;
 
-    public Game(AnchorPane game_screen, Rectangle sword, Rectangle shuriken) {
+    public Game(AnchorPane game_screen, Rectangle sword, Rectangle shuriken, StackPane game_pane) {
+        this.game_pane = game_pane;
         this.game_screen = game_screen;
         game_objects = new ArrayList<GameObject>();
         islands = new ArrayList<Island>();
@@ -38,6 +47,7 @@ public class Game implements Serializable {
         initialize_game();
         this.sword = sword;
         this.shuriken = shuriken;
+        this.paused = false;
     }
 
 
@@ -105,6 +115,89 @@ public class Game implements Serializable {
             collisionMan.setCycleCount(Timeline.INDEFINITE);
             collisionMan.play();
 
+    }
+
+    public void heroDash(Label score) {
+
+        if(!hero.getAlive()) {
+            return;
+        }
+        if (paused || hero.getPosition().getVel_x()>0) return;
+
+        score.setText(String.valueOf(Integer.parseInt(score.getText()) + 1));
+        Position heroPos = hero.getPosition();
+//        System.out.println("gamescreenpos: " +game_screen.getTranslateX());
+        heroPos.setVelocity(39.9, heroPos.getVel_y());
+
+        Weapon att = hero.getHelmet().getCurrent_weapon();
+        if(att!=null) {
+            att.attack(game_objects, game_screen, hero.getImage_fx().getTranslateX()+hero.getImage_fx().getLayoutX(), hero.getImage_fx().getTranslateY()+hero.getImage_fx().getLayoutY());
+        }
+    }
+
+    public Boolean getPaused() {
+        return paused;
+    }
+
+
+    public void pause(ImageView pauseButton, Rectangle pause_screen_filter) {
+        paused = true;
+        collisionMan.pause();
+        FadeTransition fTrans = new FadeTransition(Duration.millis(300), pause_screen_filter);
+        fTrans.setToValue(1);
+        fTrans.play();
+        pauseButton.setDisable(true);
+
+        //TODO: Implement menu methods in PauseMenuOverlay Class
+
+        FXMLLoader fxmlLoader = new FXMLLoader(WillHero.class.getResource("PauseMenuOverlay.fxml"));
+        try {
+            fxmlLoader.load();
+            PauseMenuOverlay pmo= fxmlLoader.getController();
+            System.out.println(pmo.overlayPane.getChildren());
+            game_pane.getChildren().add(pmo.overlayPane);
+            pmo.resumeButton.setOnAction(e->{
+                System.out.println("TAKING ACTION");
+                pmo.resumeGame();
+                System.out.println("OPACITY 0");
+                collisionMan.play();
+                pause_screen_filter.setOpacity(0);
+                pauseButton.setDisable(false);
+                paused=false;
+
+            });
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            System.out.println("In-short: Looks like you misplaced some files");
+            System.out.println(e.getStackTrace());
+        }
+    }
+
+    public void gameOver() {
+        collisionMan.pause();
+        if(hero.hasRespawned()) {
+            //game is really over
+        }
+        //add a button to tapsense
+
+        FXMLLoader fxmlLoader = new FXMLLoader(WillHero.class.getResource("GameOverOverlay.fxml"));
+        try {
+            fxmlLoader.load();
+            GameOverOverlay goc = fxmlLoader.getController();
+            game_pane.getChildren().add(goc.overlayPane);
+
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            System.out.println("In-short: Looks like you misplaced some files");
+            System.out.println(e.getStackTrace());
+        }
+
+        System.out.println("Testing deez");
+
+
+        hero.setRespawned();
     }
 
     public void initialize_game() {
@@ -226,7 +319,6 @@ public class Game implements Serializable {
     private void loadGame() {}
     private void pause() {}
     private void resume() {}
-    private void gameOver() {}
     private void respawn() {}
     public void addToRender() {}
     public void eraseObject() {}
