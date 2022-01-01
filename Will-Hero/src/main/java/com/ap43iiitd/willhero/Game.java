@@ -6,6 +6,7 @@ import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -13,6 +14,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.Serializable;
@@ -35,6 +37,7 @@ public class Game implements Serializable {
     private Rectangle shuriken;
     private Boolean paused;
     private StackPane game_pane;
+    private Integer currentScore = 0;
     private Label coins_counter;
 
     public Game(AnchorPane game_screen, Rectangle sword, Rectangle shuriken, StackPane game_pane, Label coins_counter) {
@@ -128,7 +131,8 @@ public class Game implements Serializable {
         }
         if (paused || hero.getPosition().getVel_x()>0) return;
 
-        score.setText(String.valueOf(Integer.parseInt(score.getText()) + 1));
+        currentScore = Integer.parseInt(score.getText()) + 1;
+        score.setText(String.valueOf(currentScore));
         Position heroPos = hero.getPosition();
 //        System.out.println("gamescreenpos: " +game_screen.getTranslateX());
         heroPos.setVelocity(39.9, heroPos.getVel_y());
@@ -175,31 +179,45 @@ public class Game implements Serializable {
 
     public void gameOver() {
         collisionMan.pause();
+        System.out.println("Hero respawned? "+hero.hasRespawned());
         if(hero.hasRespawned()) {
+            FadeTransition byeTrans = new FadeTransition(Duration.millis(1500), game_pane);
+            byeTrans.setToValue(0);
+            byeTrans.setOnFinished(ev->{
+                sceneSwitcher("EnterMenuOverlay.fxml");
+            });
+            byeTrans.play();
             //game is really over
         }
+        else {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(WillHero.class.getResource("GameOverOverlay.fxml"));
-        try {
-            fxmlLoader.load();
-            GameOverOverlay goc = fxmlLoader.getController();
-            game_pane.getChildren().add(goc.overlayPane);
-            goc.cost.setText("LOL");
-            goc.reviveButton.setOnAction(event -> {
-                System.out.println("LMAOO WORKING ");
-            });
+            FXMLLoader fxmlLoader = new FXMLLoader(WillHero.class.getResource("GameOverOverlay.fxml"));
+            try {
+                fxmlLoader.load();
+                GameOverOverlay goc = fxmlLoader.getController();
+                game_pane.getChildren().add(goc.overlayPane);
+                goc.cost.setText("LOL");
+                goc.progressBar.setProgress(currentScore / 100.0);
+                goc.reviveButton.setOnAction(event -> {
+                    System.out.println("LMAOO WORKING ");
+                    hero.getImage_fx().setY(hero.getImage_fx().getY() - 300);
+                    hero.setAlive();
+                    goc.overlayPane.setDisable(true);
+                    goc.overlayPane.setOpacity(0);
+                    collisionMan.play();
+                });
 
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                System.out.println("In-short: Looks like you misplaced some files");
+                System.out.println(e.getStackTrace());
+            }
+
+            System.out.println("Testing deez");
+
+
+            hero.setRespawned();
         }
-        catch (Exception e){
-            System.out.println(e.getMessage());
-            System.out.println("In-short: Looks like you misplaced some files");
-            System.out.println(e.getStackTrace());
-        }
-
-        System.out.println("Testing deez");
-
-
-        hero.setRespawned();
     }
 
     public void initialize_game() {
@@ -355,6 +373,21 @@ public class Game implements Serializable {
     public void eraseObject() {}
 
     // TEMPORARY FUNCTION FOR IN_SCENE
+
+    private void sceneSwitcher(String fxmlName){
+        Stage runningInstance = (Stage) game_pane.getScene().getWindow();
+        System.out.println(runningInstance);
+        FXMLLoader fxmlLoader = new FXMLLoader(WillHero.class.getResource(fxmlName));
+        try {
+            Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+            runningInstance.setScene(scene);
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            System.out.println("In-short: Looks like you misplaced some files");
+        }
+
+    }
 
 
     public void setIn_scene(ArrayList<GameObject> in_scene) {

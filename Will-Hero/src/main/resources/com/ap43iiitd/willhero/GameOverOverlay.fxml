@@ -32,10 +32,10 @@
                   </ImageView>
                   <StackPane>
                      <children>
-                        <Rectangle arcHeight="5.0" arcWidth="15.0" fill="DODGERBLUE" height="46.0" stroke="BLACK" strokeType="INSIDE" width="96.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="15.0" fill="DODGERBLUE" height="60.0" stroke="BLACK" strokeType="INSIDE" width="130.0" />
                         <Label text="REVIVE">
                            <font>
-                              <Font name="Impact" size="20.0" />
+                              <Font name="Impact" size="32.0" />
                            </font>
                         </Label>
                         <Button fx:id="reviveButton" mnemonicParsing="false" opacity="0.0" prefHeight="47.0" prefWidth="169.0" text="Revive" />
@@ -43,10 +43,9 @@
                   </StackPane>
                </children>
             </HBox>
-            <ProgressBar opacity="0.45" prefHeight="13.0" prefWidth="447.0" progress="0.8" />
          </children>
       </StackPane>
-      <VBox alignment="BOTTOM_CENTER" layoutX="-1.0" layoutY="653.0" prefHeight="66.0" prefWidth="1283.0">
+      <VBox alignment="BOTTOM_CENTER" layoutX="-1.0" layoutY="653.0" onMouseClicked="#mainMenu" prefHeight="66.0" prefWidth="1283.0">
          <children>
             <StackPane>
                <children>
@@ -62,7 +61,7 @@
                                           <Font name="Impact" size="40.0" />
                                        </font>
                                     </Label>
-                                    <Button mnemonicParsing="false" opacity="0.0" prefHeight="97.0" prefWidth="322.0" text="Main Menu" />
+                                    <Button mnemonicParsing="false" onAction="#mainMenu" opacity="0.0" prefHeight="97.0" prefWidth="322.0" text="Main Menu" />
                                  </children>
                               </StackPane>
                            </children>
@@ -75,7 +74,7 @@
       </VBox>
       <VBox alignment="TOP_CENTER" layoutX="352.0" layoutY="94.0" prefHeight="78.0" prefWidth="600.0">
          <children>
-            <ProgressBar prefHeight="27.0" prefWidth="325.0" progress="0.58" />
+            <ProgressBar fx:id="progressBar" prefHeight="27.0" prefWidth="325.0" progress="0.58" />
             <HBox alignment="CENTER">
                <children>
                   <AnchorPane prefHeight="48.0" prefWidth="323.0">

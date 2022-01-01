@@ -106,7 +106,7 @@ public class Player extends GameObject implements Serializable {
     }
 
     public Boolean hasRespawned() {
-        return true;
+        return respawned;
     }
 
     public Boolean getDashCollision() {
