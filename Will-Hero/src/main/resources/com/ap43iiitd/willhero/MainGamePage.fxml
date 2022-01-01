@@ -52,7 +52,7 @@
                </image>
             </ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b2b2b2" height="89.0" layoutX="211.0" layoutY="531.0" onMouseClicked="#onShurikenClick" opacity="0.0" rotate="45.0" stroke="BLACK" strokeType="INSIDE" width="89.0" />
-            <Label fx:id="coins" layoutX="1124.0" layoutY="7.0" text="0">
+            <Label fx:id="coins" layoutX="1050.0" layoutY="7.0" text="0">
                <font>
                   <Font name="Impact" size="72.0" />
                </font>

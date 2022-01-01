@@ -38,10 +38,12 @@ public class Game implements Serializable {
     private Boolean paused;
     private StackPane game_pane;
     private Integer currentScore = 0;
+    private Label coins_counter;
 
-    public Game(AnchorPane game_screen, Rectangle sword, Rectangle shuriken, StackPane game_pane) {
+    public Game(AnchorPane game_screen, Rectangle sword, Rectangle shuriken, StackPane game_pane, Label coins_counter) {
         this.game_pane = game_pane;
         this.game_screen = game_screen;
+        this.coins_counter = coins_counter;
         game_objects = new ArrayList<GameObject>();
         islands = new ArrayList<Island>();
         orcs = new ArrayList<Orc>();
@@ -113,6 +115,8 @@ public class Game implements Serializable {
                     sword.setFill(Color.valueOf("d2ff26"));
                     shuriken.setFill(Color.valueOf("d2ff26"));
                 }
+
+                coins_counter.setText("" + hero.getCoins());
 
             }));
             collisionMan.setCycleCount(Timeline.INDEFINITE);
@@ -226,7 +230,7 @@ public class Game implements Serializable {
         game_objects.add(hero);
     }
 
-    // generate islands and chests and TNTs
+    // generate islands and chests and TNTs and coins and trees
     private void initialize_islands() {
         for(int i = 0; i < 50; i++) {
             islands.add(new Island(new Position(0)));
@@ -257,6 +261,33 @@ public class Game implements Serializable {
                 tnts.get(tnts.size()-1).addToScene(game_screen, x, y, islands.get(i));
                 game_objects.add(tnts.get(tnts.size()-1));
             }
+
+            // generate Trees
+            int tree_get = 1 + r1.nextInt(19);
+            Image tree_image = new Image("com/ap43iiitd/willhero/imageres/Sprites/Trees/ (".concat(String.valueOf(tree_get)).concat(").png"));
+//            Image tree_image = new Image("com/ap43iiitd/willhero/imageres/Sprites/Trees/ (1).png");
+            ImageView tree_fx = new ImageView(tree_image);
+            tree_fx.setPreserveRatio(true);
+            tree_fx.setFitHeight(100 + r1.nextInt(60));
+            tree_fx.setLayoutX(x + r1.nextInt(100));
+            tree_fx.setLayoutY(y);
+            tree_fx.setViewOrder(200000);
+            double y_delta = islands.get(i).getImage_fx().getBoundsInParent().getMinY() - tree_fx.getBoundsInParent().getMaxY();
+            tree_fx.setLayoutY(tree_fx.getLayoutY() + y_delta);
+            game_screen.getChildren().add(tree_fx);
+
+            // generate Coins
+            int generate_coins = r1.nextInt(2);
+            if(generate_coins == 0) {
+                int no_of_coins = r1.nextInt(10);
+                int delta_x = r1.nextInt(50);
+                for(int j = 0; j < no_of_coins; j++) {
+                    Coin coin = new Coin();
+                    coin.addToScene(game_screen, x + delta_x + j*40, y, islands.get(i));
+                    game_objects.add(coin);
+                }
+            }
+
         }
     }
 
@@ -290,7 +321,7 @@ public class Game implements Serializable {
                 image_fx.setPreserveRatio(true);
                 image_fx.setFitWidth(200 + r1.nextInt(150));
                 image_fx.setLayoutX(220 + i*700 + r1.nextInt(100));
-                image_fx.setViewOrder(20000);
+                image_fx.setViewOrder(20009);
                 if(j == 0) {
                     image_fx.setLayoutY(100 + r1.nextInt(50));
                 }else {

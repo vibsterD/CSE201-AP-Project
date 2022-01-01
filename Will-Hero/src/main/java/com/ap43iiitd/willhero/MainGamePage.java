@@ -63,7 +63,7 @@ public class MainGamePage {
 
     public void initialize() {
 
-        game = new Game(game_screen, sword, shuriken, gamePane);
+        game = new Game(game_screen, sword, shuriken, gamePane, coins);
         game_objects = game.getGame_objects();
         hero = game.getHero();
 
