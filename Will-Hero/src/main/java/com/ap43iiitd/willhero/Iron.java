@@ -14,7 +14,7 @@ public class Iron extends Helmet implements Serializable {
         weapon_slots.add(null);
         weapon_slots.add(null);
 
-        weapon_slots.set(0,null); //usually null
+        weapon_slots.set(0,new ThrowingKnives()); //usually null
         weapon_slots.set(1,new Shuriken()); //usually null
 
     }
