@@ -1,6 +1,8 @@
 package com.ap43iiitd.willhero;
 
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 
 import java.io.Serializable;
 
@@ -14,9 +16,8 @@ public abstract class GameObject implements Serializable {
     protected double x;
     protected double y;
     protected double imageWidth;
-    protected double imageHeight;
-    protected double scaleX;
-    protected double scaleY;
+    protected double scaleX=1;
+    protected double scaleY=1;
 
     public abstract void collide(GameObject o1);
     public ImageView getImage_fx() {
@@ -25,6 +26,17 @@ public abstract class GameObject implements Serializable {
 
     public Position getPosition() {
         return position;
+    }
+
+    public void addToScene(AnchorPane pane){
+        this.image_fx = new ImageView(new Image(url));
+        image_fx.setPreserveRatio(true);
+        image_fx.setFitWidth(imageWidth);
+        image_fx.setLayoutX(x);
+        image_fx.setLayoutY(y);
+        image_fx.setScaleX(scaleX);
+        image_fx.setScaleY(scaleY);
+        pane.getChildren().add(image_fx);
     }
 }
 
