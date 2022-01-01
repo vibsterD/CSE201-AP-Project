@@ -35,6 +35,7 @@ public class Game implements Serializable {
     private Rectangle shuriken;
     private Boolean paused;
     private StackPane game_pane;
+    private Integer currentScore = 0;
 
     public Game(AnchorPane game_screen, Rectangle sword, Rectangle shuriken, StackPane game_pane) {
         this.game_pane = game_pane;
@@ -124,7 +125,8 @@ public class Game implements Serializable {
         }
         if (paused || hero.getPosition().getVel_x()>0) return;
 
-        score.setText(String.valueOf(Integer.parseInt(score.getText()) + 1));
+        currentScore = Integer.parseInt(score.getText()) + 1;
+        score.setText(String.valueOf(currentScore));
         Position heroPos = hero.getPosition();
 //        System.out.println("gamescreenpos: " +game_screen.getTranslateX());
         heroPos.setVelocity(39.9, heroPos.getVel_y());
@@ -181,6 +183,7 @@ public class Game implements Serializable {
             GameOverOverlay goc = fxmlLoader.getController();
             game_pane.getChildren().add(goc.overlayPane);
             goc.cost.setText("LOL");
+            goc.progressBar.setProgress(currentScore/100.0);
             goc.reviveButton.setOnAction(event -> {
                 System.out.println("LMAOO WORKING ");
             });

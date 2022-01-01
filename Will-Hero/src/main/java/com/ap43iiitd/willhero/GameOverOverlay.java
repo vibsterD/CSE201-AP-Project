@@ -3,6 +3,7 @@ package com.ap43iiitd.willhero;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -20,5 +21,9 @@ public class GameOverOverlay {
 
     @FXML
     AnchorPane overlayPane;
+
+    @FXML
+    ProgressBar progressBar;
+
 
 }
