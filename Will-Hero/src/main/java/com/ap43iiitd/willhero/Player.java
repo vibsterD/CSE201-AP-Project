@@ -127,6 +127,11 @@ public class Player extends GameObject implements Serializable {
 
     @Override
     public void collide(GameObject o1) {
+
+        if(image_fx.getTranslateY() > 600) {
+            eliminate();
+        }
+
         // player collid logic
         Player hero = (Player) this;
         if (o1 instanceof Island) {
@@ -149,6 +154,17 @@ public class Player extends GameObject implements Serializable {
         if (o1 instanceof Orc) {
             // orc
             Orc orc2 = (Orc) o1;
+
+            if(orc2.getDead()) {
+                return;
+            }
+
+            if(orc2.getImage_fx().getTranslateY() > 500) {
+                // kill Orc and reward player with some coins
+                orc2.forceEliminate();
+                updateCoins(5);
+                return;
+            }
 
             if (orc2.getImage_fx().getBoundsInParent().intersects(hero.getImage_fx().getBoundsInParent())) {
 //                System.out.println( "Orc : " + orc2.getOrc_fx().getBoundsInParent().getMaxY());

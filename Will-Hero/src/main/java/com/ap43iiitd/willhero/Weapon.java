@@ -21,13 +21,13 @@ public abstract class Weapon extends GameObject{
             Orc orc = (Orc) o1;
             if(orc.getImage_fx().getBoundsInParent().intersects(this.getImage_fx().getBoundsInParent())) {
                 orc.setHp(orc.getHp() - hp_damage);
-                if(orc.getHp() <= 0) {
-                    orc.eliminate();
-                }
+                orc.eliminate();
             }
         }else if(o1 instanceof TNT) {
             TNT tnt = (TNT) o1;
-            tnt.activate();
+            if(tnt.getImage_fx().getBoundsInParent().intersects(image_fx.getBoundsInParent())) {
+                tnt.activate();
+            }
         }
     }
 

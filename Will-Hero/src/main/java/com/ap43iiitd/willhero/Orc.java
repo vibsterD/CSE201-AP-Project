@@ -12,6 +12,7 @@ public abstract class Orc extends GameObject implements Serializable {
     private final int size;
     private int hp;
     private Boolean collidable;
+    private Boolean dead;
 
     public Orc(int size, int hp, Position position, int res_num){
         this.size = size;
@@ -21,6 +22,7 @@ public abstract class Orc extends GameObject implements Serializable {
 //        System.out.println("CREATING ORC");
         Image image = new Image("com/ap43iiitd/willhero/imageres/Sprites/Orcs/O (".concat(String.valueOf(res_num)).concat(").png"));
         this.image_fx = new ImageView(image);
+        dead = false;
     }
 
     public void jump(){
@@ -51,9 +53,21 @@ public abstract class Orc extends GameObject implements Serializable {
 
 
     public void eliminate() {
+        if(hp > 0) {
+            return;
+        }
+        dead = true;
         die();
     }
 
+    public void forceEliminate() {
+        dead = true;
+        die();
+    }
+
+    public Boolean getDead() {
+        return dead;
+    }
 
     public void addToScene(AnchorPane pane, int x, int y) {
         image_fx.setPreserveRatio(true);

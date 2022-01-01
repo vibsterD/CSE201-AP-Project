@@ -10,7 +10,7 @@ public class ThrowingKnives extends Weapon{
 
     public ThrowingKnives(){
         this.image_fx = new ImageView(new Image("com/ap43iiitd/willhero/imageres/Sprites/Weapons/SmallSword.png"));
-        this.hp_damage = 100;
+        this.hp_damage = 70;
         this.hit_radius = 2000;
         this.level = 4;
         this.position = new Position(true);

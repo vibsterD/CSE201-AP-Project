@@ -12,7 +12,7 @@ public class Shuriken extends Weapon{
 
     public Shuriken(){
         this.image_fx = new ImageView(new Image("com/ap43iiitd/willhero/imageres/Sprites/Weapons/Shuriken/Shuriken.png"));
-        this.hp_damage = 100;
+        this.hp_damage = 70;
         this.hit_radius = 2000;
         this.level = 4;
         this.position = new Position(true);
