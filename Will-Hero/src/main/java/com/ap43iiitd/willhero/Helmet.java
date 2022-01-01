@@ -7,7 +7,11 @@ public abstract class Helmet implements Serializable {
     ArrayList<Weapon> weapon_slots;
     Weapon current_weapon;
 
-    public Helmet() {}
+    public Helmet() {
+        weapon_slots = new ArrayList<Weapon>();
+        weapon_slots.add(null);
+        weapon_slots.add(null);
+    }
 
     public int hasWeapon() {
         //Hot encoding
@@ -30,4 +34,23 @@ public abstract class Helmet implements Serializable {
     public Weapon getCurrent_weapon() {
         return current_weapon;
     }
+
+    public void rewardWeapon(Weapon weapon) {
+        if(weapon instanceof ThrowingKnives) {
+            // first weapon - knives
+            if(weapon_slots.get(0) != null) {
+                weapon_slots.get(0).upgrade();
+            }else {
+                weapon_slots.set(0, new ThrowingKnives());
+            }
+        }else if(weapon instanceof Shuriken) {
+            // second weapon - shuriken
+            if(weapon_slots.get(1) != null) {
+                weapon_slots.get(1).upgrade();
+            }else {
+                weapon_slots.set(1, new Shuriken());
+            }
+        }
+    }
+
 }
