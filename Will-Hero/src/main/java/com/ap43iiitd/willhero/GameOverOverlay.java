@@ -19,9 +19,6 @@ public class GameOverOverlay {
     Button reviveButton;
 
     @FXML
-    Label score;
-
-    @FXML
     AnchorPane overlayPane;
 
 }

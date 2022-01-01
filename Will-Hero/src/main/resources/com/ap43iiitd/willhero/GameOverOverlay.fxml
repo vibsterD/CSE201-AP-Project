@@ -73,13 +73,8 @@
             </StackPane>
          </children>
       </VBox>
-      <VBox alignment="TOP_CENTER" layoutX="352.0" layoutY="10.0" prefHeight="172.0" prefWidth="600.0">
+      <VBox alignment="TOP_CENTER" layoutX="352.0" layoutY="94.0" prefHeight="78.0" prefWidth="600.0">
          <children>
-            <Label fx:id="score" text="533">
-               <font>
-                  <Font name="Impact" size="60.0" />
-               </font>
-            </Label>
             <ProgressBar prefHeight="27.0" prefWidth="325.0" progress="0.58" />
             <HBox alignment="CENTER">
                <children>
