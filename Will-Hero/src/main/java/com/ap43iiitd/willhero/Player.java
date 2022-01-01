@@ -59,6 +59,11 @@ public class Player extends GameObject implements Serializable {
 //        return position;
 //    }
 
+
+    public void setRespawned() {
+        this.respawned = true;
+    }
+
     public void not_alive(){
         this.alive = false;
     }

@@ -12,16 +12,70 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="overlayPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ap43iiitd.willhero.GameOverOverlay">
    <children>
-      <ImageView fitHeight="727.0" fitWidth="1281.0" pickOnBounds="true" smooth="false">
-         <image>
-            <Image url="@imageres/Sprites/default_artwork_big.png" />
-         </image>
-      </ImageView>
-      <VBox alignment="TOP_CENTER" prefHeight="410.0" prefWidth="600.0">
+      <StackPane alignment="BOTTOM_CENTER" layoutX="501.0" layoutY="333.0" prefHeight="78.0" prefWidth="289.0">
          <children>
-            <Label text="533">
+            <Rectangle arcHeight="5.0" arcWidth="10.0" fill="#b2e6ff" height="78.0" stroke="BLACK" strokeType="INSIDE" width="302.0" />
+            <Button mnemonicParsing="false" opacity="0.0" prefHeight="68.0" prefWidth="199.0" text="Button" />
+            <HBox alignment="CENTER" prefHeight="78.0" prefWidth="290.0">
+               <children>
+                  <Label fx:id="cost" text="12">
+                     <font>
+                        <Font name="Impact" size="33.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="42.0" fitWidth="44.0" pickOnBounds="true" smooth="false">
+                     <image>
+                        <Image url="@imageres/Sprites/Trophy.png" />
+                     </image>
+                  </ImageView>
+                  <StackPane>
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="15.0" fill="DODGERBLUE" height="46.0" stroke="BLACK" strokeType="INSIDE" width="96.0" />
+                        <Label text="REVIVE">
+                           <font>
+                              <Font name="Impact" size="20.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="reviveButton" mnemonicParsing="false" opacity="0.0" prefHeight="47.0" prefWidth="169.0" text="Revive" />
+                     </children>
+                  </StackPane>
+               </children>
+            </HBox>
+            <ProgressBar opacity="0.45" prefHeight="13.0" prefWidth="447.0" progress="0.8" />
+         </children>
+      </StackPane>
+      <VBox alignment="BOTTOM_CENTER" layoutX="-1.0" layoutY="653.0" prefHeight="66.0" prefWidth="1283.0">
+         <children>
+            <StackPane>
+               <children>
+                  <HBox alignment="CENTER" prefHeight="26.0" prefWidth="600.0">
+                     <children>
+                        <HBox fx:id="mainMenuClick" alignment="CENTER" prefHeight="67.0" prefWidth="294.0">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#81d097" height="66.0" opacity="0.29" stroke="BLACK" strokeType="INSIDE" width="640.0" />
+                                    <Label text="Main Menu">
+                                       <font>
+                                          <Font name="Impact" size="40.0" />
+                                       </font>
+                                    </Label>
+                                    <Button mnemonicParsing="false" opacity="0.0" prefHeight="97.0" prefWidth="322.0" text="Main Menu" />
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+               </children>
+            </StackPane>
+         </children>
+      </VBox>
+      <VBox alignment="TOP_CENTER" layoutX="352.0" layoutY="10.0" prefHeight="172.0" prefWidth="600.0">
+         <children>
+            <Label fx:id="score" text="533">
                <font>
                   <Font name="Impact" size="60.0" />
                </font>
@@ -45,90 +99,7 @@
                   </AnchorPane>
                </children>
             </HBox>
-            <VBox alignment="BOTTOM_CENTER" prefHeight="323.0" prefWidth="1280.0">
-               <children>
-                  <AnchorPane prefHeight="70.0" prefWidth="512.0">
-                     <children>
-                        <StackPane alignment="BOTTOM_CENTER" layoutX="489.0" layoutY="3.0" prefHeight="78.0" prefWidth="289.0">
-                           <children>
-                              <Rectangle arcHeight="5.0" arcWidth="10.0" fill="#b2e6ff" height="78.0" stroke="BLACK" strokeType="INSIDE" width="302.0" />
-                              <Button mnemonicParsing="false" opacity="0.0" prefHeight="68.0" prefWidth="199.0" text="Button" />
-                              <HBox alignment="CENTER" prefHeight="78.0" prefWidth="290.0">
-                                 <children>
-                                    <Label text="12">
-                                       <font>
-                                          <Font name="Impact" size="33.0" />
-                                       </font>
-                                    </Label>
-                                    <ImageView fitHeight="42.0" fitWidth="44.0" pickOnBounds="true" smooth="false">
-                                       <image>
-                                          <Image url="@imageres/Sprites/Trophy.png" />
-                                       </image>
-                                    </ImageView>
-                                    <StackPane>
-                                       <children>
-                                          <Rectangle arcHeight="5.0" arcWidth="15.0" fill="DODGERBLUE" height="46.0" stroke="BLACK" strokeType="INSIDE" width="96.0" />
-                                          <Label text="REVIVE">
-                                             <font>
-                                                <Font name="Impact" size="20.0" />
-                                             </font>
-                                          </Label>
-                                          <Button mnemonicParsing="false" opacity="0.0" prefHeight="47.0" prefWidth="169.0" text="Revive" />
-                                       </children>
-                                    </StackPane>
-                                 </children>
-                              </HBox>
-                              <ProgressBar opacity="0.45" prefHeight="13.0" prefWidth="447.0" progress="0.8" />
-                           </children>
-                        </StackPane>
-                     </children>
-                  </AnchorPane>
-               </children>
-            </VBox>
-            <VBox alignment="BOTTOM_CENTER" prefHeight="264.0" prefWidth="1280.0">
-               <children>
-                  <StackPane>
-                     <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="67.0" opacity="0.41" stroke="BLACK" strokeType="INSIDE" width="1283.0" />
-                        <HBox alignment="CENTER" prefHeight="26.0" prefWidth="600.0">
-                           <children>
-                              <HBox alignment="CENTER" prefHeight="67.0" prefWidth="306.0">
-                                 <children>
-                                    <StackPane>
-                                       <children>
-                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6894bc" height="66.0" opacity="0.33" stroke="BLACK" strokeType="INSIDE" width="639.0" />
-                                          <Label text="Restart">
-                                             <font>
-                                                <Font name="Impact" size="40.0" />
-                                             </font>
-                                          </Label>
-                                          <Button mnemonicParsing="false" opacity="0.0" prefHeight="67.0" prefWidth="310.0" text="Restart" />
-                                       </children>
-                                    </StackPane>
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER" prefHeight="67.0" prefWidth="294.0">
-                                 <children>
-                                    <StackPane>
-                                       <children>
-                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#81d097" height="66.0" opacity="0.29" stroke="BLACK" strokeType="INSIDE" width="640.0" />
-                                          <Label text="Main Menu">
-                                             <font>
-                                                <Font name="Impact" size="40.0" />
-                                             </font>
-                                          </Label>
-                                          <Button mnemonicParsing="false" opacity="0.0" prefHeight="97.0" prefWidth="322.0" text="Main Menu" />
-                                       </children>
-                                    </StackPane>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </HBox>
-                     </children>
-                  </StackPane>
-               </children>
-            </VBox>
          </children>
       </VBox>
    </children>
-</StackPane>
+</AnchorPane>
