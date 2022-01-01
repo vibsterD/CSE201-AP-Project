@@ -72,18 +72,15 @@ public class MainGamePage {
             System.out.println(e.getLocalizedMessage());
         }
 
-        System.out.println("OJEOFIFBW");
-        game.setPrev(game_screen, sword, shuriken, gamePane, coins);
+        game = new Game(game_screen, sword, shuriken, gamePane, coins);
+        System.out.println("Created");
+
+        game.setPref(game_screen, sword, shuriken, gamePane, coins);
         game_objects = game.getGame_objects();
-        for(GameObject i: game_objects){
-            i.reload(game_screen);
-        }
-        try {
-            hero = game.getHero();
-        }
-        catch (Exception e){
-            System.out.println("null ptr iintngingt");
-        }
+//        for(GameObject i: game_objects){
+//            i.reload(game_screen);
+//        }
+        hero = game.getHero();
 
         game.play();
 

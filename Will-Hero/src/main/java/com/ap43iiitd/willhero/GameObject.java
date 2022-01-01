@@ -30,8 +30,8 @@ public abstract class GameObject implements Serializable {
         this.image_fx = new ImageView(new Image(url));
         image_fx.setPreserveRatio(true);
         image_fx.setFitWidth(imageWidth);
-        image_fx.setLayoutX(x);
-        image_fx.setLayoutY(y);
+        image_fx.setTranslateX(x);
+        image_fx.setTranslateY(y);
         pane.getChildren().add(image_fx);
     }
 }

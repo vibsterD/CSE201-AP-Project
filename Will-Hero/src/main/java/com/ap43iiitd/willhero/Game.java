@@ -56,7 +56,7 @@ public class Game implements Serializable {
             initialize_game();
     }
 
-    public void setPrev(AnchorPane game_screen, Rectangle sword, Rectangle shuriken, StackPane game_pane, Label coins_counter){
+    public void setPref(AnchorPane game_screen, Rectangle sword, Rectangle shuriken, StackPane game_pane, Label coins_counter){
         this.game_pane = game_pane;
         this.game_screen = game_screen;
         this.coins_counter = coins_counter;
@@ -246,6 +246,7 @@ public class Game implements Serializable {
 
         hero = new Player();
         hero.addToScene(game_screen);
+
         initialize_islands();
         initialize_orcs();
         initialize_clouds();
