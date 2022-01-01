@@ -72,16 +72,16 @@ public class MainGamePage {
             System.out.println(e.getLocalizedMessage());
         }
 
-        game = new Game(game_screen, sword, shuriken, gamePane, coins);
+//        game = new Game(game_screen, sword, shuriken, gamePane, coins);
         System.out.println("Created");
 
         game.setPref(game_screen, sword, shuriken, gamePane, coins);
         game_objects = game.getGame_objects();
 
         //TODO: SHIFT TO LOAD LOGIC
-//        for(GameObject i: game_objects){
-//            i.reload(game_screen);
-//        }
+        for(GameObject i: game_objects){
+            i.reload(game_screen);
+        }
         hero = game.getHero();
 
         game.play();
