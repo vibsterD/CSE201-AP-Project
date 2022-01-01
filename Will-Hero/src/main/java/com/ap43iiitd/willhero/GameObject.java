@@ -11,6 +11,12 @@ public abstract class GameObject implements Serializable {
     protected String url;
     private static final int serialVersionUID = 1;
     protected Position position;
+    protected double x;
+    protected double y;
+    protected double imageWidth;
+    protected double imageHeight;
+    protected double scaleX;
+    protected double scaleY;
 
     public abstract void collide(GameObject o1);
     public ImageView getImage_fx() {
