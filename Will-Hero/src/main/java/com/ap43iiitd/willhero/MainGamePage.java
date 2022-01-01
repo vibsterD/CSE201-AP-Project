@@ -97,7 +97,7 @@ public class MainGamePage {
 
         collisionMan = new Timeline(new KeyFrame(Duration.millis(5), event->{
 
-            if(!hero.getAlive()) {collisionMan.pause(); return;}
+            if(!hero.getAlive()) {collisionMan.pause(); gameOver(); return;}
 
             ArrayList <GameObject> in_scene = new ArrayList<GameObject>();
             double x_pos = hero.getImage_fx().getTranslateX();
@@ -142,7 +142,6 @@ public class MainGamePage {
         //TODO: When collide with treasure chest and got weapon, add opacity
         //also spawn a new island with an orc maybe
         if(!hero.getAlive()) {
-            gameOver();
             return;
         }
         if (paused || hero.getPosition().getVel_x()>0) return;
