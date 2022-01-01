@@ -14,7 +14,7 @@ public class Position implements Serializable {
     private double x_drag = 0;
     private Boolean timeout = false;
 
-    private final TranslateTransition smoothenTransition = new TranslateTransition(Duration.millis(1000.0/60.0));
+    transient private final TranslateTransition smoothenTransition = new TranslateTransition(Duration.millis(1000.0/60.0));
 
     public Position() {
         this.vel_x = 0;

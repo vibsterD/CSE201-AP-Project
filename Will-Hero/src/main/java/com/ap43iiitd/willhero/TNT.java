@@ -12,7 +12,7 @@ public class TNT extends GameObject{
     private Position position;
     private Boolean is_exploded;
     private double explosion_radius;
-    Image explosion;
+    //Image explosion;
     Game game;
 
     public TNT(Game game) {

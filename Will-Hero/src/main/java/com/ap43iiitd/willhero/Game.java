@@ -17,14 +17,15 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.io.Serializable;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Stack;
 
 public class Game implements Serializable {
     final static Random r1 = new Random(1337);
-    AnchorPane game_screen;
+    static final int serialVersionUID = 1;
+    transient AnchorPane game_screen;
     ArrayList<GameObject> game_objects;
     ArrayList<Island> islands;
     ArrayList<Orc> orcs;
@@ -32,13 +33,13 @@ public class Game implements Serializable {
     ArrayList<TNT> tnts;
     ArrayList<GameObject> in_scene;
     Player hero;
-    private Timeline collisionMan;
-    private Rectangle sword;
-    private Rectangle shuriken;
+    transient private Timeline collisionMan;
+    transient private Rectangle sword;
+    transient private Rectangle shuriken;
     private Boolean paused;
-    private StackPane game_pane;
+    transient private StackPane game_pane;
     private Integer currentScore = 0;
-    private Label coins_counter;
+    transient private Label coins_counter;
 
     public Game(AnchorPane game_screen, Rectangle sword, Rectangle shuriken, StackPane game_pane, Label coins_counter) {
         this.game_pane = game_pane;
@@ -146,6 +147,17 @@ public class Game implements Serializable {
     public void pause(ImageView pauseButton, Rectangle pause_screen_filter) {
         paused = true;
         collisionMan.pause();
+        ObjectOutputStream out = null;
+        ObjectInputStream in = null;
+        try {
+            out = new ObjectOutputStream(new FileOutputStream("Stark.txt"));
+            out.writeObject(this);
+//            in = new ObjectInputStream(new FileInputStream("Stark.txt"));
+//            this = (Game) in.readObject();
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
         FadeTransition fTrans = new FadeTransition(Duration.millis(300), pause_screen_filter);
         fTrans.setToValue(1);
         fTrans.play();

@@ -13,6 +13,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -62,8 +64,15 @@ public class MainGamePage {
     private ArrayList<Game> games;
 
     public void initialize() {
+        try {
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream("Stark.txt"));
+            game = (Game) in.readObject();
+        }
+        catch (Exception e){
+            System.out.println(e.getLocalizedMessage());
+        }
 
-        game = new Game(game_screen, sword, shuriken, gamePane, coins);
+//        game = new Game(game_screen, sword, shuriken, gamePane, coins);
         game_objects = game.getGame_objects();
         hero = game.getHero();
 
