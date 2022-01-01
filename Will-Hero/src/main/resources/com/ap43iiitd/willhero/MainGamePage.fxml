@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Group?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -20,16 +21,20 @@
       <AnchorPane fx:id="game_screen" maxWidth="1.7976931348623157E308" prefHeight="720.0" prefWidth="1280.0" />
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <HBox alignment="CENTER" layoutY="653.0" prefHeight="68.0" prefWidth="1280.0">
+            <Group fx:id="playPrompt" layoutY="653.0">
                <children>
-                  <Label fx:id="tapToPlay" text="TAP TO PLAY">
-                     <font>
-                        <Font name="Impact" size="49.0" />
-                     </font>
-                  </Label>
+                  <HBox alignment="CENTER" prefHeight="68.0" prefWidth="1280.0">
+                     <children>
+                        <Label fx:id="tapToPlay" text="TAP TO PLAY">
+                           <font>
+                              <Font name="Impact" size="49.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fff8f" height="68.0" opacity="0.24" stroke="BLACK" strokeType="INSIDE" width="1280.0" />
                </children>
-            </HBox>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fff8f" height="68.0" layoutY="653.0" opacity="0.24" stroke="BLACK" strokeType="INSIDE" width="1280.0" />
+            </Group>
             <HBox alignment="CENTER" prefHeight="95.0" prefWidth="1280.0">
                <children>
                   <Label fx:id="score" text="0">

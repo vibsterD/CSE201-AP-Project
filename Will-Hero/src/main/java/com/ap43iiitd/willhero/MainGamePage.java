@@ -3,6 +3,7 @@ package com.ap43iiitd.willhero;
 import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -49,6 +50,9 @@ public class MainGamePage {
     private Rectangle shuriken;
 
     private Player hero;
+
+    @FXML
+    private Group playPrompt;
 
     Timeline collisionMan;
 
