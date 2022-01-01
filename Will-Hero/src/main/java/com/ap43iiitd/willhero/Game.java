@@ -35,10 +35,12 @@ public class Game implements Serializable {
     private Rectangle shuriken;
     private Boolean paused;
     private StackPane game_pane;
+    private Label coins_counter;
 
-    public Game(AnchorPane game_screen, Rectangle sword, Rectangle shuriken, StackPane game_pane) {
+    public Game(AnchorPane game_screen, Rectangle sword, Rectangle shuriken, StackPane game_pane, Label coins_counter) {
         this.game_pane = game_pane;
         this.game_screen = game_screen;
+        this.coins_counter = coins_counter;
         game_objects = new ArrayList<GameObject>();
         islands = new ArrayList<Island>();
         orcs = new ArrayList<Orc>();
@@ -110,6 +112,8 @@ public class Game implements Serializable {
                     sword.setFill(Color.valueOf("d2ff26"));
                     shuriken.setFill(Color.valueOf("d2ff26"));
                 }
+
+                coins_counter.setText("" + hero.getCoins());
 
             }));
             collisionMan.setCycleCount(Timeline.INDEFINITE);
@@ -253,6 +257,19 @@ public class Game implements Serializable {
             double y_delta = islands.get(i).getImage_fx().getBoundsInParent().getMinY() - tree_fx.getBoundsInParent().getMaxY();
             tree_fx.setLayoutY(tree_fx.getLayoutY() + y_delta);
             game_screen.getChildren().add(tree_fx);
+
+            // generate Coins
+            int generate_coins = r1.nextInt(2);
+            if(generate_coins == 0) {
+                int no_of_coins = r1.nextInt(10);
+                int delta_x = r1.nextInt(50);
+                for(int j = 0; j < no_of_coins; j++) {
+                    Coin coin = new Coin();
+                    coin.addToScene(game_screen, x + delta_x + j*40, y, islands.get(i));
+                    game_objects.add(coin);
+                }
+            }
+
         }
     }
 
@@ -286,7 +303,7 @@ public class Game implements Serializable {
                 image_fx.setPreserveRatio(true);
                 image_fx.setFitWidth(200 + r1.nextInt(150));
                 image_fx.setLayoutX(220 + i*700 + r1.nextInt(100));
-                image_fx.setViewOrder(20000);
+                image_fx.setViewOrder(20009);
                 if(j == 0) {
                     image_fx.setLayoutY(100 + r1.nextInt(50));
                 }else {

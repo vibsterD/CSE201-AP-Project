@@ -55,16 +55,6 @@ public abstract class Chest extends GameObject implements Serializable {
 //        y_delta = 0;
         image_fx.setLayoutY(image_fx.getLayoutY() + y_delta);
         System.out.println("ADASADASQWEQWE");
-//        for(int i = 0; i < islands.size(); i++) {
-//            delta = Math.abs(islands.get(i).getImage_fx().getTranslateX() - x);
-//            if(delta < 100.0 && delta < delta_min) {
-//                delta_min = delta;
-//                chest.setTranslateX(islands.get(i).getImage_fx().getTranslateX());
-//            }
-//        }
-
-
-
     }
 
     @Override
