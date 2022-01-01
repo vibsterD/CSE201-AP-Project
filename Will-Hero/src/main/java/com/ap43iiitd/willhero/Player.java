@@ -45,10 +45,8 @@ public class Player extends GameObject implements Serializable {
     }
 
     public void addToScene(AnchorPane pane) {
-        image_fx.setScaleX(0.5);
-        image_fx.setScaleY(0.5);
-        image_fx.setLayoutX(150);
-        image_fx.setLayoutY(40);
+        image_fx.setPreserveRatio(true);
+        image_fx.setFitWidth(30);
         System.out.println(pane+" irjgiwrugier");
         pane.getChildren().add(image_fx);
     }

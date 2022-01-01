@@ -26,6 +26,11 @@ public abstract class GameObject implements Serializable {
         return position;
     }
 
+    public void setXY(){
+        this.x = image_fx.getTranslateX()+image_fx.getLayoutX();
+        this.y = image_fx.getTranslateY()+image_fx.getLayoutY();
+    }
+
     public void reload(AnchorPane pane){
         this.image_fx = new ImageView(new Image(url));
         image_fx.setPreserveRatio(true);

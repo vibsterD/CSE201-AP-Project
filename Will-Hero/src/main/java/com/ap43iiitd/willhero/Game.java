@@ -63,6 +63,7 @@ public class Game implements Serializable {
         this.sword = sword;
         this.shuriken = shuriken;
         this.paused = false;
+        System.out.println(this.currentScore+"BIBNIBIBI");
     }
 
 
@@ -100,6 +101,7 @@ public class Game implements Serializable {
                         // in scene
                         in_scene.add(game_object);
                     }
+                    game_object.setXY();
                 }
     //            System.out.println("inscene: " + in_scene.size());
                 // Temp line
@@ -141,7 +143,7 @@ public class Game implements Serializable {
         }
         if (paused || hero.getPosition().getVel_x()>0) return;
 
-        currentScore = Integer.parseInt(score.getText()) + 1;
+        currentScore++;
         score.setText(String.valueOf(currentScore));
         Position heroPos = hero.getPosition();
 //        System.out.println("gamescreenpos: " +game_screen.getTranslateX());

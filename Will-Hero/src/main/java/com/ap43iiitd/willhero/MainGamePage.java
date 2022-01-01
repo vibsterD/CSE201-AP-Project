@@ -77,6 +77,8 @@ public class MainGamePage {
 
         game.setPref(game_screen, sword, shuriken, gamePane, coins);
         game_objects = game.getGame_objects();
+
+        //TODO: SHIFT TO LOAD LOGIC
 //        for(GameObject i: game_objects){
 //            i.reload(game_screen);
 //        }

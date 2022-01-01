@@ -12,7 +12,7 @@ public class WeaponChest extends Chest{
         url = "com/ap43iiitd/willhero/imageres/Sprites/Chests/ (5).png";
         this.closed_chest = new Image(url);
         open_chest_url = "com/ap43iiitd/willhero/imageres/Sprites/Chests/ (79).png";
-        this.opened_chest = new Image(open_chest_url);
+
         System.out.println("ASDSADASDAS");
         this.image_fx = new ImageView(this.closed_chest);
         this.image_fx.setPreserveRatio(true);

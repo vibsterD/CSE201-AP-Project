@@ -12,7 +12,7 @@ public abstract class Chest extends GameObject implements Serializable {
     private Boolean isEmpty = false;
     transient protected Image closed_chest;
     transient protected ArrayList<Image> transition_chests;
-    transient protected Image opened_chest;
+
     private Position position;
     protected String open_chest_url = "com/ap43iiitd/willhero/imageres/Sprites/Chests/ (75).png";
 
@@ -29,7 +29,7 @@ public abstract class Chest extends GameObject implements Serializable {
                 // chest open
                 url = open_chest_url;
                 System.out.println("CHESTTTT");
-                image_fx.setImage(opened_chest);
+                image_fx.setImage(new Image(open_chest_url));
                 if(this instanceof CoinChest) {
                     image_fx.setLayoutY(image_fx.getLayoutY() + 15.0);
                 }
