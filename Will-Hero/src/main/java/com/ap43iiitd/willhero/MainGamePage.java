@@ -66,80 +66,14 @@ public class MainGamePage {
 
     public void initialize() {
 
-        game = new Game(game_screen);
+        game = new Game(game_screen, sword, shuriken);
         game_objects = game.getGame_objects();
         hero = game.getHero();
-//        hero.getImage_fx().translateXProperty().addListener((obs, old, newValue) -> {
-//            System.out.println("IDK LOL: "+obs+" "+old+" "+newValue);
-//            int offset = newValue.intValue();
-//            if (offset > 340){
-//                System.out.println("LOLOL");
-//                game_screen.setLayoutX(-1000);
-//            }
-//        });
 
-        Timeline screen_mover = new Timeline((new KeyFrame(Duration.millis(1500), event -> {
-            //get gamescreen x_pos
-            //get hero x_pos
-            //if sum >= threshold -- shift game_screen
+        game.play();
 
-            double gsp = game_screen.getTranslateX();
-            double sum = hero.getImage_fx().getTranslateX()+hero.getImage_fx().getLayoutX()+gsp;
-            if(sum>300||sum<0){
-                // shift game_screen by sum
-                TranslateTransition gst = new TranslateTransition(Duration.millis(1500), game_screen);
-                gst.setCycleCount(1);
-                gst.setByX(-sum);
-                gst.play();
-
-            }
-        })));
-        screen_mover.setCycleCount(Timeline.INDEFINITE);
-        screen_mover.play();
-
-
-
-        collisionMan = new Timeline(new KeyFrame(Duration.millis(5), event->{
-
-            if(!hero.getAlive()) {collisionMan.pause(); gameOver(); return;}
-
-            ArrayList <GameObject> in_scene = new ArrayList<GameObject>();
-            double x_pos = hero.getImage_fx().getTranslateX();
-            for (GameObject game_object : game_objects) {
-                if (Math.abs(game_object.getImage_fx().getBoundsInParent().getCenterX() - x_pos) < 1500) {
-                    // in scene
-                    in_scene.add(game_object);
-                }
-            }
-//            System.out.println("inscene: " + in_scene.size());
-            // Temp line
-            game.setIn_scene(in_scene);
-            // Temp line
-            for(int i = 0; i < in_scene.size(); i++) {
-                in_scene.get(i).getPosition().updatePosition(in_scene.get(i).getImage_fx());
-                for(int j = i + 1; j < in_scene.size(); j++) {
-
-                    in_scene.get(i).collide(in_scene.get(j));
-                    in_scene.get(j).collide(in_scene.get(i));
-                }
-            }
-
-            int ungray_weapons = hero.getHelmet().hasWeapon();
-            if(ungray_weapons==1){
-                sword.setFill(Color.valueOf("d2ff26"));
-            }
-            else if (ungray_weapons==2){
-                shuriken.setFill(Color.valueOf("d2ff26"));
-            }
-            else if (ungray_weapons==3){
-                sword.setFill(Color.valueOf("d2ff26"));
-                shuriken.setFill(Color.valueOf("d2ff26"));
-            }
-
-        }));
-        collisionMan.setCycleCount(Timeline.INDEFINITE);
-        collisionMan.play();
     }
+
 
     @FXML
     protected void onHelloButtonClick() {

@@ -102,7 +102,7 @@ public class Player extends GameObject implements Serializable {
 
     public void eliminate() {
         System.out.println("\n\nTHE HERO DIED!!!!!!!\n\n\n");
-        not_alive();
+//        not_alive();
     }
 
     public Boolean hasRespawned() {

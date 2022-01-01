@@ -1,9 +1,13 @@
 package com.ap43iiitd.willhero;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
 import java.io.Serializable;
@@ -20,8 +24,11 @@ public class Game implements Serializable {
     ArrayList<TNT> tnts;
     ArrayList<GameObject> in_scene;
     Player hero;
+    private Timeline collisionMan;
+    private Rectangle sword;
+    private Rectangle shuriken;
 
-    public Game(AnchorPane game_screen) {
+    public Game(AnchorPane game_screen, Rectangle sword, Rectangle shuriken) {
         this.game_screen = game_screen;
         game_objects = new ArrayList<GameObject>();
         islands = new ArrayList<Island>();
@@ -29,8 +36,76 @@ public class Game implements Serializable {
         chests = new ArrayList<Chest>();
         tnts = new ArrayList<TNT>();
         initialize_game();
+        this.sword = sword;
+        this.shuriken = shuriken;
     }
 
+
+    public void play() {
+        Game game = this;
+        Timeline screen_mover = new Timeline((new KeyFrame(Duration.millis(1500), event -> {
+                //get gamescreen x_pos
+                //get hero x_pos
+                //if sum >= threshold -- shift game_screen
+
+                double gsp = game_screen.getTranslateX();
+                double sum = hero.getImage_fx().getTranslateX()+hero.getImage_fx().getLayoutX()+gsp;
+                if(sum>300||sum<0){
+                    // shift game_screen by sum
+                    TranslateTransition gst = new TranslateTransition(Duration.millis(1500), game_screen);
+                    gst.setCycleCount(1);
+                    gst.setByX(-sum);
+                    gst.play();
+
+                }
+            })));
+            screen_mover.setCycleCount(Timeline.INDEFINITE);
+            screen_mover.play();
+
+
+
+            collisionMan = new Timeline(new KeyFrame(Duration.millis(5), event->{
+
+                if(!hero.getAlive()) {collisionMan.pause(); gameOver(); return;}
+
+                ArrayList <GameObject> in_scene = new ArrayList<GameObject>();
+                double x_pos = hero.getImage_fx().getTranslateX();
+                for (GameObject game_object : game_objects) {
+                    if (Math.abs(game_object.getImage_fx().getBoundsInParent().getCenterX() - x_pos) < 1500) {
+                        // in scene
+                        in_scene.add(game_object);
+                    }
+                }
+    //            System.out.println("inscene: " + in_scene.size());
+                // Temp line
+                game.setIn_scene(in_scene);
+                // Temp line
+                for(int i = 0; i < in_scene.size(); i++) {
+                    in_scene.get(i).getPosition().updatePosition(in_scene.get(i).getImage_fx());
+                    for(int j = i + 1; j < in_scene.size(); j++) {
+
+                        in_scene.get(i).collide(in_scene.get(j));
+                        in_scene.get(j).collide(in_scene.get(i));
+                    }
+                }
+
+                int ungray_weapons = hero.getHelmet().hasWeapon();
+                if(ungray_weapons==1){
+                    sword.setFill(Color.valueOf("d2ff26"));
+                }
+                else if (ungray_weapons==2){
+                    shuriken.setFill(Color.valueOf("d2ff26"));
+                }
+                else if (ungray_weapons==3){
+                    sword.setFill(Color.valueOf("d2ff26"));
+                    shuriken.setFill(Color.valueOf("d2ff26"));
+                }
+
+            }));
+            collisionMan.setCycleCount(Timeline.INDEFINITE);
+            collisionMan.play();
+
+    }
 
     public void initialize_game() {
 
@@ -56,7 +131,7 @@ public class Game implements Serializable {
                 // generate chest at this island
 //                Chest temp = new CoinChest();
                 System.out.println("THIS IS WORKING12");
-                chests.add(new WeaponChest());
+                chests.add(new CoinChest());
                 System.out.println("THIS IS WORKING");
                 chests.get(chests.size()-1).addToScene(game_screen, x, y, islands.get(i));
                 game_objects.add(chests.get(chests.size()-1));
@@ -144,7 +219,6 @@ public class Game implements Serializable {
 
     private void resolveCollision() {}
     public void menuHandler() {}
-    private void play() {}
     private void populateScreen() {}
     private void saveGame() {}
     private void serialize() {}
