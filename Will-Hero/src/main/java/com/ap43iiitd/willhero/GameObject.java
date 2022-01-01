@@ -15,7 +15,7 @@ public abstract class GameObject implements Serializable {
     protected Position position;
     protected double x;
     protected double y;
-    protected double imageWidth;
+    protected double imageWidth = 100;
     protected double scaleX=1;
     protected double scaleY=1;
 
@@ -28,7 +28,7 @@ public abstract class GameObject implements Serializable {
         return position;
     }
 
-    public void addToScene(AnchorPane pane){
+    public void reload(AnchorPane pane){
         this.image_fx = new ImageView(new Image(url));
         image_fx.setPreserveRatio(true);
         image_fx.setFitWidth(imageWidth);

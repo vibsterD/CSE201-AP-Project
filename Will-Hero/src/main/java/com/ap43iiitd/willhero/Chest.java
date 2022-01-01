@@ -40,22 +40,20 @@ public abstract class Chest extends GameObject implements Serializable {
     }
 
     public void addToScene(AnchorPane game_screen, int x, int y, Island island) {
+        this.imageWidth = 60;
+
         image_fx.setPreserveRatio(true);
-        image_fx.setFitWidth(60);
+        image_fx.setFitWidth(imageWidth);
         image_fx.setViewOrder(10000);
 
-        double delta;
-        double delta_min = 100000;
         image_fx.setLayoutX(x + r1.nextInt(100));
         image_fx.setLayoutY(y);
-//        chest.setLayoutX(150);
-//        chest.setLayoutY(400);
+
         game_screen.getChildren().add(image_fx);
 
         double y_delta = island.getImage_fx().getBoundsInParent().getMinY() - image_fx.getBoundsInParent().getMaxY();
-//        y_delta = 0;
+
         image_fx.setLayoutY(image_fx.getLayoutY() + y_delta);
-        System.out.println("ADASADASQWEQWE");
     }
 
     @Override

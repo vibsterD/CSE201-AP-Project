@@ -213,7 +213,7 @@ public class Game implements Serializable {
                 goc.reviveButton.setOnAction(event -> {
                     System.out.println("LMAOO WORKING ");
                     hero.updateCoins(-50);
-                    hero.getImage_fx().setY(hero.getImage_fx().getY() - 300);
+                    hero.getImage_fx().setTranslateY(hero.getImage_fx().getY() - 300);
                     hero.setAlive();
                     goc.overlayPane.setDisable(true);
                     goc.overlayPane.setOpacity(0);

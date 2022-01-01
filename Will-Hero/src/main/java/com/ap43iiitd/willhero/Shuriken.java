@@ -36,7 +36,8 @@ public class Shuriken extends Weapon{
         Weapon attack = new Shuriken();
         ImageView img_weapon = attack.getImage_fx();
         img_weapon.setPreserveRatio(true);
-        img_weapon.setFitWidth(40);
+        imageWidth = 40;
+        img_weapon.setFitWidth(imageWidth);
         img_weapon.setLayoutX(x);
         img_weapon.setLayoutY(y);
         pane.getChildren().add(img_weapon);

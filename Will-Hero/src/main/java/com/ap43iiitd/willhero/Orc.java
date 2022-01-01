@@ -73,6 +73,7 @@ public abstract class Orc extends GameObject implements Serializable {
     public void addToScene(AnchorPane pane, int x, int y) {
         image_fx.setPreserveRatio(true);
         image_fx.setFitWidth(size);
+        imageWidth = size;
         image_fx.setLayoutX(x);
         image_fx.setLayoutY(y);
         pane.getChildren().add(image_fx);

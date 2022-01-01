@@ -7,7 +7,7 @@ import javafx.scene.layout.AnchorPane;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class TNT extends GameObject{
+public class TNT extends Obstacle{
     final static Random r1 = new Random(13370);
     private Position position;
     private Boolean is_exploded;
@@ -67,8 +67,9 @@ public class TNT extends GameObject{
     }
 
     public void addToScene(AnchorPane game_screen, int x, int y, Island island) {
+        imageWidth = 60;
         image_fx.setPreserveRatio(true);
-        image_fx.setFitWidth(60);
+        image_fx.setFitWidth(imageWidth);
         image_fx.setViewOrder(10000);
 
         image_fx.setLayoutX(x + r1.nextInt(100));
