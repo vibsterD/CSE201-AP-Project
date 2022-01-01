@@ -180,7 +180,7 @@ public class Game implements Serializable {
     public void gameOver() {
         collisionMan.pause();
         System.out.println("Hero respawned? "+hero.hasRespawned());
-        if(hero.hasRespawned()) {
+        if(hero.hasRespawned()||hero.getCoins()<50) {
             FadeTransition byeTrans = new FadeTransition(Duration.millis(1500), game_pane);
             byeTrans.setToValue(0);
             byeTrans.setOnFinished(ev->{
@@ -196,10 +196,11 @@ public class Game implements Serializable {
                 fxmlLoader.load();
                 GameOverOverlay goc = fxmlLoader.getController();
                 game_pane.getChildren().add(goc.overlayPane);
-                goc.cost.setText("LOL");
+                goc.cost.setText("50");//set 50 as cost of life
                 goc.progressBar.setProgress(currentScore / 100.0);
                 goc.reviveButton.setOnAction(event -> {
                     System.out.println("LMAOO WORKING ");
+                    hero.updateCoins(-50);
                     hero.getImage_fx().setY(hero.getImage_fx().getY() - 300);
                     hero.setAlive();
                     goc.overlayPane.setDisable(true);
