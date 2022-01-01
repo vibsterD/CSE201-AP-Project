@@ -72,7 +72,7 @@ public class MainGamePage {
             System.out.println(e.getLocalizedMessage());
         }
 
-//        game = new Game(game_screen, sword, shuriken, gamePane, coins);
+        game = new Game(game_screen, sword, shuriken, gamePane, coins);
         game_objects = game.getGame_objects();
         hero = game.getHero();
 

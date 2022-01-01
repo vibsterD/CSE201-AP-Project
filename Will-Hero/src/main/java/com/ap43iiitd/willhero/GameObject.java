@@ -8,6 +8,7 @@ public abstract class GameObject implements Serializable {
     private double gravity;
     transient protected ImageView image_fx;
     private int restitution;
+    private static final int serialVersionUID = 1;
     protected Position position;
 
     public abstract void collide(GameObject o1);

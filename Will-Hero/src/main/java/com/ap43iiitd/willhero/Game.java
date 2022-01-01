@@ -24,7 +24,7 @@ import java.util.Stack;
 
 public class Game implements Serializable {
     final static Random r1 = new Random(1337);
-    static final int serialVersionUID = 1;
+    private static final int serialVersionUID = 1;
     transient AnchorPane game_screen;
     ArrayList<GameObject> game_objects;
     ArrayList<Island> islands;

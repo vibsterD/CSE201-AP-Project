@@ -21,7 +21,7 @@ public class TNT extends GameObject{
         this.position = new Position(0);
         this.is_exploded = false;
         this.game = game;
-        this.explosion_radius = 500;
+        this.explosion_radius = 300;
     }
 
     public void activate() {
