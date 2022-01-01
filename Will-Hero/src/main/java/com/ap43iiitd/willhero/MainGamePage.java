@@ -28,11 +28,7 @@ public class MainGamePage {
     protected Boolean paused = false;
 
     @FXML
-    private Label tapToPlay;
-
-    @FXML
-    private AnchorPane tapSense;
-
+    private Label coins;
 
     @FXML
     private StackPane gamePane;
