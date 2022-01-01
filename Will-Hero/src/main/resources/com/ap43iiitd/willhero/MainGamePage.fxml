@@ -39,7 +39,7 @@
                </image>
             </ImageView>
             <Rectangle fx:id="sword" arcHeight="5.0" arcWidth="5.0" fill="#b2b2b2" height="89.0" layoutX="74.0" layoutY="531.0" opacity="0.58" rotate="45.0" stroke="BLACK" strokeType="INSIDE" width="89.0" />
-            <ImageView fitHeight="89.0" fitWidth="89.0" layoutX="111.0" layoutY="531.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="89.0" fitWidth="89.0" layoutX="74.0" layoutY="568.0" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
                <image>
                   <Image url="@imageres/Sprites/Weapons/SmallSword.png" />
                </image>
@@ -52,7 +52,7 @@
                </image>
             </ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b2b2b2" height="89.0" layoutX="211.0" layoutY="531.0" onMouseClicked="#onShurikenClick" opacity="0.0" rotate="45.0" stroke="BLACK" strokeType="INSIDE" width="89.0" />
-            <Label fx:id="coins" layoutX="1050.0" layoutY="7.0" text="0">
+            <Label fx:id="coins" layoutX="1051.0" layoutY="6.0" text="0">
                <font>
                   <Font name="Impact" size="72.0" />
                </font>
