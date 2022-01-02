@@ -26,40 +26,24 @@ public class TNT extends Obstacle{
     }
 
     public void activate() {
-        image_fx.setFitWidth(100);
+        image_fx.setFitWidth(500);
+        // animate increase in size
+        // call explode on fineshed event
         explode();
     }
     private void explode() {
-//        if(o1 instanceof Player) {
-//            ((Player) o1).eliminate();
-//        }else {
-//            // Orc
-//            ((Orc) o1).eliminate();
-//        }
 
         ArrayList<GameObject> in_scene = game.getIn_scene();
 
-        double tnt_x = image_fx.getBoundsInParent().getCenterX();
-        double tnt_y = image_fx.getBoundsInParent().getCenterY();
-
         for (GameObject gameObject : in_scene) {
-            if (gameObject instanceof Player) {
-                Player player = (Player) gameObject;
-                double player_x = player.getImage_fx().getBoundsInParent().getCenterX();
-                double player_y = player.getImage_fx().getBoundsInParent().getCenterY();
-                double distance = Math.sqrt((player_x - tnt_x) * (player_x - tnt_x) + (player_y - tnt_y) * (player_y - tnt_y));
-                if (distance < explosion_radius) {
-                    player.eliminate();
+            if (gameObject.getImage_fx().getBoundsInParent().intersects(image_fx.getBoundsInParent())) {
+                if(gameObject instanceof Orc ) {
+                    Orc orc = (Orc) gameObject;
+                    orc.forceEliminate();
                 }
-            }
-
-            if (gameObject instanceof Orc) {
-                Orc orc = (Orc) gameObject;
-                double orx_x = orc.getImage_fx().getBoundsInParent().getCenterX();
-                double orc_y = orc.getImage_fx().getBoundsInParent().getCenterY();
-                double distance = Math.sqrt((orx_x - tnt_x) * (orx_x - tnt_x) + (orc_y - tnt_y) * (orc_y - tnt_y));
-                if (distance < explosion_radius) {
-                    orc.eliminate();
+                if(gameObject instanceof Player) {
+                    Player player = (Player) gameObject;
+                    player.eliminate();
                 }
             }
         }
