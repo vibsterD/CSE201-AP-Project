@@ -11,7 +11,7 @@ public abstract class Orc extends GameObject implements Serializable {
     final static Random r1 = new Random(786);
     private final int size;
     private int hp;
-    private Boolean collidable;
+    protected Boolean collidable;
     private Boolean dead;
 
     public Orc(int size, int hp, Position position, int res_num){
@@ -99,6 +99,9 @@ public abstract class Orc extends GameObject implements Serializable {
             if (o1 instanceof Orc) {
                 Orc orc1 = (Orc) o1;
                 if (orc1.getImage_fx().getBoundsInParent().intersects(orc2.getImage_fx().getBoundsInParent())) {
+                    if(o1 instanceof BossOrc) {
+                        forceEliminate();
+                    }
                     double orc_min_y = orc2.getImage_fx().getBoundsInParent().getMinY();
                     double orc1_max_y = orc1.getImage_fx().getBoundsInParent().getMaxY();
                     double y_del_down = Math.abs(orc_min_y - orc1_max_y);

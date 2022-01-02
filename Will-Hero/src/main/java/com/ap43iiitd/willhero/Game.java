@@ -29,6 +29,7 @@ public class Game implements Serializable {
     ArrayList<GameObject> game_objects;
     ArrayList<Island> islands;
     ArrayList<Orc> orcs;
+    BossOrc boss_orc;
     ArrayList<Chest> chests;
     ArrayList<TNT> tnts;
     ArrayList<GameObject> in_scene;
@@ -93,6 +94,10 @@ public class Game implements Serializable {
             collisionMan = new Timeline(new KeyFrame(Duration.millis(5), event->{
 
                 if(!hero.getAlive()) {collisionMan.pause(); gameOver(); return;}
+
+                if(boss_orc.getDead()) {
+                    hero.setHasWon();
+                }
 
                 ArrayList <GameObject> in_scene = new ArrayList<GameObject>();
                 double x_pos = hero.getImage_fx().getTranslateX();
@@ -254,6 +259,11 @@ public class Game implements Serializable {
         initialize_clouds();
         initialize_trees();
         game_objects.add(hero);
+        int x = (int)islands.get(islands.size()-1).getImage_fx().getLayoutX();
+        int  y = (int)islands.get(islands.size()-1).getImage_fx().getLayoutY();
+        boss_orc = new BossOrc(new Position());
+        boss_orc.addToScene(game_screen, x, y);
+        game_objects.add(boss_orc);
     }
 
     // generate islands and chests and TNTs and coins and trees
@@ -287,9 +297,6 @@ public class Game implements Serializable {
                 tnts.get(tnts.size()-1).addToScene(game_screen, x, y, islands.get(i));
                 game_objects.add(tnts.get(tnts.size()-1));
             }
-
-            // generate Trees
-
 
             // generate Coins
             int generate_coins = r1.nextInt(2);
