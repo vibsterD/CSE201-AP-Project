@@ -38,7 +38,7 @@ public class EnterMenuOverlay {
 
         @FXML
         public void makeNewGame() {
-                playFadeTransition().setOnFinished(e->sceneSwitcher("MainGamePage.fxml"));
+                playFadeTransition().setOnFinished(e->sceneSwitcher("MainGamePage.fxml", true));
         }
 
         private FadeTransition playFadeTransition(){
@@ -76,18 +76,20 @@ public class EnterMenuOverlay {
 
         @FXML
         public void loadGame(){
-                playFadeTransition().setOnFinished(e->sceneSwitcher("LoadMenuOverlay.fxml"));
+                playFadeTransition().setOnFinished(e->sceneSwitcher("LoadMenuOverlay.fxml", false));
         }
 
-        private void sceneSwitcher(String fxmlName){
+        private void sceneSwitcher(String fxmlName, Boolean isGame){
                 Stage runningInstance = (Stage) newGame.getScene().getWindow();
                 System.out.println(runningInstance);
                 FXMLLoader fxmlLoader = new FXMLLoader(WillHero.class.getResource(fxmlName));
                 try {
                         Parent loader = fxmlLoader.load();
                         Scene scene = new Scene(loader, 1280, 720);
-                        MainGamePage mainGamePage = fxmlLoader.getController();
-                        mainGamePage.initializeGame();
+                        if(isGame){
+                                MainGamePage mainGamePage = fxmlLoader.getController();
+                                mainGamePage.initializeGame();
+                        }
                         runningInstance.setScene(scene);
                 }
                 catch (Exception e){

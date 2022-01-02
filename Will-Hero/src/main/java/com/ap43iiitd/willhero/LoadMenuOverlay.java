@@ -7,6 +7,7 @@ import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -61,15 +62,41 @@ public class LoadMenuOverlay {
 
     }
 
-    @FXML
-    public void loadSave1(){}
+    private void saveFileSwitcher(String saveFile){
+        Stage runningInstance = (Stage) clouds.getScene().getWindow();
+        System.out.println(runningInstance);
+        FXMLLoader fxmlLoader = new FXMLLoader(WillHero.class.getResource("MainGamePage.fxml"));
+        try {
+            Parent loader = fxmlLoader.load();
+            Scene scene = new Scene(loader, 1280, 720);
+            MainGamePage mainGamePage = fxmlLoader.getController();
+            mainGamePage.loadGame(saveFile);
+            runningInstance.setScene(scene);
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            System.out.println("misplaced files");
+        }
+
+    }
 
     @FXML
-    public void loadSave2(){}
+    public void loadSave1(){
+        playFadeTransition().setOnFinished(event -> {saveFileSwitcher("saves/1");});
+    }
 
     @FXML
-    public void loadSave3(){}
+    public void loadSave2(){
+        playFadeTransition().setOnFinished(event -> {saveFileSwitcher("saves/2");});
+    }
 
     @FXML
-    public void loadSave4(){}
+    public void loadSave3(){
+        playFadeTransition().setOnFinished(event -> {saveFileSwitcher("saves/3");});
+    }
+
+    @FXML
+    public void loadSave4(){
+        playFadeTransition().setOnFinished(event -> {saveFileSwitcher("saves/1");});
+    }
 }
