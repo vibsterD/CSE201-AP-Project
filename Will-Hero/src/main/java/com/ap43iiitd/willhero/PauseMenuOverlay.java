@@ -10,6 +10,9 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+
 public class PauseMenuOverlay {
 
     @FXML
@@ -23,6 +26,51 @@ public class PauseMenuOverlay {
 
     @FXML
     protected VBox saveGroup;
+
+    private Game instanceOfGame;
+
+    public void setInstanceOfGame(Game instanceOfGame) {
+        this.instanceOfGame = instanceOfGame;
+    }
+
+    int saveNo;
+
+    private void save(){
+        try{
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("saves/"+String.valueOf(saveNo)));
+            out.writeObject(instanceOfGame);
+            saveGroup.setDisable(true);
+            saveGroup.setOpacity(0);
+        }
+        catch (Exception e){
+            System.out.println("Couldn't save it...");
+
+        }
+    }
+
+    @FXML
+    void save1(){
+        saveNo = 1;
+        save();
+    }
+
+    @FXML
+    void save2(){
+        saveNo = 2;
+        save();
+    }
+
+    @FXML
+    void save3(){
+        saveNo = 3;
+        save();
+    }
+
+    @FXML
+    void save4(){
+        saveNo = 4;
+        save();
+    }
 
     @FXML
     void resumeGame() {
