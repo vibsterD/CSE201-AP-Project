@@ -74,6 +74,10 @@ public abstract class Orc extends GameObject implements Serializable {
         die();
     }
 
+    public Boolean getCollidable() {
+        return collidable;
+    }
+
     public Boolean getDead() {
         return dead;
     }
@@ -114,6 +118,9 @@ public abstract class Orc extends GameObject implements Serializable {
 
             if (o1 instanceof Orc) {
                 Orc orc1 = (Orc) o1;
+                if(orc1.getCollidable() == false) {
+                    return;
+                }
                 if (orc1.getImage_fx().getBoundsInParent().intersects(orc2.getImage_fx().getBoundsInParent())) {
                     if (o1 instanceof BossOrc) {
                         forceEliminate();

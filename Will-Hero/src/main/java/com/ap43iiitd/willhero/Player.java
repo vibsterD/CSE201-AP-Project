@@ -134,7 +134,9 @@ public class Player extends GameObject implements Serializable {
         if (o1 instanceof Orc) {
             // orc
             Orc orc2 = (Orc) o1;
-
+            if(orc2.getCollidable() == false) {
+                return;
+            }
             if (orc2.getDead()) {
                 return;
             }
