@@ -59,6 +59,7 @@ public class TNT extends Obstacle{
                 }
                 if(gameObject instanceof Player) {
                     Player player = (Player) gameObject;
+                    System.out.println("TNT KILLED PLAYER");
                     player.eliminate();
                 }
             }

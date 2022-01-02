@@ -53,77 +53,41 @@
                      <children>
                         <StackPane prefHeight="236.0" prefWidth="257.0">
                            <children>
-                              <AnchorPane prefHeight="200.0" prefWidth="213.0">
-                                 <children>
-                                    <Label layoutX="81.0" layoutY="124.0" text="100/121" textFill="WHITE">
-                                       <font>
-                                          <Font name="Impact" size="28.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="80.0" layoutY="55.0" text="SAVE 1" textFill="WHITE">
-                                       <font>
-                                          <Font name="Impact" size="37.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </AnchorPane>
+                              <Label text="SAVE 1">
+                                 <font>
+                                    <Font name="Impact" size="37.0" />
+                                 </font>
+                              </Label>
                               <Rectangle arcHeight="5.0" arcWidth="5.0" blendMode="SCREEN" fill="DODGERBLUE" height="200.0" onMouseClicked="#loadSave1" opacity="0.8" stroke="BLACK" strokeType="INSIDE" width="200.0" />
                            </children>
                         </StackPane>
                         <StackPane layoutX="257.0" prefHeight="236.0" prefWidth="257.0">
                            <children>
-                              <AnchorPane prefHeight="200.0" prefWidth="213.0">
-                                 <children>
-                                    <Label layoutX="81.0" layoutY="124.0" text="100/121">
-                                       <font>
-                                          <Font name="Impact" size="28.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="80.0" layoutY="55.0" text="SAVE 1">
-                                       <font>
-                                          <Font name="Impact" size="37.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </AnchorPane>
+                              <Label text="SAVE 2">
+                                 <font>
+                                    <Font name="Impact" size="37.0" />
+                                 </font>
+                              </Label>
                               <Rectangle arcHeight="5.0" arcWidth="5.0" blendMode="SCREEN" fill="DODGERBLUE" height="200.0" onMouseClicked="#loadSave2" opacity="0.65" stroke="BLACK" strokeType="INSIDE" width="200.0" />
                            </children>
                         </StackPane>
                         <StackPane layoutX="514.0" prefHeight="236.0" prefWidth="257.0">
                            <children>
-                              <AnchorPane prefHeight="200.0" prefWidth="213.0">
-                                 <children>
-                                    <Label layoutX="81.0" layoutY="124.0" text="100/121">
-                                       <font>
-                                          <Font name="Impact" size="28.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="80.0" layoutY="55.0" text="SAVE 1">
-                                       <font>
-                                          <Font name="Impact" size="37.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </AnchorPane>
+                              <Label text="SAVE 3">
+                                 <font>
+                                    <Font name="Impact" size="37.0" />
+                                 </font>
+                              </Label>
                               <Rectangle arcHeight="5.0" arcWidth="5.0" blendMode="SCREEN" fill="DODGERBLUE" height="200.0" onMouseClicked="#loadSave3" opacity="0.65" stroke="BLACK" strokeType="INSIDE" width="200.0" />
                            </children>
                         </StackPane>
                         <StackPane layoutX="771.0" prefHeight="236.0" prefWidth="257.0">
                            <children>
-                              <AnchorPane prefHeight="200.0" prefWidth="213.0">
-                                 <children>
-                                    <Label layoutX="81.0" layoutY="124.0" text="100/121">
-                                       <font>
-                                          <Font name="Impact" size="28.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="80.0" layoutY="55.0" text="SAVE 1">
-                                       <font>
-                                          <Font name="Impact" size="37.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </AnchorPane>
+                              <Label text="SAVE 4">
+                                 <font>
+                                    <Font name="Impact" size="37.0" />
+                                 </font>
+                              </Label>
                               <Rectangle arcHeight="5.0" arcWidth="5.0" blendMode="SCREEN" fill="DODGERBLUE" height="200.0" onMouseClicked="#loadSave4" opacity="0.65" stroke="BLACK" strokeType="INSIDE" width="200.0" />
                            </children>
                         </StackPane>

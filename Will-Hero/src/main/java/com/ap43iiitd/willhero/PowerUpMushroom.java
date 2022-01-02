@@ -23,7 +23,7 @@ public class PowerUpMushroom extends GameObject{
             if (o1 instanceof Player) {
                 Player player = (Player) o1;
                 if(player.getImage_fx().getBoundsInParent().intersects(image_fx.getBoundsInParent())) {
-                    player.setImageWidth(player.getImageWidth() + 5);
+                    player.setImageWidth(player.getImageWidth() + 7);
                     player.getImage_fx().setFitWidth(player.getImageWidth());
                     collided = true;
                     visibility = false;

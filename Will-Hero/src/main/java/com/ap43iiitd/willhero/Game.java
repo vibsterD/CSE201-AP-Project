@@ -65,7 +65,7 @@ public class Game implements Serializable {
         this.sword = sword;
         this.shuriken = shuriken;
         this.paused = false;
-        System.out.println(this.currentScore+"BIBNIBIBI");
+//        System.out.println(this.currentScore+"BIBNIBIBI");
     }
 
 
@@ -178,12 +178,12 @@ public class Game implements Serializable {
         try {
             fxmlLoader.load();
             PauseMenuOverlay pmo= fxmlLoader.getController();
-            System.out.println(pmo.overlayPane.getChildren());
+//            System.out.println(pmo.overlayPane.getChildren());
             game_pane.getChildren().add(pmo.overlayPane);
             pmo.resumeButton.setOnAction(e->{
-                System.out.println("TAKING ACTION");
+//                System.out.println("TAKING ACTION");
                 pmo.resumeGame();
-                System.out.println("OPACITY 0");
+//                System.out.println("OPACITY 0");
                 collisionMan.play();
                 pause_screen_filter.setOpacity(0);
                 pauseButton.setDisable(false);
@@ -237,7 +237,6 @@ public class Game implements Serializable {
                 goc.cost.setText("50");//set 50 as cost of life
                 goc.progressBar.setProgress(currentScore / 100.0);
                 goc.reviveButton.setOnAction(event -> {
-                    System.out.println("LMAOO WORKING ");
                     hero.updateCoins(-50);
                     hero.getImage_fx().setTranslateY(hero.getImage_fx().getY() - 300);
                     hero.setAlive();
@@ -251,9 +250,6 @@ public class Game implements Serializable {
                 System.out.println("In-short: Looks like you misplaced some files");
                 System.out.println(e.getStackTrace());
             }
-
-            System.out.println("Testing deez");
-
 
             hero.setRespawned();
         }
@@ -293,14 +289,14 @@ public class Game implements Serializable {
             if(generate_chest == 0 || i == 1) {
                 // generate chest at this island
 //                Chest temp = new CoinChest();
-                System.out.println("THIS IS WORKING12");
+//                System.out.println("chest gen works");
                 int chest_type = r1.nextInt(2);
                 if(chest_type == 0) {
                     chests.add(new CoinChest());
                 }else {
                     chests.add(new WeaponChest());
                 }
-                System.out.println("THIS IS WORKING");
+//                System.out.println("THIS IS WORKING");
                 chests.get(chests.size()-1).addToScene(game_screen, x, y, islands.get(i));
                 game_objects.add(chests.get(chests.size()-1));
             }
@@ -332,7 +328,7 @@ public class Game implements Serializable {
         for(int i = 3; i < islands.size(); i+=5) {
             int bonus = r1.nextInt(4);
             if(bonus == 0) {
-                System.out.println("BOUSS");
+                System.out.println("BONUS spawns");
                 int x = (int) islands.get(i).getImage_fx().getLayoutX();
                 int y = (int) islands.get(i).getImage_fx().getLayoutY() - 200;
                 PowerUpMushroom mushroom = new PowerUpMushroom();
@@ -411,7 +407,7 @@ public class Game implements Serializable {
     }
 
     private ImageView add_cloud() {
-        System.out.println("CREATING Cloud");
+//        System.out.println("CREATING Cloud");
         
         int orc_num = 1 + r1.nextInt(8);
         Image image = new Image("com/ap43iiitd/willhero/imageres/Sprites/Clouds/C (".concat(String.valueOf(orc_num)).concat(").png"));
@@ -449,7 +445,7 @@ public class Game implements Serializable {
 
     private void sceneSwitcher(String fxmlName){
         Stage runningInstance = (Stage) game_pane.getScene().getWindow();
-        System.out.println(runningInstance);
+//        System.out.println(runningInstance);
         FXMLLoader fxmlLoader = new FXMLLoader(WillHero.class.getResource(fxmlName));
         try {
             Scene scene = new Scene(fxmlLoader.load(), 1280, 720);

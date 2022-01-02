@@ -86,6 +86,17 @@ public class MainGamePage {
         try {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(saveFile));
             game = (Game) in.readObject();
+            //set prefs of objS
+            game.setPref(game_screen, sword, shuriken, gamePane, coins);
+            game_objects = game.getGame_objects();
+
+            for(GameObject i: game_objects){
+                i.reload(game_screen);
+            }
+
+            game.initialize_trees();
+            game.initialize_clouds(); //reInit
+            hero = game.getHero();
         }
         catch (Exception e){
             System.out.println(e.getLocalizedMessage());
@@ -93,18 +104,6 @@ public class MainGamePage {
         }
 
         System.out.println("loaded game object file");
-
-        //set prefs of objS
-        game.setPref(game_screen, sword, shuriken, gamePane, coins);
-        game_objects = game.getGame_objects();
-
-        for(GameObject i: game_objects){
-            i.reload(game_screen);
-        }
-
-        game.initialize_trees();
-        game.initialize_clouds(); //reInit
-        hero = game.getHero();
 
         game.play();
         return true;
