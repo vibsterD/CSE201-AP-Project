@@ -2,7 +2,6 @@ package com.ap43iiitd.willhero;
 
 import javafx.animation.*;
 import javafx.fxml.FXML;
-import javafx.scene.Group;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -80,6 +79,7 @@ public class MainGamePage {
             game.initialize_trees();
             game.initialize_clouds(); //reInit
             hero = game.getHero();
+            score.setText(String.valueOf(game.getCurrentScore()));
         }
         catch (Exception e){
             System.out.println(e.getLocalizedMessage());

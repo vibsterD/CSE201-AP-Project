@@ -446,6 +446,9 @@ public class Game implements Serializable {
 
     }
 
+    public Integer getCurrentScore() {
+        return currentScore;
+    }
 
     public void setIn_scene(ArrayList<GameObject> in_scene) {
         this.in_scene = in_scene;
