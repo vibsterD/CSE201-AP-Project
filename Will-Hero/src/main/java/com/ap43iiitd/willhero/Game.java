@@ -98,6 +98,7 @@ public class Game implements Serializable {
 
                 if(boss_orc.getDead()) {
                     hero.setHasWon();
+                    gameWin();
                     // win overlay screen
                 }
 
@@ -200,6 +201,18 @@ public class Game implements Serializable {
             System.out.println("In-short: Looks like you misplaced some files");
             System.out.println(e.getStackTrace());
         }
+    }
+
+    public void gameWin() {
+        collisionMan.pause();
+        System.out.println("It's a win win situation");
+        FadeTransition clearScreen = new FadeTransition(Duration.millis(1500), game_pane);
+        clearScreen.setToValue(0);
+        clearScreen.setOnFinished(e->{
+            game_pane.getChildren().removeAll();
+            sceneSwitcher("GameWinOverlay.fxml");
+        });
+        clearScreen.play();
     }
 
     public void gameOver() {

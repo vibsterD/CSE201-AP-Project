@@ -92,7 +92,7 @@ public abstract class Orc extends GameObject implements Serializable {
                         orc2.getPosition().setVelocity(0, -5);
                     }
 
-                    // Hero Island
+                    // Orc Island
 
                     double island_min_x = island.getImage_fx().getBoundsInParent().getMinX();
                     double orc_max_x = this.getImage_fx().getBoundsInParent().getMaxX();
@@ -128,7 +128,7 @@ public abstract class Orc extends GameObject implements Serializable {
 
                     if (x_del_right < 50.0) {
 //                    System.out.println("COLLIDING ORC ORC");
-                        orc2.getPosition().setVelocity(50, -1);
+                        orc2.getPosition().setVelocity(orc1.getPosition().getVel_x()*2, -1);
 
                     }
                 }
