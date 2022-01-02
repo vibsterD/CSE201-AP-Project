@@ -98,6 +98,7 @@ public class Game implements Serializable {
 
                 if(boss_orc.getDead()) {
                     hero.setHasWon();
+                    // win overlay screen
                 }
 
                 ArrayList <GameObject> in_scene = new ArrayList<GameObject>();
@@ -258,7 +259,7 @@ public class Game implements Serializable {
         int x = (int)islands.get(islands.size()-1).getImage_fx().getLayoutX();
         int  y = (int)islands.get(islands.size()-1).getImage_fx().getLayoutY();
         boss_orc = new BossOrc(new Position());
-        boss_orc.addToScene(game_screen, x, y);
+        boss_orc.addToScene(game_screen, x, y-300);
         game_objects.add(boss_orc);
     }
 

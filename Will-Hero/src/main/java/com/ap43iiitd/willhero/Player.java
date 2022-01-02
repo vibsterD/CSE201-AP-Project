@@ -216,7 +216,13 @@ public class Player extends GameObject implements Serializable {
 //                System.out.println("XDEL: " + x_del_right);
                 if(x_del_right < 50.0) {
 //                    System.out.println("COLLIDING ORC");
-                    orc2.getPosition().setVelocity(30, -1);
+                    position.setVelocity(3, position.getVel_y());
+                    if(orc2 instanceof BossOrc) {
+                        orc2.getPosition().setVelocity(10, -1);
+                    }else {
+                        orc2.getPosition().setVelocity(30, -1);
+
+                    }
 //                    this.dash_collision = true;
                 }
 
