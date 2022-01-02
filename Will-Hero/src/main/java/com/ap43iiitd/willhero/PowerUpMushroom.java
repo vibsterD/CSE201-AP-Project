@@ -40,9 +40,6 @@ public class PowerUpMushroom extends GameObject{
                     // island
                     double height = island.getImage_fx().getFitHeight() / 2;
                     if (this.getPosition().getVel_y() > 0) {
-//                    hero.getHero_fx().setTranslateY(hero.getHero_fx().getTranslateY() + height);
-//                    if(hero.getHero_fx().getBoundsInParent().intersects(island.getIsland_fx().getBoundsInParent()))
-//                    System.out.println("Collided with island");
                         this.getPosition().setVelocity(0, -3);
                     }
 

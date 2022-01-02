@@ -106,6 +106,17 @@ public class TNT extends Obstacle{
                 is_exploded = true;
             }
         }
+
+        if(o1 instanceof TNT && is_exploded == false) {
+            TNT tnt = (TNT) o1;
+            if(tnt.getImage_fx().getBoundsInParent().intersects(this.image_fx.getBoundsInParent())) {
+                // chest open
+                System.out.println("TNTNTNNTN");
+//                image_fx.setImage(opened_chest);
+                activate();
+                is_exploded = true;
+            }
+        }
     };
 
     @Override

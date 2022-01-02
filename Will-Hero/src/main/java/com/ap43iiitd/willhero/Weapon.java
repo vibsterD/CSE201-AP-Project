@@ -24,11 +24,6 @@ public abstract class Weapon extends GameObject{
                 orc.setHp(orc.getHp() - hp_damage);
                 orc.eliminate();
             }
-        }else if(o1 instanceof TNT) {
-            TNT tnt = (TNT) o1;
-            if(tnt.getImage_fx().getBoundsInParent().intersects(image_fx.getBoundsInParent())) {
-                tnt.activate();
-            }
         }
     }
 

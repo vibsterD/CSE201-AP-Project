@@ -248,6 +248,15 @@ public class Player extends GameObject implements Serializable {
         if(o1 instanceof PowerUpBrick) {
             PowerUpBrick brick = (PowerUpBrick) o1;
             if(brick.getImage_fx().getBoundsInParent().intersects(image_fx.getBoundsInParent())) {
+
+                // hero
+                // brick
+                double height = brick.getImage_fx().getFitHeight() / 2;
+                if (hero.getPosition().getVel_y() > 0) {
+                    hero.getPosition().setVelocity(hero.getPosition().getVel_x(), -10);
+                }
+
+
                 double brick_max_y = brick.getImage_fx().getBoundsInParent().getMaxY();
                 double hero_min_y = hero.getImage_fx().getBoundsInParent().getMinY();
                 double y_del = Math.abs(brick_max_y - hero_min_y);

@@ -25,10 +25,9 @@ public class PowerUpBrick extends GameObject{
     public void reward() {
         if(exhausted == false) {
             exhausted = true;
-            System.out.println("ASDASDASDSAD");
             mushroom.setUnlocked(true);
             mushroom.getPosition().setGravity(10);
-            mushroom.getPosition().setVelocity(50, -20);
+            mushroom.getPosition().setVelocity(50, -15);
         }
     }
 
