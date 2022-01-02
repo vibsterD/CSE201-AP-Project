@@ -21,10 +21,6 @@ public class LoadMenuOverlay {
     @FXML
     private AnchorPane main_screen;
 
-    @FXML
-    private Group load_game_boxes;
-
-
     private FadeTransition playFadeTransition(double set_to_value){
         FadeTransition fTrans = new FadeTransition();
         fTrans.setDuration(Duration.millis(500));
@@ -85,21 +81,21 @@ public class LoadMenuOverlay {
 
     @FXML
     public void loadSave1(){
-        playFadeTransition(0).setOnFinished(event -> {saveFileSwitcher("saves/1");});
+        playFadeTransition(0).setOnFinished(event -> saveFileSwitcher("saves/1"));
     }
 
     @FXML
     public void loadSave2(){
-        playFadeTransition(0).setOnFinished(event -> {saveFileSwitcher("saves/2");});
+        playFadeTransition(0).setOnFinished(event -> saveFileSwitcher("saves/2"));
     }
 
     @FXML
     public void loadSave3(){
-        playFadeTransition(0).setOnFinished(event -> {saveFileSwitcher("saves/3");});
+        playFadeTransition(0).setOnFinished(event -> saveFileSwitcher("saves/3"));
     }
 
     @FXML
     public void loadSave4(){
-        playFadeTransition(0).setOnFinished(event -> {saveFileSwitcher("saves/4");});
+        playFadeTransition(0).setOnFinished(event -> saveFileSwitcher("saves/4"));
     }
 }

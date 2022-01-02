@@ -7,6 +7,9 @@ import javafx.scene.layout.AnchorPane;
 import java.io.Serializable;
 import java.util.Random;
 
+
+//TODO: RANDOM ORC JUMP
+
 public abstract class Orc extends GameObject implements Serializable {
     final static Random r1 = new Random(786);
     private final int size;
@@ -24,10 +27,6 @@ public abstract class Orc extends GameObject implements Serializable {
         Image image = new Image(url);
         this.image_fx = new ImageView(image);
         dead = false;
-    }
-
-    public void jump() {
-
     }
 
     public void killPlayer(Player player) {
@@ -82,11 +81,10 @@ public abstract class Orc extends GameObject implements Serializable {
     @Override
     public void collide(GameObject o1) {
         if (collidable) {
-            Orc orc2 = (Orc) this;
+            Orc orc2 = this;
             if (o1 instanceof Island) {
                 Island island = (Island) o1;
                 if (orc2.getImage_fx().getBoundsInParent().intersects(island.getImage_fx().getBoundsInParent())) {
-                    double height = island.getImage_fx().getFitHeight() / 2;
                     if (orc2.getPosition().getVel_y() > 0) {
 //                    System.out.println("Collided with island");
                         orc2.getPosition().setVelocity(0, -5);

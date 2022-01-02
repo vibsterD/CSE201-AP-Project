@@ -37,7 +37,7 @@ public class PauseMenuOverlay {
 
     private void save(){
         try{
-            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("saves/"+String.valueOf(saveNo)));
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("saves/"+ saveNo));
             out.writeObject(instanceOfGame);
             saveGroup.setDisable(true);
             saveGroup.setOpacity(0);

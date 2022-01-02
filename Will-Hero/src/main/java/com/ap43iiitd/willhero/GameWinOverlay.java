@@ -20,9 +20,7 @@ public class GameWinOverlay {
         fadeIn.setOnFinished(e->{
             FadeTransition outYouGo = new FadeTransition(Duration.millis(1000), winText);
             outYouGo.setToValue(0);
-            outYouGo.setOnFinished(f->{
-                sceneSwitcher("EnterMenuOverlay.fxml");
-            });
+            outYouGo.setOnFinished(f-> sceneSwitcher("EnterMenuOverlay.fxml"));
             outYouGo.play();
         });
         fadeIn.play();
