@@ -94,11 +94,8 @@ public class Game implements Serializable {
         Position heroPos = hero.getPosition();
 //        System.out.println("gamescreenpos: " +game_screen.getTranslateX());
         heroPos.setVelocity(39.9, heroPos.getVel_y());
+        hero.attack(game_objects, game_screen);
 
-        Weapon att = hero.getHelmet().getCurrent_weapon();
-        if (att != null) {
-            att.attack(game_objects, game_screen, hero.getImage_fx().getTranslateX() + hero.getImage_fx().getLayoutX(), hero.getImage_fx().getTranslateY() + hero.getImage_fx().getLayoutY());
-        }
     }
 
     public void pause(ImageView pauseButton, Rectangle pause_screen_filter) {

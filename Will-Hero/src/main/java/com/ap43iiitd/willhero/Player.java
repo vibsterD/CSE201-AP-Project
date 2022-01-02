@@ -5,6 +5,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Player extends GameObject implements Serializable {
 
@@ -12,20 +13,19 @@ public class Player extends GameObject implements Serializable {
     private Helmet helmet;
     private Boolean respawned;
     private int location;
-    private Boolean is_eliminated;
+
     private Game game;
     private Boolean has_won;
     private Boolean alive = true;
 //    private Boolean dash_collision;
-    private int jump_length;
-    private int jump_frequency;
+//    private int jump_length;
+//    private int jump_frequency;
 //    Boolean dash_flag;
 
     public Player() {
         this.helmet = new Iron();
         System.out.println("Creating player");
         this.respawned = false;
-        this.is_eliminated = false;
         this.has_won = false;
 //        this.dash_collision = false;
         this.position = new Position();
@@ -33,15 +33,6 @@ public class Player extends GameObject implements Serializable {
         Image image = new Image(url);
         this.image_fx = new ImageView(image);
         this.coins = 0;
-    }
-
-    public Player(Boolean respawned, Position position, int location, Weapon weapon) {
-        this.respawned = false;
-        this.is_eliminated = false;
-        this.has_won = false;
-//        this.dash_collision = false;
-        Image image = new Image("com/ap43iiitd/willhero/imageres/Sprites/Iron.png");
-        this.image_fx = new ImageView(image);
     }
 
     public void addToScene(AnchorPane pane) {
@@ -78,10 +69,11 @@ public class Player extends GameObject implements Serializable {
         this.alive = true;
     }
 
-    public void jump() {
-    }
-
-    private void attack() {
+    public void attack(ArrayList<GameObject> game_objects,AnchorPane game_screen) {
+        Weapon att = getHelmet().getCurrent_weapon();
+        if (att != null) {
+            att.attack(game_objects, game_screen, getImage_fx().getTranslateX() + getImage_fx().getLayoutX(), getImage_fx().getTranslateY() + getImage_fx().getLayoutY());
+        }
     }
 
     public void dash() {
@@ -117,10 +109,6 @@ public class Player extends GameObject implements Serializable {
 
     public Boolean hasWon() {
         return this.has_won;
-    }
-
-    public Boolean eliminated() {
-        return this.is_eliminated;
     }
 
     public void setHasWon() {
