@@ -25,17 +25,17 @@ public class LoadMenuOverlay {
     private Group load_game_boxes;
 
 
-    private FadeTransition playFadeTransition(){
+    private FadeTransition playFadeTransition(double set_to_value){
         FadeTransition fTrans = new FadeTransition();
         fTrans.setDuration(Duration.millis(500));
-        fTrans.setToValue(0);
+        fTrans.setToValue(set_to_value);
         fTrans.setNode(main_screen);
         fTrans.play();
         return fTrans;
     }
 
     public void switchToEnterMenu() {
-        playFadeTransition().setOnFinished(e->sceneSwitcher("EnterMenuOverlay.fxml"));
+        playFadeTransition(0).setOnFinished(e->sceneSwitcher("EnterMenuOverlay.fxml"));
     }
 
 
@@ -70,8 +70,11 @@ public class LoadMenuOverlay {
             Parent loader = fxmlLoader.load();
             Scene scene = new Scene(loader, 1280, 720);
             MainGamePage mainGamePage = fxmlLoader.getController();
-            mainGamePage.loadGame(saveFile);
-            runningInstance.setScene(scene);
+            if( mainGamePage.loadGame(saveFile)) {
+                runningInstance.setScene(scene);
+            }else {
+                playFadeTransition(1);
+            }
         }
         catch (Exception e){
             System.out.println(e.getMessage());
@@ -82,21 +85,21 @@ public class LoadMenuOverlay {
 
     @FXML
     public void loadSave1(){
-        playFadeTransition().setOnFinished(event -> {saveFileSwitcher("saves/1");});
+        playFadeTransition(0).setOnFinished(event -> {saveFileSwitcher("saves/1");});
     }
 
     @FXML
     public void loadSave2(){
-        playFadeTransition().setOnFinished(event -> {saveFileSwitcher("saves/2");});
+        playFadeTransition(0).setOnFinished(event -> {saveFileSwitcher("saves/2");});
     }
 
     @FXML
     public void loadSave3(){
-        playFadeTransition().setOnFinished(event -> {saveFileSwitcher("saves/3");});
+        playFadeTransition(0).setOnFinished(event -> {saveFileSwitcher("saves/3");});
     }
 
     @FXML
     public void loadSave4(){
-        playFadeTransition().setOnFinished(event -> {saveFileSwitcher("saves/1");});
+        playFadeTransition(0).setOnFinished(event -> {saveFileSwitcher("saves/4");});
     }
 }
