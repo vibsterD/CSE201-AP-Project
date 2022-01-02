@@ -56,7 +56,6 @@ public class Game implements Serializable {
     }
 
     public void play() {
-        Game game = this;
         Timeline screen_mover = new Timeline((new KeyFrame(Duration.millis(1500), event -> {
             //get gamescreen x_pos
             //get hero x_pos
@@ -121,16 +120,9 @@ public class Game implements Serializable {
             game_pane.getChildren().add(pmo.overlayPane);
             pmo.resumeButton.setOnAction(e -> {
 //                System.out.println("TAKING ACTION");
-                pmo.resumeGame();
-//                System.out.println("OPACITY 0");
-                collisionMan.play();
-                pause_screen_filter.setOpacity(0);
-                pauseButton.setDisable(false);
-                paused = false;
+                resume(pmo, pause_screen_filter, pauseButton);
             });
-            pmo.saveButton.setOnAction(event -> {
-                saveGame(pmo);
-            });
+            pmo.saveButton.setOnAction(event -> saveGame(pmo));
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -168,14 +160,7 @@ public class Game implements Serializable {
                 game_pane.getChildren().add(goc.overlayPane);
                 goc.cost.setText("50");//set 50 as cost of life
                 goc.progressBar.setProgress(currentScore / 100.0);
-                goc.reviveButton.setOnAction(event -> {
-                    hero.updateCoins(-50);
-                    hero.getImage_fx().setTranslateY(hero.getImage_fx().getY() - 300);
-                    hero.setAlive();
-                    goc.overlayPane.setDisable(true);
-                    goc.overlayPane.setOpacity(0);
-                    collisionMan.play();
-                });
+                goc.reviveButton.setOnAction(event -> respawn(goc));
 
             } catch (Exception e) {
                 System.out.println(e.getMessage());
@@ -418,29 +403,34 @@ public class Game implements Serializable {
         pmo.saveGroup.setOpacity(1);
     }
 
-    private void serialize() {
+//    private void serialize() {
+//    }
+// IMPLEMENTED IN PAUSE MENU class
+//    private void deserialize() {
+//    } implemented in loadmenu
+//
+//    private void loadGame() {
+//    }
+
+
+    private void resume(PauseMenuOverlay pmo, Rectangle pause_screen_filter, ImageView pauseButton) {
+        pmo.resumeGame();
+//                System.out.println("OPACITY 0");
+        collisionMan.play();
+        pause_screen_filter.setOpacity(0);
+        pauseButton.setDisable(false);
+        paused = false;
     }
 
-    private void deserialize() {
+    private void respawn(GameOverOverlay goc) {
+        hero.updateCoins(-50);
+        hero.getImage_fx().setTranslateY(hero.getImage_fx().getY() - 300);
+        hero.setAlive();
+        goc.overlayPane.setDisable(true);
+        goc.overlayPane.setOpacity(0);
+        collisionMan.play();
     }
 
-    private void loadGame() {
-    }
-
-    private void pause() {
-    }
-
-    private void resume() {
-    }
-
-    private void respawn() {
-    }
-
-    public void addToRender() {
-    }
-
-    public void eraseObject() {
-    }
 
     // TEMPORARY FUNCTION FOR IN_SCENE
 
