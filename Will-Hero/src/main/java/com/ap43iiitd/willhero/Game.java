@@ -159,7 +159,6 @@ public class Game implements Serializable {
     public void pause(ImageView pauseButton, Rectangle pause_screen_filter) {
         paused = true;
         collisionMan.pause();
-        ObjectOutputStream out = null;
 
         FadeTransition fTrans = new FadeTransition(Duration.millis(300), pause_screen_filter);
         fTrans.setToValue(1);
@@ -184,12 +183,11 @@ public class Game implements Serializable {
                 paused=false;
             });
             pmo.saveButton.setOnAction(event -> {
+                pmo.setInstanceOfGame(this);
                 pmo.saveGroup.setDisable(false);
                 pmo.saveGroup.setOpacity(1);
             });
 
-//            out = new ObjectOutputStream(new FileOutputStream("Stark.txt"));
-//            out.writeObject(this);
         }
         catch (Exception e){
             System.out.println(e.getMessage());

@@ -139,7 +139,7 @@
             </StackPane>
             <VBox fx:id="saveGroup" disable="true" layoutX="843.0" layoutY="160.0" opacity="0.0" prefHeight="400.0" prefWidth="100.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="1">
+                  <Button mnemonicParsing="false" onAction="#save1" prefHeight="100.0" prefWidth="100.0" text="1">
                      <font>
                         <Font name="Impact" size="49.0" />
                      </font>
@@ -147,7 +147,7 @@
                         <Insets bottom="10.0" top="10.0" />
                      </padding>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="2">
+                  <Button mnemonicParsing="false" onAction="#save2" prefHeight="100.0" prefWidth="100.0" text="2">
                      <font>
                         <Font name="Impact" size="49.0" />
                      </font>
@@ -155,7 +155,7 @@
                         <Insets bottom="10.0" top="10.0" />
                      </padding>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="3">
+                  <Button mnemonicParsing="false" onAction="#save3" prefHeight="100.0" prefWidth="100.0" text="3">
                      <font>
                         <Font name="Impact" size="49.0" />
                      </font>
@@ -163,7 +163,7 @@
                         <Insets bottom="10.0" top="10.0" />
                      </padding>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="4">
+                  <Button mnemonicParsing="false" onAction="#save4" prefHeight="100.0" prefWidth="100.0" text="4">
                      <font>
                         <Font name="Impact" size="49.0" />
                      </font>
