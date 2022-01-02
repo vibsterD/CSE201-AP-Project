@@ -17,6 +17,7 @@ public abstract class Orc extends GameObject implements Serializable {
     protected Boolean collidable;
     private Boolean dead;
     private Player main_hero;
+    private String dead_url = "com/ap43iiitd/willhero/imageres/Sprites/dead_orc.png";
 
     public Orc(int size, int hp, Position position, int res_num, Player main_hero) {
         this.main_hero = main_hero;
@@ -53,6 +54,8 @@ public abstract class Orc extends GameObject implements Serializable {
         if(collidable) {
             // give coins
             main_hero.updateCoins(1);
+            image_fx.setImage(new Image(dead_url));
+            url = dead_url;
         }
         collidable = false;
     }
