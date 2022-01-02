@@ -19,7 +19,10 @@ public class PauseMenuOverlay {
     protected Button resumeButton;
 
     @FXML
-    private VBox saveGroup;
+    protected Button saveButton;
+
+    @FXML
+    protected VBox saveGroup;
 
     @FXML
     void resumeGame() {
