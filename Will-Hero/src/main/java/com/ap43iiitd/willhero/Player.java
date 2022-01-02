@@ -139,8 +139,11 @@ public class Player extends GameObject implements Serializable {
         if (o1 instanceof Island) {
             // island
 
+
             Island island = (Island) o1;
             if (hero.getImage_fx().getBoundsInParent().intersects(island.getImage_fx().getBoundsInParent())) {
+                // hero
+                // island
                 double height = island.getImage_fx().getFitHeight() / 2;
                 if (hero.getPosition().getVel_y() > 0) {
 //                    hero.getHero_fx().setTranslateY(hero.getHero_fx().getTranslateY() + height);
@@ -148,7 +151,24 @@ public class Player extends GameObject implements Serializable {
 //                    System.out.println("Collided with island");
                     hero.getPosition().setVelocity(hero.getPosition().getVel_x(), -10);
                 }
+
+
+                // Hero Island
+
+                double island_min_x = island.getImage_fx().getBoundsInParent().getMinX();
+                double hero_max_x = hero.getImage_fx().getBoundsInParent().getMaxX();
+                double x_del_right = Math.abs(island_min_x - hero_max_x);
+//                System.out.println("XDEL: " + x_del_right);
+                if(x_del_right < 50.0) {
+//                    System.out.println("COLLIDING ORC");
+                    position.setVelocity(0, position.getVel_y());
+
+                }
+
+
             }
+
+
 
         }
 
@@ -175,6 +195,8 @@ public class Player extends GameObject implements Serializable {
                 double hero_min_y = hero.getImage_fx().getBoundsInParent().getMinY();
                 double y_del = Math.abs(orc_max_y - hero_min_y);
 
+                // orc
+                // hero
                 // checking if up/down
                 if (y_del < 10.0) {
                     // orc is above hero
@@ -184,6 +206,9 @@ public class Player extends GameObject implements Serializable {
                     System.out.println("**** DEAD");
                     return;
                 }
+
+                // hero
+                // orc
 
                 double orc_min_y = orc2.getImage_fx().getBoundsInParent().getMinY();
                 double hero_max_y = hero.getImage_fx().getBoundsInParent().getMaxY();

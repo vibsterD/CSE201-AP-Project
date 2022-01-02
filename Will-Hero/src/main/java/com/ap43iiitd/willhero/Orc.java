@@ -14,7 +14,7 @@ public abstract class Orc extends GameObject implements Serializable {
     protected Boolean collidable;
     private Boolean dead;
 
-    public Orc(int size, int hp, Position position, int res_num){
+    public Orc(int size, int hp, Position position, int res_num) {
         this.size = size;
         this.hp = hp;
         this.position = position;
@@ -26,17 +26,17 @@ public abstract class Orc extends GameObject implements Serializable {
         dead = false;
     }
 
-    public void jump(){
+    public void jump() {
 
     }
 
-    public void killPlayer(Player player){
+    public void killPlayer(Player player) {
         System.out.println("Oh no, our player, it's dead");
         player.not_alive();
 
     }
 
-    public int getHp(){
+    public int getHp() {
         return hp;
     }
 
@@ -44,7 +44,7 @@ public abstract class Orc extends GameObject implements Serializable {
         this.hp = hp;
     }
 
-    private void die(){
+    private void die() {
         System.out.println("ORC DIED");
 //        image_fx.setVisible(false);
 //        image_fx.setFitWidth(20);
@@ -54,7 +54,7 @@ public abstract class Orc extends GameObject implements Serializable {
 
 
     public void eliminate() {
-        if(hp > 0) {
+        if (hp > 0) {
             return;
         }
         dead = true;
@@ -81,7 +81,7 @@ public abstract class Orc extends GameObject implements Serializable {
 
     @Override
     public void collide(GameObject o1) {
-        if(collidable) {
+        if (collidable) {
             Orc orc2 = (Orc) this;
             if (o1 instanceof Island) {
                 Island island = (Island) o1;
@@ -92,6 +92,15 @@ public abstract class Orc extends GameObject implements Serializable {
                         orc2.getPosition().setVelocity(0, -5);
                     }
 
+                    // Hero Island
+
+                    double island_min_x = island.getImage_fx().getBoundsInParent().getMinX();
+                    double orc_max_x = this.getImage_fx().getBoundsInParent().getMaxX();
+                    double x_del_right = Math.abs(island_min_x - orc_max_x);
+//                System.out.println("XDEL: " + x_del_right);
+                    if (x_del_right < 50.0) {
+                        position.setVelocity(0, position.getVel_y());
+                    }
                 }
 
             }
@@ -99,7 +108,7 @@ public abstract class Orc extends GameObject implements Serializable {
             if (o1 instanceof Orc) {
                 Orc orc1 = (Orc) o1;
                 if (orc1.getImage_fx().getBoundsInParent().intersects(orc2.getImage_fx().getBoundsInParent())) {
-                    if(o1 instanceof BossOrc) {
+                    if (o1 instanceof BossOrc) {
                         forceEliminate();
                     }
                     double orc_min_y = orc2.getImage_fx().getBoundsInParent().getMinY();
