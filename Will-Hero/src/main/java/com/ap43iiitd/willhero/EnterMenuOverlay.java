@@ -34,9 +34,6 @@ public class EnterMenuOverlay {
         private ImageView tapFinger;
 
         @FXML
-        private Button loadGame;
-
-        @FXML
         public void makeNewGame() {
                 playFadeTransition().setOnFinished(e->sceneSwitcher("MainGamePage.fxml", true));
         }

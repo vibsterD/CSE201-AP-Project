@@ -8,7 +8,6 @@ import java.util.Random;
 
 public class Coin extends GameObject{
     public Boolean collided;
-    final static Random r1 = new Random(1337);
 
     public Coin() {
         url = "com/ap43iiitd/willhero/imageres/Sprites/coin.png";
@@ -20,7 +19,7 @@ public class Coin extends GameObject{
 
     @Override
     public void collide(GameObject o1) {
-        if(collided == false) {
+        if(!collided) {
             if (o1 instanceof Player) {
                 Player player = (Player) o1;
                 if(player.getImage_fx().getBoundsInParent().intersects(image_fx.getBoundsInParent())) {
