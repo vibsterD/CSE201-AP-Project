@@ -63,31 +63,49 @@ public class MainGamePage {
     private ArrayList<GameObject> game_objects;
     private ArrayList<Game> games;
 
-    public void initialize() {
+    public void initialize(){
+        System.out.println("Initializing///");
+    }
+
+    public void initializeGame() {
+        System.out.println("INITIALIZING NEW GAME");
+
+        game = new Game(game_screen, sword, shuriken, gamePane, coins);
+        System.out.println("new game created");
+
+        game_objects = game.getGame_objects();
+        hero = game.getHero();
+
+        game.play();
+    }
+
+    public Boolean loadGame(String saveFile) {
+        System.out.println("INITIALIZING FROM "+saveFile);
         try {
-            ObjectInputStream in = new ObjectInputStream(new FileInputStream("Stark.txt"));
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream(saveFile));
             game = (Game) in.readObject();
         }
         catch (Exception e){
             System.out.println(e.getLocalizedMessage());
+            return false;
         }
 
-//        game = new Game(game_screen, sword, shuriken, gamePane, coins);
-        System.out.println("Created");
+        System.out.println("loaded game object file");
 
+        //set prefs of objS
         game.setPref(game_screen, sword, shuriken, gamePane, coins);
         game_objects = game.getGame_objects();
 
-        //TODO: SHIFT TO LOAD LOGIC
         for(GameObject i: game_objects){
             i.reload(game_screen);
         }
+
         game.initialize_trees();
-        game.initialize_clouds();
+        game.initialize_clouds(); //reInit
         hero = game.getHero();
 
         game.play();
-
+        return true;
     }
 
 

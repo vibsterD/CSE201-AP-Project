@@ -61,4 +61,15 @@ public class LoadMenuOverlay {
 
     }
 
+    @FXML
+    public void loadSave1(){}
+
+    @FXML
+    public void loadSave2(){}
+
+    @FXML
+    public void loadSave3(){}
+
+    @FXML
+    public void loadSave4(){}
 }

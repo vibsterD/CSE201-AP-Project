@@ -34,17 +34,17 @@
                      <children>
                         <ImageView fitHeight="177.0" fitWidth="320.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@imageres/Sprites/Clouds/WH_Cloud_02.png" />
+                              <Image url="@imageres/Sprites/Clouds/C%20(3).png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="849.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@imageres/Sprites/Clouds/WH_Cloud_03.png" />
+                              <Image url="@imageres/Sprites/Clouds/C%20(7).png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="679.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@imageres/Sprites/Clouds/WH_Cloud_04.png" />
+                              <Image url="@imageres/Sprites/Clouds/C%20(5).png" />
                            </image>
                         </ImageView>
                      </children>
@@ -53,7 +53,6 @@
                      <children>
                         <StackPane prefHeight="236.0" prefWidth="257.0">
                            <children>
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" opacity="0.65" stroke="BLACK" strokeType="INSIDE" width="200.0" />
                               <AnchorPane prefHeight="200.0" prefWidth="213.0">
                                  <children>
                                     <Label layoutX="81.0" layoutY="124.0" text="100/121" textFill="WHITE">
@@ -68,11 +67,11 @@
                                     </Label>
                                  </children>
                               </AnchorPane>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" blendMode="SCREEN" fill="DODGERBLUE" height="200.0" onMouseClicked="#loadSave1" opacity="0.8" stroke="BLACK" strokeType="INSIDE" width="200.0" />
                            </children>
                         </StackPane>
                         <StackPane layoutX="257.0" prefHeight="236.0" prefWidth="257.0">
                            <children>
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" opacity="0.65" stroke="BLACK" strokeType="INSIDE" width="200.0" />
                               <AnchorPane prefHeight="200.0" prefWidth="213.0">
                                  <children>
                                     <Label layoutX="81.0" layoutY="124.0" text="100/121">
@@ -87,11 +86,11 @@
                                     </Label>
                                  </children>
                               </AnchorPane>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" blendMode="SCREEN" fill="DODGERBLUE" height="200.0" onMouseClicked="#loadSave2" opacity="0.65" stroke="BLACK" strokeType="INSIDE" width="200.0" />
                            </children>
                         </StackPane>
                         <StackPane layoutX="514.0" prefHeight="236.0" prefWidth="257.0">
                            <children>
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" opacity="0.65" stroke="BLACK" strokeType="INSIDE" width="200.0" />
                               <AnchorPane prefHeight="200.0" prefWidth="213.0">
                                  <children>
                                     <Label layoutX="81.0" layoutY="124.0" text="100/121">
@@ -106,11 +105,11 @@
                                     </Label>
                                  </children>
                               </AnchorPane>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" blendMode="SCREEN" fill="DODGERBLUE" height="200.0" onMouseClicked="#loadSave3" opacity="0.65" stroke="BLACK" strokeType="INSIDE" width="200.0" />
                            </children>
                         </StackPane>
                         <StackPane layoutX="771.0" prefHeight="236.0" prefWidth="257.0">
                            <children>
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" opacity="0.65" stroke="BLACK" strokeType="INSIDE" width="200.0" />
                               <AnchorPane prefHeight="200.0" prefWidth="213.0">
                                  <children>
                                     <Label layoutX="81.0" layoutY="124.0" text="100/121">
@@ -125,6 +124,7 @@
                                     </Label>
                                  </children>
                               </AnchorPane>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" blendMode="SCREEN" fill="DODGERBLUE" height="200.0" onMouseClicked="#loadSave4" opacity="0.65" stroke="BLACK" strokeType="INSIDE" width="200.0" />
                            </children>
                         </StackPane>
                      </children>

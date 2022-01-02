@@ -7,6 +7,7 @@ import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
@@ -83,7 +84,10 @@ public class EnterMenuOverlay {
                 System.out.println(runningInstance);
                 FXMLLoader fxmlLoader = new FXMLLoader(WillHero.class.getResource(fxmlName));
                 try {
-                        Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+                        Parent loader = fxmlLoader.load();
+                        Scene scene = new Scene(loader, 1280, 720);
+                        MainGamePage mainGamePage = fxmlLoader.getController();
+                        mainGamePage.initializeGame();
                         runningInstance.setScene(scene);
                 }
                 catch (Exception e){
