@@ -255,12 +255,16 @@ public class Game implements Serializable {
         initialize_orcs();
         initialize_clouds();
         initialize_trees();
+        initialize_bonus();
         game_objects.add(hero);
         int x = (int)islands.get(islands.size()-1).getImage_fx().getLayoutX();
         int  y = (int)islands.get(islands.size()-1).getImage_fx().getLayoutY();
         boss_orc = new BossOrc(new Position());
         boss_orc.addToScene(game_screen, x, y-300);
         game_objects.add(boss_orc);
+
+
+
     }
 
     // generate islands and chests and TNTs and coins and trees
@@ -289,7 +293,7 @@ public class Game implements Serializable {
             }
 
             int generate_tnt = r1.nextInt(7);
-            if(generate_tnt == 0 || i == 2) {
+            if(generate_tnt == 0) {
                 tnts.add(new TNT(this));
                 tnts.get(tnts.size()-1).addToScene(game_screen, x, y, islands.get(i));
                 game_objects.add(tnts.get(tnts.size()-1));
@@ -307,6 +311,24 @@ public class Game implements Serializable {
                 }
             }
 
+        }
+    }
+
+    public void initialize_bonus() {
+        // testing bonus
+        for(int i = 3; i < islands.size(); i+=5) {
+            int bonus = r1.nextInt(4);
+            if(bonus == 0) {
+                System.out.println("BOUSS");
+                int x = (int) islands.get(i).getImage_fx().getLayoutX();
+                int y = (int) islands.get(i).getImage_fx().getLayoutY() - 200;
+                PowerUpMushroom mushroom = new PowerUpMushroom();
+                PowerUpBrick brick = new PowerUpBrick(mushroom);
+                mushroom.addToScene(game_screen, x, y);
+                brick.addToScene(game_screen, x, y);
+                game_objects.add(mushroom);
+                game_objects.add(brick);
+            }
         }
     }
 

@@ -35,8 +35,12 @@ public class TNT extends Obstacle{
         st.setOnFinished(e->{
             FadeTransition ft = new FadeTransition(Duration.millis(100),image_fx);
             ft.setToValue(0);
-            ft.setOnFinished(f->explode());
             ft.play();
+            ft.setOnFinished(ev-> {
+                explode();
+                visibility = false;
+                image_fx.setVisible(visibility);
+            });
         });
         st.play();
 //        image_fx.setFitWidth(500);

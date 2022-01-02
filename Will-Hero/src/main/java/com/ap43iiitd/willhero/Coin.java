@@ -26,7 +26,8 @@ public class Coin extends GameObject{
                 if(player.getImage_fx().getBoundsInParent().intersects(image_fx.getBoundsInParent())) {
                     player.updateCoins(5);
                     collided = true;
-                    image_fx.setVisible(false);
+                    visibility = false;
+                    image_fx.setVisible(visibility);
                     image_fx.setDisable(true);
                 }
             }

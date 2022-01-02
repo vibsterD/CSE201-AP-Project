@@ -7,9 +7,7 @@ import javafx.scene.layout.AnchorPane;
 import java.io.Serializable;
 
 public abstract class GameObject implements Serializable {
-    private double gravity;
     transient protected ImageView image_fx;
-    private int restitution;
     protected String url;
     private static final int serialVersionUID = 69;
     protected Position position;
@@ -17,6 +15,7 @@ public abstract class GameObject implements Serializable {
     protected double y;
     protected double imageWidth = 100;
     protected Double view_order = null;
+    protected Boolean visibility = true;
 
     public abstract void collide(GameObject o1);
     public ImageView getImage_fx() {
@@ -41,7 +40,16 @@ public abstract class GameObject implements Serializable {
         if(view_order != null) {
             image_fx.setViewOrder(view_order);
         }
+        image_fx.setVisible(visibility);
         pane.getChildren().add(image_fx);
+    }
+
+    public void setImageWidth(double imageWidth) {
+        this.imageWidth = imageWidth;
+    }
+
+    public double getImageWidth() {
+        return imageWidth;
     }
 }
 

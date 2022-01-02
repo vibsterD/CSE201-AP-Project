@@ -78,4 +78,11 @@ public class Position implements Serializable {
         this.vel_y = vel_y;
     }
 
+    public void setGravity(double gravity) {
+        this.gravity = gravity;
+    }
+
+    public double getGravity() {
+        return gravity;
+    }
 }

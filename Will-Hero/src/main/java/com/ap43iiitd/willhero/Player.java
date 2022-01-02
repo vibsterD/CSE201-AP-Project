@@ -256,6 +256,38 @@ public class Player extends GameObject implements Serializable {
 
 
         }
+
+        if(o1 instanceof PowerUpBrick) {
+            PowerUpBrick brick = (PowerUpBrick) o1;
+            if(brick.getImage_fx().getBoundsInParent().intersects(image_fx.getBoundsInParent())) {
+                double brick_max_y = brick.getImage_fx().getBoundsInParent().getMaxY();
+                double hero_min_y = hero.getImage_fx().getBoundsInParent().getMinY();
+                double y_del = Math.abs(brick_max_y - hero_min_y);
+
+                // orc
+                // hero
+                // checking if up/down
+                if (y_del < 10.0) {
+                    // orc is above hero
+                    System.out.println("WTGFGFFFFFF");
+                    hero.getPosition().setVelocity(0, 3);
+                    brick.reward();
+                    return;
+                }
+
+                // Hero brick
+
+                double brick_min_x = brick.getImage_fx().getBoundsInParent().getMinX();
+                double hero_max_x = hero.getImage_fx().getBoundsInParent().getMaxX();
+                double x_del_right = Math.abs(brick_min_x - hero_max_x);
+//                System.out.println("XDEL: " + x_del_right);
+                if(x_del_right < 50.0) {
+//                    System.out.println("COLLIDING ORC");
+                    position.setVelocity(0, position.getVel_y());
+
+                }
+            }
+        }
     }
 
 //    public Boolean getDash_collision() {
