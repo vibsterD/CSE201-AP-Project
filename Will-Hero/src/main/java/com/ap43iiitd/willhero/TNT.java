@@ -1,8 +1,11 @@
 package com.ap43iiitd.willhero;
 
+import javafx.animation.FadeTransition;
+import javafx.animation.ScaleTransition;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -26,10 +29,19 @@ public class TNT extends Obstacle{
     }
 
     public void activate() {
-        image_fx.setFitWidth(500);
+        ScaleTransition st = new ScaleTransition(Duration.millis(200), image_fx);
+        st.setByX(5);
+        st.setByY(5);
+        st.setOnFinished(e->{
+            FadeTransition ft = new FadeTransition(Duration.millis(100),image_fx);
+            ft.setToValue(0);
+            ft.setOnFinished(f->explode());
+            ft.play();
+        });
+        st.play();
+//        image_fx.setFitWidth(500);
         // animate increase in size
         // call explode on fineshed event
-        explode();
     }
     private void explode() {
 
