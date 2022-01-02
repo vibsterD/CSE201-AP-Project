@@ -90,6 +90,7 @@ public class Game implements Serializable {
         if (paused || hero.getPosition().getVel_x() > 0) return;
 
         currentScore++;
+        hero.dash();
         score.setText(String.valueOf(currentScore));
         Position heroPos = hero.getPosition();
 //        System.out.println("gamescreenpos: " +game_screen.getTranslateX());
@@ -190,7 +191,7 @@ public class Game implements Serializable {
 
     // generate islands and chests and TNTs and coins and trees
     private void initialize_islands() {
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 90; i++) {
             islands.add(new Island(new Position(0)));
             int x = 114 + i * 350 + r1.nextInt(20);
             int y = 400 + r1.nextInt(100);

@@ -5,7 +5,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 public class PowerUpBrick extends GameObject{
-    private PowerUpMushroom mushroom;
+    private final PowerUpMushroom mushroom;
     private Boolean exhausted;
 
     public PowerUpBrick(PowerUpMushroom mushroom) {
@@ -23,7 +23,7 @@ public class PowerUpBrick extends GameObject{
     }
 
     public void reward() {
-        if(exhausted == false) {
+        if(!exhausted) {
             exhausted = true;
             mushroom.setUnlocked(true);
             mushroom.getPosition().setGravity(10);

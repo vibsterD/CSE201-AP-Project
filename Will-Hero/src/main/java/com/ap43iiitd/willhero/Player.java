@@ -10,24 +10,19 @@ import java.util.ArrayList;
 public class Player extends GameObject implements Serializable {
 
     private int coins;
-    private Helmet helmet;
+    private final Helmet helmet;
     private Boolean respawned;
-    private int location;
-
     private Game game;
     private Boolean has_won;
     private Boolean alive = true;
-//    private Boolean dash_collision;
-//    private int jump_length;
-//    private int jump_frequency;
-//    Boolean dash_flag;
+
 
     public Player() {
         this.helmet = new Iron();
         System.out.println("Creating player");
         this.respawned = false;
         this.has_won = false;
-//        this.dash_collision = false;
+
         this.position = new Position();
         url = "com/ap43iiitd/willhero/imageres/Sprites/Iron.png";
         Image image = new Image(url);
@@ -40,7 +35,7 @@ public class Player extends GameObject implements Serializable {
         imageWidth = 50;
         image_fx.setFitWidth(imageWidth);
         image_fx.setLayoutX(150);
-        System.out.println(pane+" irjgiwrugier");
+        System.out.println(pane + " irjgiwrugier");
         pane.getChildren().add(image_fx);
     }
 
@@ -48,16 +43,11 @@ public class Player extends GameObject implements Serializable {
         return helmet;
     }
 
-    //    public Position getPosition() {
-//        return position;
-//    }
-
-
     public void setRespawned() {
         this.respawned = true;
     }
 
-    public void not_alive(){
+    public void not_alive() {
         this.alive = false;
     }
 
@@ -69,7 +59,7 @@ public class Player extends GameObject implements Serializable {
         this.alive = true;
     }
 
-    public void attack(ArrayList<GameObject> game_objects,AnchorPane game_screen) {
+    public void attack(ArrayList<GameObject> game_objects, AnchorPane game_screen) {
         Weapon att = getHelmet().getCurrent_weapon();
         if (att != null) {
             att.attack(game_objects, game_screen, getImage_fx().getTranslateX() + getImage_fx().getLayoutX(), getImage_fx().getTranslateY() + getImage_fx().getLayoutY());
@@ -77,6 +67,7 @@ public class Player extends GameObject implements Serializable {
     }
 
     public void dash() {
+        System.out.println("Dashing!!");
     }
 
     public void updateCoins(int delta) {
@@ -91,9 +82,6 @@ public class Player extends GameObject implements Serializable {
         helmet.rewardWeapon(weapon);
     }
 
-    private void upgradeWeapon() {
-    }
-
     public void eliminate() {
         System.out.println("\n\nTHE HERO DIED!!!!!!!\n\n\n");
         not_alive();
@@ -103,14 +91,6 @@ public class Player extends GameObject implements Serializable {
         return respawned;
     }
 
-    public Boolean getDashCollision() {
-        return true;
-    }
-
-    public Boolean hasWon() {
-        return this.has_won;
-    }
-
     public void setHasWon() {
         this.has_won = true;
     }
@@ -118,7 +98,7 @@ public class Player extends GameObject implements Serializable {
     @Override
     public void collide(GameObject o1) {
 
-        if(image_fx.getTranslateY() > 600) {
+        if (image_fx.getTranslateY() > 600) {
             eliminate();
         }
 
@@ -132,14 +112,10 @@ public class Player extends GameObject implements Serializable {
             if (hero.getImage_fx().getBoundsInParent().intersects(island.getImage_fx().getBoundsInParent())) {
                 // hero
                 // island
-                double height = island.getImage_fx().getFitHeight() / 2;
+
                 if (hero.getPosition().getVel_y() > 0) {
-//                    hero.getHero_fx().setTranslateY(hero.getHero_fx().getTranslateY() + height);
-//                    if(hero.getHero_fx().getBoundsInParent().intersects(island.getIsland_fx().getBoundsInParent()))
-//                    System.out.println("Collided with island");
                     hero.getPosition().setVelocity(hero.getPosition().getVel_x(), -10);
                 }
-
 
                 // Hero Island
 
@@ -147,17 +123,11 @@ public class Player extends GameObject implements Serializable {
                 double hero_max_x = hero.getImage_fx().getBoundsInParent().getMaxX();
                 double x_del_right = Math.abs(island_min_x - hero_max_x);
 //                System.out.println("XDEL: " + x_del_right);
-                if(x_del_right < 50.0) {
+                if (x_del_right < 50.0) {
 //                    System.out.println("COLLIDING ORC");
                     position.setVelocity(0, position.getVel_y());
-
                 }
-
-
             }
-
-
-
         }
 
 
@@ -165,11 +135,11 @@ public class Player extends GameObject implements Serializable {
             // orc
             Orc orc2 = (Orc) o1;
 
-            if(orc2.getDead()) {
+            if (orc2.getDead()) {
                 return;
             }
 
-            if(orc2.getImage_fx().getTranslateY() > 500) {
+            if (orc2.getImage_fx().getTranslateY() > 500) {
                 // kill Orc and reward player with some coins
                 orc2.forceEliminate();
                 updateCoins(5);
@@ -177,8 +147,7 @@ public class Player extends GameObject implements Serializable {
             }
 
             if (orc2.getImage_fx().getBoundsInParent().intersects(hero.getImage_fx().getBoundsInParent())) {
-//                System.out.println( "Orc : " + orc2.getOrc_fx().getBoundsInParent().getMaxY());
-//                System.out.println( "Hero: " + hero.getHero_fx().getBoundsInParent().getMinY());
+
                 double orc_max_y = orc2.getImage_fx().getBoundsInParent().getMaxY();
                 double hero_min_y = hero.getImage_fx().getBoundsInParent().getMinY();
                 double y_del = Math.abs(orc_max_y - hero_min_y);
@@ -203,9 +172,7 @@ public class Player extends GameObject implements Serializable {
                 double y_del_down = Math.abs(orc_min_y - hero_max_y);
 
                 if (y_del_down < 10.0) {
-                    //                System.out.println( "Orc : " + orc2.getOrc_fx().getBoundsInParent().getMaxY());
-//                System.out.println( "Hero: " + hero.getHero_fx().getBoundsInParent().getMinY());
-//                    System.out.println("HELLLO");
+
                     hero.getPosition().setVelocity(hero.getPosition().getVel_x(), -5);
                     return;
                 }
@@ -216,7 +183,7 @@ public class Player extends GameObject implements Serializable {
                 double hero_min_x = hero.getImage_fx().getBoundsInParent().getMinX();
                 double x_del = Math.abs(orc_max_x - hero_min_x);
 
-                if(x_del < 10.0) {
+                if (x_del < 10.0) {
                     System.out.println("Orc Hero SUPER RARE!!");
 
                 }
@@ -227,31 +194,26 @@ public class Player extends GameObject implements Serializable {
                 double hero_max_x = hero.getImage_fx().getBoundsInParent().getMaxX();
                 double x_del_right = Math.abs(orc_min_x - hero_max_x);
 //                System.out.println("XDEL: " + x_del_right);
-                if(x_del_right < 50.0) {
+                if (x_del_right < 50.0) {
 //                    System.out.println("COLLIDING ORC");
                     position.setVelocity(3, position.getVel_y());
-                    if(orc2 instanceof BossOrc) {
+                    if (orc2 instanceof BossOrc) {
                         orc2.getPosition().setVelocity(10, -1);
-                    }else {
+                    } else {
                         orc2.getPosition().setVelocity(30, -1);
 
                     }
-//                    this.dash_collision = true;
                 }
-
-
             }
-
-
         }
 
-        if(o1 instanceof PowerUpBrick) {
+        if (o1 instanceof PowerUpBrick) {
             PowerUpBrick brick = (PowerUpBrick) o1;
-            if(brick.getImage_fx().getBoundsInParent().intersects(image_fx.getBoundsInParent())) {
+            if (brick.getImage_fx().getBoundsInParent().intersects(image_fx.getBoundsInParent())) {
 
                 // hero
                 // brick
-                double height = brick.getImage_fx().getFitHeight() / 2;
+
                 if (hero.getPosition().getVel_y() > 0) {
                     hero.getPosition().setVelocity(hero.getPosition().getVel_x(), -10);
                 }
@@ -278,7 +240,7 @@ public class Player extends GameObject implements Serializable {
                 double hero_max_x = hero.getImage_fx().getBoundsInParent().getMaxX();
                 double x_del_right = Math.abs(brick_min_x - hero_max_x);
 //                System.out.println("XDEL: " + x_del_right);
-                if(x_del_right < 50.0) {
+                if (x_del_right < 50.0) {
 //                    System.out.println("COLLIDING ORC");
                     position.setVelocity(0, position.getVel_y());
 
@@ -286,8 +248,4 @@ public class Player extends GameObject implements Serializable {
             }
         }
     }
-
-//    public Boolean getDash_collision() {
-//        return dash_collision;
-//    }
 }

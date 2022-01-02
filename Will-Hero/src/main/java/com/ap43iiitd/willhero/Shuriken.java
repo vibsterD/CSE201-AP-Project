@@ -17,7 +17,7 @@ public class Shuriken extends Weapon{
         this.hit_radius = 2000;
         this.level = 1;
         this.position = new Position(true);
-        this.getPosition().setVelocity(100, -(Math.random()*10));
+        this.getPosition().setVelocity(60, -(Math.random()*10));
     }
 
     @Override

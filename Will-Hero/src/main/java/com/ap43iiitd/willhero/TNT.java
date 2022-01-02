@@ -12,10 +12,8 @@ import java.util.Random;
 
 public class TNT extends Obstacle{
     final static Random r1 = new Random(13370);
-    private Position position;
+    private final Position position;
     private Boolean is_exploded;
-    private double explosion_radius;
-    //Image explosion;
     Game game;
 
     public TNT(Game game) {
@@ -25,7 +23,7 @@ public class TNT extends Obstacle{
         this.position = new Position(0);
         this.is_exploded = false;
         this.game = game;
-        this.explosion_radius = 300;
+
     }
 
     public void activate() {
@@ -85,7 +83,7 @@ public class TNT extends Obstacle{
 
     @Override
     public void collide(GameObject o1) {
-        if(o1 instanceof Player && is_exploded == false) {
+        if(o1 instanceof Player && !is_exploded) {
             Player player = (Player) o1;
             if(player.getImage_fx().getBoundsInParent().intersects(this.image_fx.getBoundsInParent())) {
                 // chest open
@@ -96,7 +94,7 @@ public class TNT extends Obstacle{
             }
         }
 
-        if(o1 instanceof Orc && is_exploded == false) {
+        if(o1 instanceof Orc && !is_exploded) {
             Orc orc = (Orc) o1;
             if(orc.getImage_fx().getBoundsInParent().intersects(this.image_fx.getBoundsInParent())) {
                 // chest open
@@ -107,9 +105,9 @@ public class TNT extends Obstacle{
             }
         }
 
-        if(o1 instanceof TNT && is_exploded == false) {
-            TNT tnt = (TNT) o1;
-            if(tnt.getImage_fx().getBoundsInParent().intersects(this.image_fx.getBoundsInParent())) {
+        if(o1 instanceof Shuriken && !is_exploded) {
+            Shuriken shuriken = (Shuriken) o1;
+            if(shuriken.getImage_fx().getBoundsInParent().intersects(this.image_fx.getBoundsInParent())) {
                 // chest open
                 System.out.println("TNTNTNNTN");
 //                image_fx.setImage(opened_chest);
@@ -117,7 +115,7 @@ public class TNT extends Obstacle{
                 is_exploded = true;
             }
         }
-    };
+    }
 
     @Override
     public Position getPosition() {

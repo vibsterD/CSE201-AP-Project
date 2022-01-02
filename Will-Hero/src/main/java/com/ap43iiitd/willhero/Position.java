@@ -47,10 +47,8 @@ public class Position implements Serializable {
         smoothenTransition.setNode(imageView);
         smoothenTransition.setInterpolator(Interpolator.LINEAR);
         smoothenTransition.setByY(vel_y);
-//        splineTranslate.play();
-//        System.out.println(this.vel_y);
+
         if(this.vel_x > 0) {
-//            System.out.println("VELX: " + this.vel_x);
             x_drag = 0.3;
         }
         else {
@@ -59,18 +57,8 @@ public class Position implements Serializable {
         }
 
         this.vel_x = this.vel_x - x_drag;
-
-
-            // update X
-            this.vel_x = vel_x;
-//            splineTranslate.setNode(imageView);
-//            splineTranslate.setInterpolator(Interpolator.LINEAR);
-            smoothenTransition.setByX(vel_x);
-
-
+        smoothenTransition.setByX(vel_x);
         smoothenTransition.play();
-
-        //imageView.setTranslateY(imageView.getTranslateY()+vel_y);
     }
 
     public void setVelocity(double vel_x, double vel_y) {
@@ -82,7 +70,4 @@ public class Position implements Serializable {
         this.gravity = gravity;
     }
 
-    public double getGravity() {
-        return gravity;
-    }
 }

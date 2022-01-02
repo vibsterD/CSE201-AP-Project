@@ -19,7 +19,7 @@ public class PowerUpMushroom extends GameObject{
 
     @Override
     public void collide(GameObject o1) {
-        if(collided == false && unlocked) {
+        if(!collided && unlocked) {
             if (o1 instanceof Player) {
                 Player player = (Player) o1;
                 if(player.getImage_fx().getBoundsInParent().intersects(image_fx.getBoundsInParent())) {
@@ -38,7 +38,7 @@ public class PowerUpMushroom extends GameObject{
                 if (this.getImage_fx().getBoundsInParent().intersects(island.getImage_fx().getBoundsInParent())) {
                     // mushroom
                     // island
-                    double height = island.getImage_fx().getFitHeight() / 2;
+
                     if (this.getPosition().getVel_y() > 0) {
                         this.getPosition().setVelocity(0, -3);
                     }
