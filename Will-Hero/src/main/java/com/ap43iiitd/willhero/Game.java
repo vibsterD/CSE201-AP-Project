@@ -40,6 +40,7 @@ public class Game implements Serializable {
     transient private StackPane game_pane;
     private Integer currentScore = 0;
     transient private Label coins_counter;
+    transient private int saveVal;
 
     public Game(AnchorPane game_screen, Rectangle sword, Rectangle shuriken, StackPane game_pane, Label coins_counter) {
         this.game_pane = game_pane;
@@ -159,12 +160,9 @@ public class Game implements Serializable {
         paused = true;
         collisionMan.pause();
         ObjectOutputStream out = null;
-        ObjectInputStream in = null;
         try {
             out = new ObjectOutputStream(new FileOutputStream("Stark.txt"));
             out.writeObject(this);
-//            in = new ObjectInputStream(new FileInputStream("Stark.txt"));
-//            this = (Game) in.readObject();
         }
         catch (Exception e){
             System.out.println(e.getMessage());
