@@ -140,9 +140,7 @@ public class Player extends GameObject implements Serializable {
             }
 
             if (orc2.getImage_fx().getTranslateY() > 500) {
-                // kill Orc and reward player with some coins
                 orc2.forceEliminate();
-                updateCoins(5);
                 return;
             }
 
@@ -228,7 +226,6 @@ public class Player extends GameObject implements Serializable {
                 // checking if up/down
                 if (y_del < 10.0) {
                     // orc is above hero
-                    System.out.println("WTGFGFFFFFF");
                     hero.getPosition().setVelocity(0, 3);
                     brick.reward();
                     return;

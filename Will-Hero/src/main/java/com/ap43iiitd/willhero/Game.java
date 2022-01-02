@@ -182,7 +182,7 @@ public class Game implements Serializable {
         game_objects.add(hero);
         int x = (int) islands.get(islands.size() - 1).getImage_fx().getLayoutX();
         int y = (int) islands.get(islands.size() - 1).getImage_fx().getLayoutY();
-        boss_orc = new BossOrc(new Position());
+        boss_orc = new BossOrc(new Position(), hero);
         boss_orc.addToScene(game_screen, x, y - 300);
         game_objects.add(boss_orc);
 
@@ -279,12 +279,12 @@ public class Game implements Serializable {
             red_or_green = r1.nextInt(2);
             if (red_or_green == 0) {
                 // red
-                orcs.add(new RedOrc(new Position()));
+                orcs.add(new RedOrc(new Position(), hero));
                 orcs.get(i).addToScene(game_screen, 220 + i * 250 + r1.nextInt(20), 300 + r1.nextInt(10));
                 game_objects.add(orcs.get(i));
             } else {
                 // green
-                orcs.add(new GreenOrc(new Position()));
+                orcs.add(new GreenOrc(new Position(), hero));
                 orcs.get(i).addToScene(game_screen, 220 + i * 240 + r1.nextInt(20), 300 + r1.nextInt(10));
                 game_objects.add(orcs.get(i));
             }
